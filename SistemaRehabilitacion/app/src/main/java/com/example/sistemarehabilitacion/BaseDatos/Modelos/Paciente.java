@@ -1,6 +1,8 @@
 package com.example.sistemarehabilitacion.BaseDatos.Modelos;
 
-public class Paciente {
+import java.io.Serializable;
+
+public class Paciente implements Serializable {
     private  int id;
     private  String nombre;
     private  String apellido;

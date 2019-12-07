@@ -2,6 +2,7 @@ package com.example.sistemarehabilitacion.Vistas.GestionPacientes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sistemarehabilitacion.BaseDatos.IdentificadoresBD;
+import com.example.sistemarehabilitacion.BaseDatos.ServicioBD;
 import com.example.sistemarehabilitacion.R;
 
 import java.util.Calendar;
@@ -59,7 +62,7 @@ public class RegistroActivity extends AppCompatActivity {
                    Toast.makeText(getApplicationContext(),"Complete todos los campos",Toast.LENGTH_SHORT).show();
                    return;
                }
-               //si la fecha es valida
+               //si la fecha no es valida
                 try{
                     if((Integer.parseInt(txt_nacimiento_dia.getText().toString())>31)||
                             (Integer.parseInt(txt_nacimiento_mes.getText().toString())>12)||
@@ -77,7 +80,14 @@ public class RegistroActivity extends AppCompatActivity {
                     return;
                 }
 
+                ServicioBD servicio = new ServicioBD(RegistroActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                servicio.RegistrarPaciente(txt_nombre.getText().toString(),txt_apellido.getText().toString(),txt_cedula.getText().toString(),
+                        (txt_nacimiento_dia.getText().toString().length()==1?"0"+txt_nacimiento_dia.getText().toString():txt_nacimiento_dia.getText().toString())+"/"+(txt_nacimiento_mes.getText().toString().length()==1?"0"+txt_nacimiento_mes.getText().toString():txt_nacimiento_mes.getText().toString())+"/"+
+                                (txt_nacimiento_anio.getText().toString().length()==1?"000"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString().length()==2?"00"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString().length()==3?"0"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString())
+                        ,txt_tecnico.getText().toString());
 
+                Intent intent = new Intent(RegistroActivity.this,MainActivity.class);
+                startActivity(intent);
 
             }
         });

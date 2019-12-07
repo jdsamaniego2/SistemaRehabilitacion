@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Vistas.GestionPacientes.RegistroActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context=".Vistas.GestionPacientes.EdicionActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -21,11 +20,12 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/txt_cedula_registro"
+        android:id="@+id/txt_cedula_edicion"
         android:layout_width="291dp"
         android:layout_height="45dp"
         android:layout_marginTop="24dp"
         android:ems="10"
+        android:enabled="false"
         android:hint="Cédula"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/txt_nombre_registro"
+        android:id="@+id/txt_nombre_edicion"
         android:layout_width="285dp"
         android:layout_height="46dp"
         android:layout_marginTop="12dp"
@@ -42,10 +42,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_cedula_registro" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_cedula_edicion" />
 
     <EditText
-        android:id="@+id/txt_apellido_registro"
+        android:id="@+id/txt_apellido_edicion"
         android:layout_width="285dp"
         android:layout_height="47dp"
         android:layout_marginTop="16dp"
@@ -54,10 +54,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nombre_registro" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombre_edicion" />
 
     <EditText
-        android:id="@+id/txt_tecnico_registro"
+        android:id="@+id/txt_tecnico_edicion"
         android:layout_width="281dp"
         android:layout_height="47dp"
         android:layout_marginTop="8dp"
@@ -66,10 +66,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_apellido_registro" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_apellido_edicion" />
 
     <EditText
-        android:id="@+id/txt_ano_registro"
+        android:id="@+id/txt_ano_edicion"
         android:layout_width="78dp"
         android:layout_height="44dp"
         android:layout_marginTop="12dp"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/txt_mes_registro"
+        android:id="@+id/txt_mes_edicion"
         android:layout_width="66dp"
         android:layout_height="43dp"
         android:layout_marginStart="16dp"
@@ -103,11 +103,11 @@
         android:layout_marginTop="12dp"
         android:text="/"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/txt_dia_registro"
+        app:layout_constraintStart_toEndOf="@+id/txt_dia_edicion"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/txt_dia_registro"
+        android:id="@+id/txt_dia_edicion"
         android:layout_width="66dp"
         android:layout_height="43dp"
         android:layout_marginStart="72dp"
@@ -120,16 +120,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/btn_registrar_registro"
+        android:id="@+id/btn_editar_edicion"
         android:layout_width="184dp"
         android:layout_height="54dp"
         android:layout_marginBottom="28dp"
-        android:text="Registrar"
+        android:text="Editar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_mes_registro"
+        app:layout_constraintTop_toBottomOf="@+id/txt_mes_edicion"
         app:layout_constraintVertical_bias="0.421" />
 
     <TextView
@@ -140,7 +140,7 @@
         android:layout_marginTop="16dp"
         android:text="/"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/txt_mes_registro"
+        app:layout_constraintStart_toEndOf="@+id/txt_mes_edicion"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
@@ -154,6 +154,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_tecnico_registro" />
-
+        app:layout_constraintTop_toBottomOf="@+id/txt_tecnico_edicion" />
 </androidx.constraintlayout.widget.ConstraintLayout>
