@@ -1,4 +1,4 @@
-package com.example.sistemarehabilitacion.Vistas.GestionPacientes;
+package com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -86,7 +86,7 @@ public class RegistroActivity extends AppCompatActivity {
                                 (txt_nacimiento_anio.getText().toString().length()==1?"000"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString().length()==2?"00"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString().length()==3?"0"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString())
                         ,txt_tecnico.getText().toString());
 
-                Intent intent = new Intent(RegistroActivity.this,MainActivity.class);
+                Intent intent = new Intent(RegistroActivity.this, MainActivity.class);
                 startActivity(intent);
 
             }

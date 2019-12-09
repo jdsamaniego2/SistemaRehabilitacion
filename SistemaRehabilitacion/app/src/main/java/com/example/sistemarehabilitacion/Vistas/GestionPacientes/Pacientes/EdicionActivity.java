@@ -1,10 +1,11 @@
-package com.example.sistemarehabilitacion.Vistas.GestionPacientes;
+package com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class EdicionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_edicion);
         inicializarComponentes();
         inicializarEventos();
@@ -94,7 +96,7 @@ public class EdicionActivity extends AppCompatActivity {
                 ServicioBD servicio = new ServicioBD(EdicionActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
                 servicio.EditarPaciente(paciente.getNombre(),paciente.getApellido(),paciente.getCedula(),paciente.getNacimiento(),paciente.getTecnico());
 
-                Intent intent = new Intent(EdicionActivity.this,MainActivity.class);
+                Intent intent = new Intent(EdicionActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

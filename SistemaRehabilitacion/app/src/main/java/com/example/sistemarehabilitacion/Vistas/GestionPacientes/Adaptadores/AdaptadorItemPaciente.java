@@ -1,4 +1,4 @@
-package com.example.sistemarehabilitacion.Vistas.GestionPacientes;
+package com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,11 +14,11 @@ import com.example.sistemarehabilitacion.R;
 
 import java.util.List;
 
-public class AdaptadorItem extends BaseAdapter {
+public class AdaptadorItemPaciente extends BaseAdapter {
     private List<Paciente> pacientes;
     private Context contexto;
 
-    public AdaptadorItem(List<Paciente> pacientes, Context contexto) {
+    public AdaptadorItemPaciente(List<Paciente> pacientes, Context contexto) {
         this.pacientes = pacientes;
         this.contexto = contexto;
     }

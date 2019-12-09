@@ -1,4 +1,4 @@
-package com.example.sistemarehabilitacion.Vistas.GestionPacientes;
+package com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +21,9 @@ import com.example.sistemarehabilitacion.BaseDatos.Modelos.Paciente;
 import com.example.sistemarehabilitacion.BaseDatos.ServicioBD;
 
 import com.example.sistemarehabilitacion.R;
+import com.example.sistemarehabilitacion.Vistas.Ejercicios.MenuActivity;
+import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores.AdaptadorItemPaciente;
+import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    AdaptadorItem items_pacientes;
+    AdaptadorItemPaciente items_pacientes;
     List<Paciente> pacientes;
 
 
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         inicializarComponentes();
         inicializarEventos();
+
+
+
 
     }
 
@@ -78,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialogo1, int id) {
                     ServicioBD sercicio = new ServicioBD(MainActivity.this.getApplicationContext(),IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
                     sercicio.EliminarPaciente(paciente_seleccionado.getId());
+                    inicializarComponentes();
                 }
             });
             dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -85,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             dialogo1.show();
-            onResume();
+
         }
         else if(item.getItemId() == R.id.op_editar_menu){
             Intent intent = new Intent(MainActivity.this, EdicionActivity.class);
@@ -107,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         ServicioBD sercicio = new ServicioBD(MainActivity.this.getApplicationContext(),IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
         pacientes = sercicio.ConsultarPacientes();
-        items_pacientes = new AdaptadorItem(pacientes,this.getApplicationContext());
+        items_pacientes = new AdaptadorItemPaciente(pacientes,this.getApplicationContext());
         lv_pacientes.setAdapter(items_pacientes);
         registerForContextMenu(lv_pacientes);
     }
@@ -115,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         btn_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,RegistroActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
                 startActivity(intent);
             }
         });
@@ -123,12 +130,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //INTENT A VISTA PARA SINCRONIZAR
+
+                ServicioBD sercicio = new ServicioBD(MainActivity.this.getApplicationContext(),IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                long id = sercicio.RegistrarSesion(13,180,5,"Timon","15/08/2019","Normal");
+                Toast.makeText(MainActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
             }
         });
         lv_pacientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this.getApplicationContext(),"Cedula: "+pacientes.get(i).getCedula()+"\nFecha: "+pacientes.get(i).getNacimiento(),Toast.LENGTH_SHORT).show();
+
+                PacienteActivo.IniciarSesion(pacientes.get(i));
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(intent);
+                //Toast.makeText(MainActivity.this.getApplicationContext(),"ID: "+pacientes.get(i).getId()+"\nCedula: "+pacientes.get(i).getCedula()+"\nFecha: "+pacientes.get(i).getNacimiento(),Toast.LENGTH_SHORT).show();
             }
         });
         lv_pacientes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

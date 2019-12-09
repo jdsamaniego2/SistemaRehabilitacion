@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".Vistas.GestionPacientes.MainActivity">
+    tools:context=".Vistas.GestionPacientes.Pacientes.MainActivity">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

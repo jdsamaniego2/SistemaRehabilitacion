@@ -9,15 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Vistas.GestionPacientes.EdicionActivity"></activity>
-        <activity android:name=".Vistas.GestionPacientes.RegistroActivity" />
-        <activity android:name=".Vistas.GestionPacientes.MainActivity">
+        <activity android:name=".Vistas.Ejercicios.MenuActivity"></activity>
+        <activity android:name=".Vistas.GestionPacientes.Sesiones.ReportesActivity" />
+        <activity android:name=".Vistas.GestionPacientes.Pacientes.EdicionActivity" />
+        <activity android:name=".Vistas.GestionPacientes.Pacientes.RegistroActivity" />
+        <activity android:name=".Vistas.GestionPacientes.Pacientes.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

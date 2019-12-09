@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vistas.Ejercicios.MenuActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="420dp"
+        android:layout_height="109dp"
+        android:background="#009688"
+        android:backgroundTint="#009688"
+        android:backgroundTintMode="multiply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="97dp"
+            android:layout_height="71dp"
+            android:layout_margin="15dp"
+
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img_usuario" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="97dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="4dp"
+            android:text="Paciente"
+            android:textColor="#9F000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.38"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_nombre_menu"
+            android:layout_width="186dp"
+            android:layout_height="45dp"
+            android:inputType="textMultiLine"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.631"
+            app:layout_constraintStart_toEndOf="@+id/txt_cedula_menu"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.406" />
+
+        <TextView
+            android:id="@+id/txt_cedula_menu"
+            android:layout_width="91dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="12dp"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.224" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_cierre_menu"
+        android:layout_width="147dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="48dp"
+        android:text="Cierre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <Button
+        android:id="@+id/btn_malla_menu"
+        android:layout_width="147dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="32dp"
+        android:text="Malla"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_laberinto_menu" />
+
+    <Button
+        android:id="@+id/btn_timon_menu"
+        android:layout_width="147dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="20dp"
+        android:text="Timon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cierre_menu" />
+
+    <Button
+        android:id="@+id/btn_laberinto_menu"
+        android:layout_width="147dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="28dp"
+        android:text="Laberinto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_timon_menu" />
+
+    <Button
+        android:id="@+id/btn_reportes_menu"
+        android:layout_width="323dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="20dp"
+        android:text="Reporte De Sesiones"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_malla_menu"
+        app:layout_constraintVertical_bias="0.275" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
