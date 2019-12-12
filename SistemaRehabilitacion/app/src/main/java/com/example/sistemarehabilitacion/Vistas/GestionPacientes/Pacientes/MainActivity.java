@@ -16,10 +16,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.sistemarehabilitacion.BaseDatos.IdentificadoresBD;
+import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Paciente;
-import com.example.sistemarehabilitacion.BaseDatos.ServicioBD;
+import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 
+import com.example.sistemarehabilitacion.BaseDatos.Remotos.ConectorRemotoBD;
+import com.example.sistemarehabilitacion.BaseDatos.Remotos.ConexionClandestina;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.MenuActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores.AdaptadorItemPaciente;
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);//QUITA LA BARRA DE TITULO SUPERIOR DE LA VISTA
+        //QUITA LA BARRA DE TITULO SUPERIOR DE LA VISTA
         setContentView(R.layout.activity_main);
         inicializarComponentes();
         inicializarEventos();
@@ -131,9 +133,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //INTENT A VISTA PARA SINCRONIZAR
 
-                ServicioBD sercicio = new ServicioBD(MainActivity.this.getApplicationContext(),IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                long id = sercicio.RegistrarSesion(13,180,5,"Timon","15/08/2019","Normal");
-                Toast.makeText(MainActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
+                //ServicioBD sercicio = new ServicioBD(MainActivity.this.getApplicationContext(),IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                //long id = sercicio.RegistrarSesion(13,180,5,"Timon","15/08/2019","Normal");
+                //Toast.makeText(MainActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
+                ConexionClandestina c = new ConexionClandestina(MainActivity.this.getApplicationContext());
+                c.execute();
             }
         });
         lv_pacientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {

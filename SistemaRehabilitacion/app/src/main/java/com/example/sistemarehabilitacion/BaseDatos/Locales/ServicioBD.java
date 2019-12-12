@@ -1,4 +1,4 @@
-package com.example.sistemarehabilitacion.BaseDatos;
+package com.example.sistemarehabilitacion.BaseDatos.Locales;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -12,10 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.sistemarehabilitacion.BaseDatos.IdentificadoresBD;
+import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Sesion;
-import com.example.sistemarehabilitacion.BaseDatos.ServicioBD;
+import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores.AdaptadorItemSesion;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;

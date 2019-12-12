@@ -8,7 +8,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
+import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Sesiones.ReportesActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
@@ -57,5 +60,37 @@ public class MenuActivity extends AppCompatActivity {
         });
 
 
+        btn_malla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Malla","15/08/2019","Normal");
+                Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
+            }
+        });
+        btn_cierre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Cierre","15/08/2019","Normal");
+                Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
+            }
+        });
+        btn_laberinto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Laberinto","15/08/2019","Normal");
+                Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
+            }
+        });
+        btn_timon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Timon","15/08/2019","Normal");
+                Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
