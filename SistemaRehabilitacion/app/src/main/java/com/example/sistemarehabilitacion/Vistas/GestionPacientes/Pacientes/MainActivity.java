@@ -11,16 +11,12 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Paciente;
 import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
-
-import com.example.sistemarehabilitacion.BaseDatos.Remotos.ConectorRemotoBD;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.ConexionClandestina;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.MenuActivity;
