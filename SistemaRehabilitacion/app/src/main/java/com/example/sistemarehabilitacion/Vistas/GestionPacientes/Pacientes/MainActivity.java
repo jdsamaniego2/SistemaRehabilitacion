@@ -17,14 +17,21 @@ import android.widget.ListView;
 import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Paciente;
 import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
-import com.example.sistemarehabilitacion.BaseDatos.Remotos.ConexionClandestina;
+
+import com.example.sistemarehabilitacion.BaseDatos.Modelos.Sesion;
+import com.example.sistemarehabilitacion.BaseDatos.Remotos.SincronizadorLocalRemoto;
+import com.example.sistemarehabilitacion.BaseDatos.Remotos.SincronizadorPaciente;
+import com.example.sistemarehabilitacion.BaseDatos.Remotos.SincronizadorSesion;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.MenuActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores.AdaptadorItemPaciente;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -132,8 +139,158 @@ public class MainActivity extends AppCompatActivity {
                 //ServicioBD sercicio = new ServicioBD(MainActivity.this.getApplicationContext(),IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
                 //long id = sercicio.RegistrarSesion(13,180,5,"Timon","15/08/2019","Normal");
                 //Toast.makeText(MainActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
-                ConexionClandestina c = new ConexionClandestina(MainActivity.this.getApplicationContext());
-                c.execute();
+
+                /*OBTENER TODOS LOS PACIENTES
+                IServiciosApi api = AdaptadorApi.getApiservice();
+                Call<List<Paciente>> call = api.getPacientes();
+                call.enqueue(new Callback<List<Paciente>>() {
+                    @Override
+                    public void onResponse(Call<List<Paciente>> call, Response<List<Paciente>> response) {
+                        if(response.isSuccessful()){
+                            List<Paciente> pacientes = response.body();
+                            MainActivity.this.pacientes = pacientes;
+                            items_pacientes = new AdaptadorItemPaciente(pacientes,MainActivity.this.getApplicationContext());
+                            lv_pacientes.setAdapter(items_pacientes);
+                            registerForContextMenu(lv_pacientes);
+                            Toast.makeText(MainActivity.this,"Hay "+pacientes.size()+" pacientes",Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this,"ERROR LA RESPUESTA",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<List<Paciente>> call, Throwable t) {
+                        Toast.makeText(MainActivity.this,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                */
+                /*OBTENER UN PACIENTE
+                IServiciosApi api = AdaptadorApi.getApiservice();
+                Call<List<Paciente>> call = api.getPaciente(Long.parseLong(""+1));
+                call.enqueue(new Callback<List<Paciente>>() {
+                    @Override
+                    public void onResponse(Call<List<Paciente>> call, Response<List<Paciente>> response) {
+                        if(response.isSuccessful()){
+                            List<Paciente> pacientes = response.body();
+                            MainActivity.this.pacientes = pacientes;
+                            items_pacientes = new AdaptadorItemPaciente(pacientes,MainActivity.this.getApplicationContext());
+                            lv_pacientes.setAdapter(items_pacientes);
+                            registerForContextMenu(lv_pacientes);
+                            Toast.makeText(MainActivity.this,"Hay "+pacientes.size()+" pacientes",Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this,"ERROR LA RESPUESTA",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<List<Paciente>> call, Throwable t) {
+                        Toast.makeText(MainActivity.this,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
+                    }
+                });
+                */
+
+
+/*GUARDAR UN CLIENTE
+                IServiciosApi api = AdaptadorApi.getApiservice();
+                Call<Request> call =  api.postPaciente( new Paciente("PACIENTE1","APELLIDO1","0601","07-04-98","JAIRO") );
+
+                call.enqueue(new Callback<Request>() {
+                    @Override
+                    public void onResponse(Call<Request> call, Response<Request> response) {
+                        if(response.isSuccessful()){
+                            if(response.body().getCode()==200){
+                                Toast.makeText(MainActivity.this,"Guardado",Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Toast.makeText(MainActivity.this,"ERROR AL GUARDAR",Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this,"ERROR AL GUARDAR",Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Request> call, Throwable t) {
+                        Toast.makeText(MainActivity.this,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
+                    }
+                });
+
+*/
+
+/*
+                IServiciosApi api = AdaptadorApi.getApiservice();
+                Call<Request> call =  api.editPaciente(Long.parseLong( ""+38), new Paciente("PACIENTE1","APELLIDO1","0601","07-04-98","JAIRO") );
+
+                call.enqueue(new Callback<Request>() {
+                    @Override
+                    public void onResponse(Call<Request> call, Response<Request> response) {
+                        if(response.isSuccessful()){
+                            if(response.body().getCode()==200){
+                                Toast.makeText(MainActivity.this,"Editado",Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Toast.makeText(MainActivity.this,"ERROR AL EDITAR",Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this,"ERROR AL EDITAR",Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Request> call, Throwable t) {
+                        Toast.makeText(MainActivity.this,"ERROR EN LA EDITAR",Toast.LENGTH_LONG).show();
+                    }
+                });
+
+*/
+                /*ELIMINAR
+                IServiciosApi api = AdaptadorApi.getApiservice();
+                Call<Request> call =  api.deletePaciente(Long.parseLong( ""+39));
+
+                call.enqueue(new Callback<Request>() {
+                    @Override
+                    public void onResponse(Call<Request> call, Response<Request> response) {
+                        if(response.isSuccessful()){
+                            if(response.body().getCode()==200){
+                                Toast.makeText(MainActivity.this,"Eliminado",Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Toast.makeText(MainActivity.this,"ERROR AL ELIMINAR",Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this,"ERROR AL ELIMINAR",Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Request> call, Throwable t) {
+                        Toast.makeText(MainActivity.this,"ERROR EN LA ELIMINAR",Toast.LENGTH_LONG).show();
+                    }
+                });
+                */
+
+                /*SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
+                Date date = new Date();
+
+                String fecha = dateFormat.format(date);*/
+
+              //  SincronizadorPaciente s = new SincronizadorPaciente();
+               // s.SincronizarPaciente(MainActivity.this.getApplicationContext(),new Paciente("JAIRO","SAMANIEGO","0604178542","07-04-98",fecha,"Jairo Daniel S"));
+                //Toast.makeText(MainActivity.this.getApplicationContext(),s.obtenerPaciente(MainActivity.this.getApplicationContext()).getNombre(),Toast.LENGTH_LONG).show();
+                //SincronizadorSesion s = new SincronizadorSesion();
+               // s.SincronizarSesion(MainActivity.this.getApplicationContext(),new Sesion(0,0,0,0,"","05-05-2019",""),new Paciente("JAIRO","SAMANIEGO","06021785411","07-04-98","Jairo Daniel S"));
+                SincronizadorLocalRemoto sincronizador = new SincronizadorLocalRemoto();
+                sincronizador.subir(MainActivity.this.getApplicationContext(),MainActivity.this.pacientes);
+                sincronizador.bajar(MainActivity.this.getApplicationContext(),MainActivity.this.pacientes);
+
+
             }
         });
         lv_pacientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
