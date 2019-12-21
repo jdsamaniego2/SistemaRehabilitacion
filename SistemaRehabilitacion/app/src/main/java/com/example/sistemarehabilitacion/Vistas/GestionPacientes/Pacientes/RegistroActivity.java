@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sistemarehabilitacion.BaseDatos.IdentificadoresBD;
-import com.example.sistemarehabilitacion.BaseDatos.ServicioBD;
+import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
+import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.R;
 
 import java.util.Calendar;

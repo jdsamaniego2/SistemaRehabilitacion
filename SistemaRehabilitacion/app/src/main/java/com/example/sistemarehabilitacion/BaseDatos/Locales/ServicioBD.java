@@ -1,4 +1,4 @@
-package com.example.sistemarehabilitacion.BaseDatos;
+package com.example.sistemarehabilitacion.BaseDatos.Locales;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,8 +8,11 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Paciente;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Sesion;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ServicioBD {
     private  Context contexto;
@@ -38,6 +41,12 @@ public class ServicioBD {
             values.put(IdentificadoresBD.campo_paciente_cedula, cedula);
             values.put(IdentificadoresBD.campo_paciente_apellido, apellido);
             values.put(IdentificadoresBD.campo_paciente_nombre, nombre);
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
+            Date date = new Date();
+            String fecha = dateFormat.format(date);
+            values.put(IdentificadoresBD.campo_paciente_ultima_modificacion, fecha);
+
             values.put(IdentificadoresBD.campo_paciente_nacimiento, nacimiento);
             values.put(IdentificadoresBD.campo_paciente_tecnico, tecnico);
             Long idResultante = db.insert(IdentificadoresBD.tabla_paciente, IdentificadoresBD.campo_paciente_id, values);
@@ -55,7 +64,7 @@ public class ServicioBD {
         ConectorBD conn = new ConectorBD(contexto,bd,null,version);
         SQLiteDatabase db = conn.getReadableDatabase();
         String [] parametrosConsulta = {id+""};
-        String [] camposConsulta = {IdentificadoresBD.campo_paciente_id,IdentificadoresBD.campo_paciente_nombre,IdentificadoresBD.campo_paciente_apellido,IdentificadoresBD.campo_paciente_cedula,IdentificadoresBD.campo_paciente_nacimiento,IdentificadoresBD.campo_paciente_tecnico};
+        String [] camposConsulta = {IdentificadoresBD.campo_paciente_id,IdentificadoresBD.campo_paciente_nombre,IdentificadoresBD.campo_paciente_apellido,IdentificadoresBD.campo_paciente_cedula,IdentificadoresBD.campo_paciente_nacimiento,IdentificadoresBD.campo_paciente_tecnico,IdentificadoresBD.campo_paciente_ultima_modificacion};
         Paciente paciente = null;
         try{
             Cursor cursor = db.query(IdentificadoresBD.tabla_paciente,camposConsulta,IdentificadoresBD.campo_paciente_id+"=?",parametrosConsulta,null,null,null);
@@ -67,6 +76,7 @@ public class ServicioBD {
             paciente.setCedula(cursor.getString(3));
             paciente.setNacimiento(cursor.getString(4));
             paciente.setTecnico(cursor.getString(5));
+            paciente.setUltima_modificacion(cursor.getString(6));
             db.close();
         }catch(Exception e){
             db.close();
@@ -81,7 +91,7 @@ public class ServicioBD {
         ConectorBD conn = new ConectorBD(contexto,bd,null,version);
         SQLiteDatabase db = conn.getReadableDatabase();
         String [] parametrosConsulta = {cedula+""};
-        String [] camposConsulta = {IdentificadoresBD.campo_paciente_id,IdentificadoresBD.campo_paciente_nombre,IdentificadoresBD.campo_paciente_apellido,IdentificadoresBD.campo_paciente_cedula,IdentificadoresBD.campo_paciente_nacimiento,IdentificadoresBD.campo_paciente_tecnico};
+        String [] camposConsulta = {IdentificadoresBD.campo_paciente_id,IdentificadoresBD.campo_paciente_nombre,IdentificadoresBD.campo_paciente_apellido,IdentificadoresBD.campo_paciente_cedula,IdentificadoresBD.campo_paciente_nacimiento,IdentificadoresBD.campo_paciente_tecnico,IdentificadoresBD.campo_paciente_ultima_modificacion};
         Paciente paciente = null;
         try{
             Cursor cursor = db.query(IdentificadoresBD.tabla_paciente,camposConsulta,IdentificadoresBD.campo_paciente_cedula+"=?",parametrosConsulta,null,null,null);
@@ -93,6 +103,7 @@ public class ServicioBD {
             paciente.setCedula(cursor.getString(3));
             paciente.setNacimiento(cursor.getString(4));
             paciente.setTecnico(cursor.getString(5));
+            paciente.setUltima_modificacion(cursor.getString(6));
             db.close();
         }catch(Exception e){
             db.close();
@@ -109,7 +120,7 @@ public class ServicioBD {
         List<Paciente> lista = new ArrayList<>();
         ConectorBD conn = new ConectorBD(contexto,bd,null,version);
         SQLiteDatabase db = conn.getReadableDatabase();
-        String [] camposConsulta = {IdentificadoresBD.campo_paciente_id,IdentificadoresBD.campo_paciente_nombre,IdentificadoresBD.campo_paciente_apellido,IdentificadoresBD.campo_paciente_cedula,IdentificadoresBD.campo_paciente_nacimiento,IdentificadoresBD.campo_paciente_tecnico};
+        String [] camposConsulta = {IdentificadoresBD.campo_paciente_id,IdentificadoresBD.campo_paciente_nombre,IdentificadoresBD.campo_paciente_apellido,IdentificadoresBD.campo_paciente_cedula,IdentificadoresBD.campo_paciente_nacimiento,IdentificadoresBD.campo_paciente_tecnico ,IdentificadoresBD.campo_paciente_ultima_modificacion};
         try{
             Cursor cursor = db.query(IdentificadoresBD.tabla_paciente, camposConsulta, null, null, null, null, null);
             if (cursor.moveToFirst()) {
@@ -121,6 +132,7 @@ public class ServicioBD {
                     paciente.setCedula(cursor.getString(3));
                     paciente.setNacimiento(cursor.getString(4));
                     paciente.setTecnico(cursor.getString(5));
+                    paciente.setUltima_modificacion(cursor.getString(6));
                     lista.add(paciente);
                 } while(cursor.moveToNext());
             }
@@ -149,6 +161,13 @@ public class ServicioBD {
             values.put(IdentificadoresBD.campo_paciente_cedula, cedula);
             values.put(IdentificadoresBD.campo_paciente_apellido, apellido);
             values.put(IdentificadoresBD.campo_paciente_nombre, nombre);
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
+            Date date = new Date();
+            String fecha = dateFormat.format(date);
+            values.put(IdentificadoresBD.campo_paciente_ultima_modificacion, fecha);
+
+
             values.put(IdentificadoresBD.campo_paciente_nacimiento, nacimiento);
             values.put(IdentificadoresBD.campo_paciente_tecnico, tecnico);
 
@@ -176,6 +195,42 @@ public class ServicioBD {
             values.put(IdentificadoresBD.campo_paciente_cedula, cedula);
             values.put(IdentificadoresBD.campo_paciente_apellido, apellido);
             values.put(IdentificadoresBD.campo_paciente_nombre, nombre);
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
+            Date date = new Date();
+            String fecha = dateFormat.format(date);
+            values.put(IdentificadoresBD.campo_paciente_ultima_modificacion, fecha);
+
+            values.put(IdentificadoresBD.campo_paciente_nacimiento, nacimiento);
+            values.put(IdentificadoresBD.campo_paciente_tecnico, tecnico);
+
+            int idResultante = db.update(IdentificadoresBD.tabla_paciente, values, IdentificadoresBD.campo_paciente_cedula + "=?", parametrosConsulta);
+
+            db.close();
+            return idResultante;//si no se guarda retorna -1
+        }catch (Exception e){
+            return -1;
+        }
+    }
+    public long EditarPacienteConFechaEspecifica(String nombre, String apellido, String cedula, String nacimiento, String tecnico,String fecha){
+        if(ConsultarPaciente(cedula)==null){
+            return -1;//SI EL PACIENTE NO EXISTE RETORNA -1
+        }
+        try {
+
+
+            ConectorBD conn = new ConectorBD(contexto, bd, null, version);
+            SQLiteDatabase db = conn.getWritableDatabase();
+
+            String[] parametrosConsulta = {cedula + ""};
+            ContentValues values = new ContentValues();
+            values.put(IdentificadoresBD.campo_paciente_cedula, cedula);
+            values.put(IdentificadoresBD.campo_paciente_apellido, apellido);
+            values.put(IdentificadoresBD.campo_paciente_nombre, nombre);
+
+
+            values.put(IdentificadoresBD.campo_paciente_ultima_modificacion, fecha);
+
             values.put(IdentificadoresBD.campo_paciente_nacimiento, nacimiento);
             values.put(IdentificadoresBD.campo_paciente_tecnico, tecnico);
 

@@ -56,6 +56,88 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+/*
+        btn_malla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
+                Date date = new Date();
+
+                String fecha = dateFormat.format(date);
+
+                ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Malla",fecha,"Normal");
+                Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
+            }
+        });
+        btn_cierre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
+                Date date = new Date();
+
+                String fecha = dateFormat.format(date);
+
+                ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Cierre",fecha,"Normal");
+                Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
+            }
+        });
+        btn_laberinto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
+                Date date = new Date();
+
+                String fecha = dateFormat.format(date);
+
+                ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Laberinto",fecha,"Normal");
+                Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
+            }
+        });
+        btn_timon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
+                Date date = new Date();
+
+                String fecha = dateFormat.format(date);
+                ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Timon",fecha,"Normal");
+                Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
+            }
+        });*/
+        btn_cierre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, ConfiguracionPopup.class).putExtra("modulo","Cierre");
+                startActivity(intent);
+            }
+        });
+
+        btn_timon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, ConfiguracionPopup.class).putExtra("modulo","Timon");
+                startActivity(intent);
+            }
+        });
+
+        btn_laberinto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, ConfiguracionPopup.class).putExtra("modulo","Laberinto");
+                startActivity(intent);
+            }
+        });
+        btn_malla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, ConfigMalla.class).putExtra("modulo","Malla");
+                startActivity(intent);
+            }
+        });
 
     }
 }

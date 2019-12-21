@@ -36,8 +36,8 @@
 
     <ListView
         android:id="@+id/lv_pacientes_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_width="1093dp"
+        android:layout_height="1352dp">
 
     </ListView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
