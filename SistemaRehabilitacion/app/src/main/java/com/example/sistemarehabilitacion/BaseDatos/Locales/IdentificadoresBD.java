@@ -4,7 +4,7 @@ public class IdentificadoresBD {
 
 
     public static final String nombre_bd= "bd_rehabilitacion";
-    public static final int version_bd= 1;
+    public static final int version_bd= 4;
 
 
     //TABLAS
@@ -18,6 +18,7 @@ public class IdentificadoresBD {
     public static final String campo_paciente_apellido = "APELLIDO_PAC";
     public static final String campo_paciente_cedula = "CEDULA_PAC";
     public static final String campo_paciente_nacimiento = "NACIMIENTO_PAC";
+    public static final String campo_paciente_ultima_modificacion = "ULTIMAMODIFICACION_PAC";
     public static final String campo_paciente_tecnico = "TECNICO_PAC";
 
     //CAMPOS SESION
@@ -39,7 +40,8 @@ public class IdentificadoresBD {
             "   APELLIDO_PAC         TEXT          ,\n" +
             "   CEDULA_PAC           TEXT          ,\n" +
             "   NACIMIENTO_PAC       TEXT          ,\n" +
-            "   TECNICO_PAC          TEXT           \n" +
+            "   TECNICO_PAC          TEXT          ,\n" +
+            "   ULTIMAMODIFICACION_PAC TEXT        \n" +
             ")";
     public static final String senencia_creacion_sesion =  ""+
             "create table SESION (\n" +
@@ -54,6 +56,6 @@ public class IdentificadoresBD {
             ")";
     //CONSTANTES DE ELIMINACION TABLAS
 
-    public static final String senencia_drop_sesion = "DROP TABLE IF EXIST SESION";
-    public static final String senencia_drop_paciente = "DROP TABLE IF EXIST PACIENTE";
+    public static final String senencia_drop_sesion = "DROP TABLE SESION";
+    public static final String senencia_drop_paciente = "DROP TABLE PACIENTE";
 }

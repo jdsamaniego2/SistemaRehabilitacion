@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#00BCD4"
+    tools:context=".Vistas.Ejercicios.ConfigMalla">
+
+    <ImageView
+
+        android:id="@+id/imageView3"
+        android:layout_width="113dp"
+        android:layout_height="104dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.178"
+        app:srcCompat="@drawable/img_configuracion" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="173dp"
+        android:layout_height="50dp"
+        android:text="REPETICIONES:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtmodulo"
+        app:layout_constraintVertical_bias="0.049" />
+
+    <EditText
+        android:id="@+id/txtrepeticiones"
+        android:layout_width="121dp"
+        android:layout_height="61dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.033" />
+
+    <Button
+        android:id="@+id/btniniciar"
+        android:layout_width="139dp"
+        android:layout_height="67dp"
+        android:text="COMENZAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtrepeticiones"
+        app:layout_constraintVertical_bias="0.679" />
+
+    <TextView
+        android:id="@+id/txtmodulo"
+        android:layout_width="217dp"
+        android:layout_height="46dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.634" />
+
+    <RadioGroup
+        android:id="@+id/rgdificultad"
+        android:layout_width="176dp"
+        android:layout_height="105dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtrepeticiones"
+        app:layout_constraintVertical_bias="0.266">
+
+        <RadioButton
+            android:id="@+id/rbalta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALTA"
+            tools:text="ALTA" />
+
+        <RadioButton
+            android:id="@+id/rbmedia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MEDIA"
+            tools:text="MEDIA" />
+
+        <RadioButton
+            android:id="@+id/rbbaja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BAJA"
+            tools:targetApi="BAJA" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="149dp"
+        android:layout_height="44dp"
+        android:text="DIFICULTAD"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/rgdificultad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtrepeticiones" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

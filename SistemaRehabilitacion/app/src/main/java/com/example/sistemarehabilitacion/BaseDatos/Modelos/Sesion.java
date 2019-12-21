@@ -1,15 +1,38 @@
 package com.example.sistemarehabilitacion.BaseDatos.Modelos;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Sesion implements Serializable {
 
+    @SerializedName("ID_SES")
+    @Expose
     private int id;
+
+    @SerializedName("ID_PAC")
+    @Expose
     private int id_paciente;
+
+    @SerializedName("TIEMPO_SES")
+    @Expose
     private int tiempo;
+
+    @SerializedName("REPETICIONES_SES")
+    @Expose
     private int repeticiones;
+
+    @SerializedName("TIPO_SES")
+    @Expose
     private  String tipo;
+
+    @SerializedName("FECHA_SES")
+    @Expose
     private String fecha;
+
+    @SerializedName("DIFICULTAD_SES")
+    @Expose
     private  String dificultado;
 
     public Sesion(int id, int id_paciente, int tiempo, int repeticiones, String tipo, String fecha, String dificultado) {
