@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="228dp"
+        android:layout_height="206dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -35,7 +35,7 @@
         android:id="@+id/textView6"
         android:layout_width="376dp"
         android:layout_height="93dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="40dp"
         android:text="Compruebe su conexión e intente de nuevo"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -51,7 +51,7 @@
         android:layout_height="76dp"
         android:layout_marginTop="24dp"
         android:text="Aceptar"
-        android:textSize="24sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

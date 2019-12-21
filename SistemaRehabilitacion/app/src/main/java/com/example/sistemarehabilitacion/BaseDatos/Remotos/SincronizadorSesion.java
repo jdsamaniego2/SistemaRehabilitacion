@@ -1,6 +1,7 @@
 package com.example.sistemarehabilitacion.BaseDatos.Remotos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 
@@ -11,6 +12,8 @@ import com.example.sistemarehabilitacion.BaseDatos.Modelos.Request;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Sesion;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.ClienteApi.AdaptadorApi;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.ClienteApi.IServiciosApi;
+import com.example.sistemarehabilitacion.Vistas.Errores.ErrorConexionBdRemota;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -80,17 +83,37 @@ public class SincronizadorSesion {
                                                     }
                                                     else{
                                                         Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL GUARDAR SESION",Toast.LENGTH_LONG).show();
+
+                                                        //vista de error
+                                                        if(!SincronizadorLocalRemoto.error_mostrado){
+                                                            Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                                                            SincronizadorSesion.this.contexto.startActivity(intent);
+                                                            SincronizadorLocalRemoto.error_mostrado = true;
+                                                        }
+
                                                     }
 
                                                 }
                                                 else{
                                                     Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL GUARDAR SESION",Toast.LENGTH_LONG).show();
+                                                    //vista de error
+                                                    if(!SincronizadorLocalRemoto.error_mostrado){
+                                                        Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                                                        SincronizadorSesion.this.contexto.startActivity(intent);
+                                                        SincronizadorLocalRemoto.error_mostrado = true;
+                                                    }
                                                 }
                                             }
 
                                             @Override
                                             public void onFailure(Call<Request> call_guardar_seion, Throwable t) {
                                                 Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN---------",Toast.LENGTH_LONG).show();
+                                                //vista de error
+                                                if(!SincronizadorLocalRemoto.error_mostrado){
+                                                    Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                                                    SincronizadorSesion.this.contexto.startActivity(intent);
+                                                    SincronizadorLocalRemoto.error_mostrado = true;
+                                                }
                                             }
                                         });
                                     }
@@ -98,11 +121,23 @@ public class SincronizadorSesion {
                                 }
                                 else{
                                     Toast.makeText(SincronizadorSesion.this.contexto,"ERROR LA RESPUESTA",Toast.LENGTH_LONG).show();
+                                    //vista de error
+                                    if(!SincronizadorLocalRemoto.error_mostrado){
+                                        Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                                        SincronizadorSesion.this.contexto.startActivity(intent);
+                                        SincronizadorLocalRemoto.error_mostrado = true;
+                                    }
                                 }
                             }
                             @Override
                             public void onFailure(Call<List<Sesion>> call_buscar_sesion, Throwable t) {
                                 Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
+                                //vista de error
+                                if(!SincronizadorLocalRemoto.error_mostrado){
+                                    Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                                    SincronizadorSesion.this.contexto.startActivity(intent);
+                                    SincronizadorLocalRemoto.error_mostrado = true;
+                                }
                             }
                         });
 
@@ -110,16 +145,34 @@ public class SincronizadorSesion {
                     }
                     catch (Exception e){//no se encontró el paciente (devuelve null)
                         Toast.makeText(SincronizadorSesion.this.contexto,"PACIENTE NO ENCONTRADO",Toast.LENGTH_LONG).show();//esto no debería ocurrir
+                        //vista de error
+                        if(!SincronizadorLocalRemoto.error_mostrado){
+                            Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                            SincronizadorSesion.this.contexto.startActivity(intent);
+                            SincronizadorLocalRemoto.error_mostrado = true;
+                        }
                     }
                 }
                 else{
                     Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL BUSCAR PACIENTE",Toast.LENGTH_LONG).show();
+                    //vista de error
+                    if(!SincronizadorLocalRemoto.error_mostrado){
+                        Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                        SincronizadorSesion.this.contexto.startActivity(intent);
+                        SincronizadorLocalRemoto.error_mostrado = true;
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<List<Paciente>> call_buscar_paciente, Throwable t) {
                 Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN--",Toast.LENGTH_LONG).show();
+                //vista de error
+                if(!SincronizadorLocalRemoto.error_mostrado){
+                    Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                    SincronizadorSesion.this.contexto.startActivity(intent);
+                    SincronizadorLocalRemoto.error_mostrado = true;
+                }
             }
         });
 
@@ -154,12 +207,24 @@ public class SincronizadorSesion {
                 }
                 else {
                     Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL BUSCAR LA SESION",Toast.LENGTH_LONG).show();
+                    //vista de error
+                   if(!SincronizadorLocalRemoto.error_mostrado){
+                       Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                       SincronizadorSesion.this.contexto.startActivity(intent);
+                       SincronizadorLocalRemoto.error_mostrado = true;
+                   }
                 }
             }
 
             @Override
             public void onFailure(Call<List<Sesion>> call, Throwable t) {
                 Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
+                //vista de error
+                if(!SincronizadorLocalRemoto.error_mostrado){
+                    Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                    SincronizadorSesion.this.contexto.startActivity(intent);
+                    SincronizadorLocalRemoto.error_mostrado = true;
+                }
             }
         });
 

@@ -1,6 +1,7 @@
 package com.example.sistemarehabilitacion.BaseDatos.Remotos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
@@ -9,6 +10,8 @@ import com.example.sistemarehabilitacion.BaseDatos.Modelos.Paciente;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Request;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.ClienteApi.AdaptadorApi;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.ClienteApi.IServiciosApi;
+import com.example.sistemarehabilitacion.Vistas.Errores.ErrorConexionBdRemota;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -59,18 +62,38 @@ public class SincronizadorPaciente {
                                                 Toast.makeText(SincronizadorPaciente.this.contexto,"PACIENTE EDITADO",Toast.LENGTH_LONG).show();
                                             }
                                             else{
+
                                                 Toast.makeText(SincronizadorPaciente.this.contexto,"ERROR AL GUARDAR PACIENTE (SERVIDOR)",Toast.LENGTH_LONG).show();
+                                                //vista de error
+                                                if(!SincronizadorLocalRemoto.error_mostrado){
+                                                    Intent intent = new Intent(SincronizadorPaciente.this.contexto, ErrorConexionBdRemota.class);
+                                                    SincronizadorPaciente.this.contexto.startActivity(intent);
+                                                    SincronizadorLocalRemoto.error_mostrado = true;
+                                                }
+
                                             }
 
                                         }
                                         else{
                                             Toast.makeText(SincronizadorPaciente.this.contexto,"ERROR AL EDITAR PACIENTE",Toast.LENGTH_LONG).show();
+                                            //vista de error
+                                            if(!SincronizadorLocalRemoto.error_mostrado){
+                                                Intent intent = new Intent(SincronizadorPaciente.this.contexto, ErrorConexionBdRemota.class);
+                                                SincronizadorPaciente.this.contexto.startActivity(intent);
+                                                SincronizadorLocalRemoto.error_mostrado = true;
+                                            }
                                         }
                                     }
 
                                     @Override
                                     public void onFailure(Call<Request> call_editar, Throwable t) {
                                         Toast.makeText(SincronizadorPaciente.this.contexto,"ERROR EN LA PETICION  AL EDITAR PACIENTE",Toast.LENGTH_LONG).show();
+                                        //vista de error
+                                        if(!SincronizadorLocalRemoto.error_mostrado){
+                                            Intent intent = new Intent(SincronizadorPaciente.this.contexto, ErrorConexionBdRemota.class);
+                                            SincronizadorPaciente.this.contexto.startActivity(intent);
+                                            SincronizadorLocalRemoto.error_mostrado = true;
+                                        }
                                     }
                                 });
                             }
@@ -92,17 +115,35 @@ public class SincronizadorPaciente {
                                     }
                                     else{
                                         Toast.makeText(SincronizadorPaciente.this.contexto, "ERROR AL GUARDAR PACIENTE (SERVIDOR)",Toast.LENGTH_LONG).show();
+                                        //vista de error
+                                        if(!SincronizadorLocalRemoto.error_mostrado){
+                                            Intent intent = new Intent(SincronizadorPaciente.this.contexto, ErrorConexionBdRemota.class);
+                                            SincronizadorPaciente.this.contexto.startActivity(intent);
+                                            SincronizadorLocalRemoto.error_mostrado = true;
+                                        }
                                     }
 
                                 }
                                 else{
                                     Toast.makeText(SincronizadorPaciente.this.contexto ,"ERROR AL GUARDAR PACIENTE",Toast.LENGTH_LONG).show();
+                                    //vista de error
+                                    if(!SincronizadorLocalRemoto.error_mostrado){
+                                        Intent intent = new Intent(SincronizadorPaciente.this.contexto, ErrorConexionBdRemota.class);
+                                        SincronizadorPaciente.this.contexto.startActivity(intent);
+                                        SincronizadorLocalRemoto.error_mostrado = true;
+                                    }
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<Request> call_insertar, Throwable t) {
                                 Toast.makeText(SincronizadorPaciente.this.contexto,"ERROR EN LA PETICIÓN DE GUARDAR PACIENTE",Toast.LENGTH_LONG).show();
+                                //vista de error
+                                if(!SincronizadorLocalRemoto.error_mostrado){
+                                    Intent intent = new Intent(SincronizadorPaciente.this.contexto, ErrorConexionBdRemota.class);
+                                    SincronizadorPaciente.this.contexto.startActivity(intent);
+                                    SincronizadorLocalRemoto.error_mostrado = true;
+                                }
                             }
                         });
 
@@ -112,11 +153,23 @@ public class SincronizadorPaciente {
                 }
                 else{
                     Toast.makeText(SincronizadorPaciente.this.contexto,"ERROR AL BUSCAR PACIENTE",Toast.LENGTH_LONG).show();
+                    //vista de error
+                    if(!SincronizadorLocalRemoto.error_mostrado){
+                        Intent intent = new Intent(SincronizadorPaciente.this.contexto, ErrorConexionBdRemota.class);
+                        SincronizadorPaciente.this.contexto.startActivity(intent);
+                        SincronizadorLocalRemoto.error_mostrado = true;
+                    }
                 }
             }
             @Override
             public void onFailure(Call<List<Paciente>> call_consulra, Throwable t) {
                 Toast.makeText(SincronizadorPaciente.this.contexto,"ERROR EN LA PETICIÓN AL BUSCAR PACIENTE",Toast.LENGTH_LONG).show();
+                //vista de error
+                if(!SincronizadorLocalRemoto.error_mostrado){
+                    Intent intent = new Intent(SincronizadorPaciente.this.contexto, ErrorConexionBdRemota.class);
+                    SincronizadorPaciente.this.contexto.startActivity(intent);
+                    SincronizadorLocalRemoto.error_mostrado = true;
+                }
             }
         });
 
@@ -155,11 +208,23 @@ public class SincronizadorPaciente {
                 }
                 else{
                     Toast.makeText(SincronizadorPaciente.this.contexto,"ERROR AL BUSCAR PACIENTE",Toast.LENGTH_LONG).show();
+                    //vista de error
+                    if(!SincronizadorLocalRemoto.error_mostrado){
+                        Intent intent = new Intent(SincronizadorPaciente.this.contexto, ErrorConexionBdRemota.class);
+                        SincronizadorPaciente.this.contexto.startActivity(intent);
+                        SincronizadorLocalRemoto.error_mostrado = true;
+                    }
                 }
             }
             @Override
             public void onFailure(Call<List<Paciente>> call, Throwable t) {
                 Toast.makeText(SincronizadorPaciente.this.contexto,"ERROR EN LA PETICIÓN AL BUSCAR PACIENTE",Toast.LENGTH_LONG).show();
+                //vista de error
+                if(!SincronizadorLocalRemoto.error_mostrado){
+                    Intent intent = new Intent(SincronizadorPaciente.this.contexto, ErrorConexionBdRemota.class);
+                    SincronizadorPaciente.this.contexto.startActivity(intent);
+                    SincronizadorLocalRemoto.error_mostrado = true;
+                }
             }
         });
 
