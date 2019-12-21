@@ -13,17 +13,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Paciente;
 import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 
+import com.example.sistemarehabilitacion.BaseDatos.Modelos.Request;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Sesion;
+import com.example.sistemarehabilitacion.BaseDatos.Remotos.ClienteApi.AdaptadorApi;
+import com.example.sistemarehabilitacion.BaseDatos.Remotos.ClienteApi.IServiciosApi;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.SincronizadorLocalRemoto;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.SincronizadorPaciente;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.SincronizadorSesion;
 import com.example.sistemarehabilitacion.R;
+import com.example.sistemarehabilitacion.Vistas.BaseDeDatos.SincronizacionActivity;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.MenuActivity;
+import com.example.sistemarehabilitacion.Vistas.Errores.ErrorConexionBdRemota;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores.AdaptadorItemPaciente;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +38,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -286,9 +296,12 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this.getApplicationContext(),s.obtenerPaciente(MainActivity.this.getApplicationContext()).getNombre(),Toast.LENGTH_LONG).show();
                 //SincronizadorSesion s = new SincronizadorSesion();
                // s.SincronizarSesion(MainActivity.this.getApplicationContext(),new Sesion(0,0,0,0,"","05-05-2019",""),new Paciente("JAIRO","SAMANIEGO","06021785411","07-04-98","Jairo Daniel S"));
-                SincronizadorLocalRemoto sincronizador = new SincronizadorLocalRemoto();
-                sincronizador.subir(MainActivity.this.getApplicationContext(),MainActivity.this.pacientes);
-                sincronizador.bajar(MainActivity.this.getApplicationContext(),MainActivity.this.pacientes);
+
+
+                Intent intent = new Intent(MainActivity.this, SincronizacionActivity.class);
+                startActivity(intent);
+
+
 
 
             }

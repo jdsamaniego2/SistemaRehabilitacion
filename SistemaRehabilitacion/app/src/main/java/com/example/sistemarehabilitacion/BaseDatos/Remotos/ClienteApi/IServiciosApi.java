@@ -56,6 +56,10 @@ public interface IServiciosApi {
     @DELETE(IdentificadoresApi.ruta_base+IdentificadoresApi.subruta_sesion+"{id}")
     Call<Request> deleteSesion(@Path("id") Long id);
 
+    @GET(IdentificadoresApi.ruta_base+IdentificadoresApi.subruta_probar_conexion)
+    Call<Request> probarConexion();
+
+
 
     /*
 

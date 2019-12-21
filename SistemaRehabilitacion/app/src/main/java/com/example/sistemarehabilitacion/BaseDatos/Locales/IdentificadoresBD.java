@@ -4,7 +4,7 @@ public class IdentificadoresBD {
 
 
     public static final String nombre_bd= "bd_rehabilitacion";
-    public static final int version_bd= 3;
+    public static final int version_bd= 4;
 
 
     //TABLAS

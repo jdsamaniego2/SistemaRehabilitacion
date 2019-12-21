@@ -55,10 +55,8 @@ public class SincronizadorLocalRemoto {
             sincronizador_sesiones.sincronizarLocal(this.contexto,p);
         }
 
-
-
-
     }
+
 
 
 }

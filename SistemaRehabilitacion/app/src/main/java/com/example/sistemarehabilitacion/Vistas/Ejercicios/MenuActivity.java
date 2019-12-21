@@ -8,17 +8,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
-import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Sesiones.ReportesActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -63,7 +56,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-
+/*
         btn_malla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,6 +107,37 @@ public class MenuActivity extends AppCompatActivity {
                 long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Timon",fecha,"Normal");
                 Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
             }
+        });*/
+        btn_cierre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, ConfiguracionPopup.class).putExtra("modulo","Cierre");
+                startActivity(intent);
+            }
         });
+
+        btn_timon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, ConfiguracionPopup.class).putExtra("modulo","Timon");
+                startActivity(intent);
+            }
+        });
+
+        btn_laberinto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, ConfiguracionPopup.class).putExtra("modulo","Laberinto");
+                startActivity(intent);
+            }
+        });
+        btn_malla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, ConfigMalla.class).putExtra("modulo","Malla");
+                startActivity(intent);
+            }
+        });
+
     }
 }
