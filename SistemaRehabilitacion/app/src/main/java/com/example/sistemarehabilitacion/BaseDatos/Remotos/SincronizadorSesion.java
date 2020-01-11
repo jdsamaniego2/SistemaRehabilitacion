@@ -87,6 +87,7 @@ public class SincronizadorSesion {
                                                         //vista de error
                                                         if(!SincronizadorLocalRemoto.error_mostrado){
                                                             Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                             SincronizadorSesion.this.contexto.startActivity(intent);
                                                             SincronizadorLocalRemoto.error_mostrado = true;
                                                         }
@@ -99,6 +100,7 @@ public class SincronizadorSesion {
                                                     //vista de error
                                                     if(!SincronizadorLocalRemoto.error_mostrado){
                                                         Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                         SincronizadorSesion.this.contexto.startActivity(intent);
                                                         SincronizadorLocalRemoto.error_mostrado = true;
                                                     }
@@ -111,6 +113,7 @@ public class SincronizadorSesion {
                                                 //vista de error
                                                 if(!SincronizadorLocalRemoto.error_mostrado){
                                                     Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                     SincronizadorSesion.this.contexto.startActivity(intent);
                                                     SincronizadorLocalRemoto.error_mostrado = true;
                                                 }
@@ -124,6 +127,7 @@ public class SincronizadorSesion {
                                     //vista de error
                                     if(!SincronizadorLocalRemoto.error_mostrado){
                                         Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         SincronizadorSesion.this.contexto.startActivity(intent);
                                         SincronizadorLocalRemoto.error_mostrado = true;
                                     }
@@ -135,6 +139,7 @@ public class SincronizadorSesion {
                                 //vista de error
                                 if(!SincronizadorLocalRemoto.error_mostrado){
                                     Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     SincronizadorSesion.this.contexto.startActivity(intent);
                                     SincronizadorLocalRemoto.error_mostrado = true;
                                 }
@@ -148,6 +153,7 @@ public class SincronizadorSesion {
                         //vista de error
                         if(!SincronizadorLocalRemoto.error_mostrado){
                             Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             SincronizadorSesion.this.contexto.startActivity(intent);
                             SincronizadorLocalRemoto.error_mostrado = true;
                         }
@@ -158,6 +164,7 @@ public class SincronizadorSesion {
                     //vista de error
                     if(!SincronizadorLocalRemoto.error_mostrado){
                         Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         SincronizadorSesion.this.contexto.startActivity(intent);
                         SincronizadorLocalRemoto.error_mostrado = true;
                     }
@@ -170,6 +177,7 @@ public class SincronizadorSesion {
                 //vista de error
                 if(!SincronizadorLocalRemoto.error_mostrado){
                     Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     SincronizadorSesion.this.contexto.startActivity(intent);
                     SincronizadorLocalRemoto.error_mostrado = true;
                 }
@@ -210,6 +218,7 @@ public class SincronizadorSesion {
                     //vista de error
                    if(!SincronizadorLocalRemoto.error_mostrado){
                        Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                        SincronizadorSesion.this.contexto.startActivity(intent);
                        SincronizadorLocalRemoto.error_mostrado = true;
                    }
@@ -222,6 +231,7 @@ public class SincronizadorSesion {
                 //vista de error
                 if(!SincronizadorLocalRemoto.error_mostrado){
                     Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     SincronizadorSesion.this.contexto.startActivity(intent);
                     SincronizadorLocalRemoto.error_mostrado = true;
                 }
