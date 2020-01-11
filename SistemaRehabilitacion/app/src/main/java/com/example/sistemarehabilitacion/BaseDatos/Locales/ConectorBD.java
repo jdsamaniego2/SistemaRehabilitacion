@@ -27,4 +27,6 @@ public class ConectorBD extends SQLiteOpenHelper {
         db.execSQL(IdentificadoresBD.senencia_drop_paciente);
         onCreate(db);
     }
+
+
 }
