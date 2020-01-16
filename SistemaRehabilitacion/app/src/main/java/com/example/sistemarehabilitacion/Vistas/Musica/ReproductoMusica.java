@@ -137,9 +137,6 @@ public class ReproductoMusica extends AppCompatActivity implements View.OnClickL
                         ejecution=sb.getProgress();
                         aux=getMRM(ejecution);
                         txtfin.setText(aux.toString().trim());
-
-
-
                     }catch (Exception e){
                         //txtfin.setText(aux);
                     }

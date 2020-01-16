@@ -23,11 +23,13 @@ public class BluetoothActivity extends AppCompatActivity {
     // Identificador unico de servicio - SPP UUID
     protected static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // String para la direccion MAC
-    protected static String address = "98:D3:A1:FD:56:5D";
+    protected static String address = "98:D3:A1:FD:56:5D";//mi modulo
+    // protected static String address = "98:D3:33:80:59:0F";//caja
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         btAdapter = BluetoothAdapter.getDefaultAdapter(); // get Bluetooth adapter
         VerificarEstadoBT();

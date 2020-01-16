@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.sistemarehabilitacion.R;
+import com.example.sistemarehabilitacion.Vistas.Ejercicios.EjercicioCierreActivity;
+import com.example.sistemarehabilitacion.Vistas.Ejercicios.EjercicioRecorridoActivity;
 
 public class ListaReproduccion extends AppCompatActivity {
     ListView lv;
@@ -40,7 +42,16 @@ public class ListaReproduccion extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              startActivity(new Intent(getApplicationContext(),ReproductoMusica.class).putExtra("pos",position).putExtra("canciones",cn.EncontrarCanciones(Environment.getExternalStorageDirectory())).putExtra("repeticion",repeticion).putExtra("modulo",modulo).putExtra("dificultad",dificultad));
+               if(modulo.equals("Cierre")){
+                   startActivity(new Intent(getApplicationContext(), EjercicioCierreActivity.class).putExtra("pos",position).putExtra("canciones",cn.EncontrarCanciones(Environment.getExternalStorageDirectory())).putExtra("repeticion",repeticion).putExtra("modulo",modulo).putExtra("dificultad",dificultad));
+               }else if(modulo.equals("Timon")){
+                   //pendiente
+               }else if(modulo.equals("Laberinto")){
+                   startActivity(new Intent(getApplicationContext(), EjercicioRecorridoActivity.class).putExtra("pos",position).putExtra("canciones",cn.EncontrarCanciones(Environment.getExternalStorageDirectory())).putExtra("repeticion",repeticion).putExtra("modulo",modulo).putExtra("dificultad",dificultad));
+
+               }else if(modulo.equals("Malla")){
+                   //pendiente
+               }
           }
         });
     }

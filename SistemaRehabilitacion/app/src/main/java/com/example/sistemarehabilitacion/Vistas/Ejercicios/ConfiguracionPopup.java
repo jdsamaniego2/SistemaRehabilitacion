@@ -45,7 +45,8 @@ public class ConfiguracionPopup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(ConfiguracionPopup.this, ListaReproduccion.class).putExtra("repeticion",repeticiones.getText().toString()).putExtra("modulo",modulo);
+                Intent intent = null;
+                intent = new Intent(ConfiguracionPopup.this, ListaReproduccion.class).putExtra("repeticion",repeticiones.getText().toString()).putExtra("modulo",modulo);
                 startActivity(intent);
             }
         });

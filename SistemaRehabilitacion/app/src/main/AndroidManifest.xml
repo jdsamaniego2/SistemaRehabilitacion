@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,6 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Vistas.Ejercicios.EjercicioRecorridoActivity"></activity>
+        <activity android:name=".Vistas.Ejercicios.EjercicioCierreActivity" />
         <activity
             android:name=".Vistas.Ejercicios.ConfigMalla"
             android:theme="@style/AppTheme.TemaPopup" />
@@ -20,7 +23,7 @@
             android:theme="@style/AppTheme.TemaPopup" />
         <activity android:name=".Vistas.Musica.ListaReproduccion" />
         <activity android:name=".Vistas.Musica.ReproductoMusica" />
-        <activity android:name=".Vistas.BaseDeDatos.SincronizacionActivity"></activity>
+        <activity android:name=".Vistas.BaseDeDatos.SincronizacionActivity" />
         <activity android:name=".Vistas.Errores.ErrorConexionBdRemota" />
         <activity android:name=".Vistas.Ejercicios.MenuActivity" />
         <activity android:name=".Vistas.GestionPacientes.Sesiones.ReportesActivity" />
