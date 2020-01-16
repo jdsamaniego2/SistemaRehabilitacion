@@ -74,12 +74,15 @@ public class EjercicioCierreActivity extends BluetoothActivity {
                                 if(valor_anterior == 0){//si el valor anterior fue 0
                                     if(valor_ejercicio.equals("1")){
                                         repeticion_actual++;
+                                        //*INCREMENTAR EL TIEMPO*/
+
                                         if(repeticion_actual==repeticiones_totales){
 
                                             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
                                             Date date = new Date();
                                             final String fecha = dateFormat.format(date);
-
+                                            /*SUENA LA CANCION COMPLETA*/
+                                            /*
                                             AlertDialog.Builder dialogo1 = new AlertDialog.Builder(EjercicioCierreActivity.this);
                                             dialogo1.setTitle("Mensaje De Confirmación");
                                             dialogo1.setMessage("¿ Desea Guardad Esta Sesión ?\nTipo: Cierre"+"\nTiempo:"+180+"\nRepeticiones:"+repeticion_actual+"/"+repeticiones_totales+"\nFecha: "+fecha);
@@ -92,6 +95,8 @@ public class EjercicioCierreActivity extends BluetoothActivity {
                                                     Toast.makeText(EjercicioCierreActivity.this.getApplicationContext(),"Sesión Guardada Satisfactoriamente",Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(EjercicioCierreActivity.this, MenuActivity.class);
                                                     startActivity(intent);
+
+
                                                 }
                                             });
                                             dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -102,7 +107,7 @@ public class EjercicioCierreActivity extends BluetoothActivity {
                                                 }
                                             });
                                             dialogo1.show();
-
+                                            */
 
 
                                         }

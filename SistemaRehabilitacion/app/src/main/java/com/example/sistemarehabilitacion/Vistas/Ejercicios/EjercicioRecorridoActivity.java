@@ -59,6 +59,10 @@ public class EjercicioRecorridoActivity extends BluetoothActivity {
                             String valor_ejercicio = partes[1];
                             if(tipo_ejercicio.equals("CAMINO")){//solo se detecta si es tipo CAMINO (SOLO MODIFICAR LO DE ESTE IF EN LAS OTRAS VISTAS)
                                 if(Integer.parseInt(valor_ejercicio) == punto_actual+1){
+
+                                    /*INCREMENTAR TIEMPO DE CANCION*/
+
+
                                     pb_estado_recorrido.setProgress(punto_actual);
                                     punto_actual = Integer.parseInt(valor_ejercicio);
                                     lbl_contador.setText( punto_actual+"/"+total_puntos_recorrido);
@@ -66,6 +70,10 @@ public class EjercicioRecorridoActivity extends BluetoothActivity {
 
 
                                     if(punto_actual==total_puntos_recorrido){
+                                        /*reproducir toda la cancion*/
+
+
+                                        /*
                                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
                                         Date date = new Date();
                                         final String fecha = dateFormat.format(date);
@@ -91,7 +99,7 @@ public class EjercicioRecorridoActivity extends BluetoothActivity {
                                                 startActivity(intent);
                                             }
                                         });
-                                        dialogo1.show();
+                                        dialogo1.show();*/
 
                                     }
                                 }
