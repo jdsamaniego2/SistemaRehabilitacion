@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,20 +23,35 @@ import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.Bluetooth.BluetoothActivity;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
+import com.example.sistemarehabilitacion.Vistas.Musica.ReproductoMusica;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class EjercicioRecorridoActivity extends BluetoothActivity {
+public class EjercicioRecorridoActivity extends BluetoothActivity implements View.OnClickListener {
 
+    ReproductoMusica reproductor=new ReproductoMusica();
     Button btn_finalizar;
     TextView lbl_contador;
     ProgressBar pb_estado_recorrido;
 
 
+    ImageButton btnplay,btndetener;
+    SeekBar sb;
+    static MediaPlayer np;
+    String aux="";
+    Thread actualizarsb;
+    TextView txtinicio,txtfin;
+    ArrayList<File> canciones;
+    int posicion;
+    Uri u;
+
+
     private int total_puntos_recorrido = 6;
-    private int punto_actual = 0;
+    private int punto_actual = 0,segundos_control=10;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +60,36 @@ public class EjercicioRecorridoActivity extends BluetoothActivity {
         setContentView(R.layout.activity_ejercicio_recorrido);
         inicializarComponentes();
         inicializarEventos();
+
+        hiloReproduccion();
+
+        if(np!=null){
+
+            np.stop();
+        }
+
+        inciar();
+        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                np.seekTo(seekBar.getProgress());
+            }
+        });
+
+
+
+
+
         lbl_contador.setText( punto_actual+"/"+total_puntos_recorrido);
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
@@ -61,6 +110,10 @@ public class EjercicioRecorridoActivity extends BluetoothActivity {
                                 if(Integer.parseInt(valor_ejercicio) == punto_actual+1){
 
                                     /*INCREMENTAR TIEMPO DE CANCION*/
+                                    segundos_control =segundos_control+10;
+                                    if (!np.isPlaying()) {
+                                        np.start();
+                                    }
 
 
                                     pb_estado_recorrido.setProgress(punto_actual);
@@ -106,6 +159,7 @@ public class EjercicioRecorridoActivity extends BluetoothActivity {
                             }
                             else {
                                 Toast.makeText(EjercicioRecorridoActivity.this.getApplicationContext(),"No valida!"+dataInPrint+"!",Toast.LENGTH_SHORT).show();
+
                             }
                         }catch (Exception e){
                             Toast.makeText(EjercicioRecorridoActivity.this.getApplicationContext(),"Excepcion no controlada",Toast.LENGTH_SHORT).show();
@@ -124,6 +178,14 @@ public class EjercicioRecorridoActivity extends BluetoothActivity {
         lbl_contador = findViewById(R.id.txt_contador_sesion_recorrido);
         pb_estado_recorrido = findViewById(R.id.pb_sesion_recorrido);
         pb_estado_recorrido.setMax(total_puntos_recorrido);
+
+        btnplay=(ImageButton)findViewById(R.id.btnplay);
+        btndetener=(ImageButton)findViewById(R.id.btndetener);
+        sb=(SeekBar)findViewById(R.id.sbp);
+        btnplay.setOnClickListener(this);
+        btndetener.setOnClickListener(this);
+        txtinicio=(TextView)findViewById(R.id.txtini);
+        txtfin=(TextView)findViewById(R.id.txtfin);
     }
     private void inicializarEventos(){
         btn_finalizar.setOnClickListener(new View.OnClickListener() {
@@ -175,4 +237,103 @@ public class EjercicioRecorridoActivity extends BluetoothActivity {
             }
         });
     }
+
+    private  void hiloReproduccion(){
+
+
+
+        actualizarsb=new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                int duracion=np.getDuration();
+                sb.setMax(duracion);
+                int posicionActual=0;
+                int ejecution=0;
+
+                boolean ban=false;
+
+                while(posicionActual< duracion){
+                    try{
+                        sleep(500);
+                        posicionActual=np.getCurrentPosition();
+                        sb.setProgress(posicionActual);
+                        ejecution=sb.getProgress();
+                        aux=reproductor.getMRM(ejecution);
+                        txtfin.setText(aux.toString().trim());
+                        if(punto_actual<total_puntos_recorrido){
+                        int seconds=(int) (ejecution/1000)%60;
+                        if (seconds==segundos_control) {
+
+                            np.pause();
+                        }}
+                    }catch (Exception e){
+                        //txtfin.setText(aux);
+                    }
+
+                }
+            }
+        };
+    }
+
+
+    private void inciar(){
+        try {
+            Intent i = getIntent();
+            Bundle b = i.getExtras();
+            canciones = (ArrayList) b.getParcelableArrayList("canciones");
+            posicion = (int) b.getInt("pos", 0);
+            u = Uri.parse(canciones.get(posicion).toString());
+
+            np = MediaPlayer.create(getApplication(), u);
+            actualizarsb.start();
+            np.start();
+            txtinicio.setText(reproductor.getMRM(np.getDuration()));
+            np.start();
+        } catch (Exception e) {
+
+
+        }
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        int id=v.getId();
+        switch (id){
+            case R.id.btnplay:
+                if(np!=null){
+                    if(np.isPlaying()){
+                        btnplay.setImageResource(R.drawable.play);
+                        np.pause();
+                    }else{
+                        btnplay.setImageResource(R.drawable.pausa);
+                        np.start();
+                    }
+                }else {
+
+                    inciar();
+                }
+                break;
+            case R.id.btndetener:
+                if(np!=null) {
+                    np.stop();
+                    btnplay.setImageResource(R.drawable.play);
+                    np=null;
+                    inciar();
+                }
+                break;
+
+
+
+
+
+        }
+
+
+    }
+
+
+
+
 }

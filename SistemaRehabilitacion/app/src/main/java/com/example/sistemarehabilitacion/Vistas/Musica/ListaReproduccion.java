@@ -29,7 +29,7 @@ public class ListaReproduccion extends AppCompatActivity {
 
         Intent i = getIntent();
         Bundle b = i.getExtras();
-        repeticion=b.getString("repeticion");
+        repeticion=b.getString("repeticion","0");
         modulo=b.getString("modulo");
         dificultad=b.getString("dificultad");
 

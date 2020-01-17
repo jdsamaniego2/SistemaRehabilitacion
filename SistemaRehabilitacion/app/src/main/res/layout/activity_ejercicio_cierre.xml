@@ -6,11 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".Vistas.Ejercicios.EjercicioCierreActivity">
 
+    <SeekBar
+        android:id="@+id/sbp"
+        android:layout_width="349dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/btnplay"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_finalizar_sesion_cierre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_contador_sesion_cierre"
+        app:layout_constraintVertical_bias="0.252"
+        tools:ignore="UnknownId" />
+
+    <ImageButton
+        android:id="@+id/btnplay"
+        android:layout_width="138dp"
+        android:layout_height="127dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btndetener"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sbp"
+        app:layout_constraintVertical_bias="0.177"
+        app:srcCompat="@drawable/pausa" />
+
+    <ImageButton
+        android:id="@+id/btndetener"
+        android:layout_width="139dp"
+        android:layout_height="139dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="44dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toEndOf="@+id/btnplay"
+        app:layout_constraintTop_toBottomOf="@+id/sbp"
+        app:layout_constraintVertical_bias="0.116"
+        app:srcCompat="@drawable/reestar" />
+
+    <TextView
+        android:id="@+id/txtini"
+        android:layout_width="109dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/sbp"
+        app:layout_constraintEnd_toStartOf="@+id/txtfin"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_contador_sesion_cierre"
+        app:layout_constraintVertical_bias="0.985" />
+
+    <TextView
+        android:id="@+id/txtfin"
+        android:layout_width="83dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/sbp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/txtini"
+        app:layout_constraintTop_toBottomOf="@+id/txt_contador_sesion_cierre"
+        app:layout_constraintVertical_bias="0.985" />
+
     <Button
         android:id="@+id/btn_finalizar_sesion_cierre"
         android:layout_width="191dp"
         android:layout_height="63dp"
-        android:layout_marginBottom="80dp"
         android:text="Finalizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +90,6 @@
         android:id="@+id/txt_contador_sesion_cierre"
         android:layout_width="283dp"
         android:layout_height="69dp"
-        android:layout_marginTop="68dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -29,13 +98,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.041" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="234dp"
         android:layout_height="73dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:text="CIERRE"
         android:textAlignment="center"
         android:textColor="#CB6B6B6B"
@@ -50,7 +119,7 @@
         android:id="@+id/imageView6"
         android:layout_width="265dp"
         android:layout_height="240dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"

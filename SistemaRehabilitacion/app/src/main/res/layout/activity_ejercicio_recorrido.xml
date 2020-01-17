@@ -6,11 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".Vistas.Ejercicios.EjercicioRecorridoActivity">
 
+
+    <SeekBar
+        android:id="@+id/sbp"
+        android:layout_width="349dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/btnplay"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="152dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_finalizar_sesion_recorrido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.946"
+        tools:ignore="UnknownId" />
+
+    <ImageButton
+        android:id="@+id/btnplay"
+        android:layout_width="138dp"
+        android:layout_height="127dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btndetener"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sbp"
+        app:layout_constraintVertical_bias="0.15"
+        app:srcCompat="@drawable/pausa" />
+
+    <ImageButton
+        android:id="@+id/btndetener"
+        android:layout_width="139dp"
+        android:layout_height="139dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toEndOf="@+id/btnplay"
+        app:layout_constraintTop_toBottomOf="@+id/sbp"
+        app:layout_constraintVertical_bias="0.132"
+        app:srcCompat="@drawable/reestar" />
+
+    <TextView
+        android:id="@+id/txtini"
+        android:layout_width="109dp"
+        android:layout_height="18dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/sbp"
+        app:layout_constraintEnd_toStartOf="@+id/txtfin"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.969" />
+
+    <TextView
+        android:id="@+id/txtfin"
+        android:layout_width="83dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="40dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/sbp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.973" />
+
     <TextView
         android:id="@+id/txt_contador_sesion_recorrido"
-        android:layout_width="283dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="282dp"
+        android:layout_height="59dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -23,7 +88,7 @@
         android:id="@+id/tv_tt"
         android:layout_width="347dp"
         android:layout_height="82dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="16dp"
         android:text="RECORRIDO"
         android:textAlignment="center"
         android:textColor="#CB6B6B6B"
@@ -37,19 +102,21 @@
         android:id="@+id/btn_finalizar_sesion_recorrido"
         android:layout_width="154dp"
         android:layout_height="59dp"
+        android:layout_marginTop="192dp"
         android:text="FINALIZAR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pb_sesion_recorrido" />
+        app:layout_constraintTop_toBottomOf="@+id/pb_sesion_recorrido"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="321dp"
         android:layout_height="235dp"
-        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tt"
         app:srcCompat="@drawable/logo_recorrido" />
@@ -59,7 +126,6 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="310dp"
         android:layout_height="42dp"
-        android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Sesiones.ReportesActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
+import com.example.sistemarehabilitacion.Vistas.Musica.ListaReproduccion;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -127,7 +128,7 @@ public class MenuActivity extends AppCompatActivity {
         btn_laberinto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenuActivity.this, ConfiguracionPopup.class).putExtra("modulo","Laberinto");
+                Intent intent = new Intent(MenuActivity.this, ListaReproduccion.class).putExtra("modulo","Laberinto");
                 startActivity(intent);
             }
         });

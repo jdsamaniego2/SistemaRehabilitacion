@@ -2,12 +2,17 @@ package com.example.sistemarehabilitacion.Vistas.Ejercicios;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextPaint;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,22 +24,38 @@ import com.example.sistemarehabilitacion.Bluetooth.BluetoothActivity;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes.MainActivity;
+import com.example.sistemarehabilitacion.Vistas.Musica.ListaReproduccion;
 import com.example.sistemarehabilitacion.Vistas.Musica.ReproductoMusica;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class EjercicioCierreActivity extends BluetoothActivity {
+public class EjercicioCierreActivity extends BluetoothActivity implements View.OnClickListener {
+
+    ReproductoMusica reproductor=new ReproductoMusica();
 
     TextView lbl_contador;
     Button btn_finalizar;
 
+    ImageButton btnplay,btndetener;
+    SeekBar sb;
+    static MediaPlayer np;
+    String aux="";
+    Thread actualizarsb;
+    TextView txtinicio,txtfin;
+    ArrayList<File> canciones;
+    int posicion;
+    Uri u;
 
-    private int repeticiones_totales;
-    private int repeticion_actual;
 
-    private int valor_anterior;
+
+    private int repeticiones_totales=0,segundos_control=10;
+    private int repeticion_actual=0;
+
+    private int valor_anterior=0;
 
 
     @Override
@@ -44,11 +65,46 @@ public class EjercicioCierreActivity extends BluetoothActivity {
         setContentView(R.layout.activity_ejercicio_cierre);
         inicializarComponentes();
         inicializarEventos();
+        hiloReproduccion();
+
+        if(np!=null){
+
+            np.stop();
+        }
+
+        inciar();
+        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                np.seekTo(seekBar.getProgress());
+            }
+        });
     }
 
     private void inicializarComponentes(){
         lbl_contador = findViewById(R.id.txt_contador_sesion_cierre);
         btn_finalizar = findViewById(R.id.btn_finalizar_sesion_cierre);
+
+
+        btnplay=(ImageButton)findViewById(R.id.btnplay);
+        btndetener=(ImageButton)findViewById(R.id.btndetener);
+        sb=(SeekBar)findViewById(R.id.sbp);
+        btnplay.setOnClickListener(this);
+        btndetener.setOnClickListener(this);
+        txtinicio=(TextView)findViewById(R.id.txtini);
+        txtfin=(TextView)findViewById(R.id.txtfin);
+
+
 
         repeticiones_totales = Integer.parseInt(getIntent().getExtras().getString("repeticion"));
         repeticion_actual = 0;
@@ -75,6 +131,12 @@ public class EjercicioCierreActivity extends BluetoothActivity {
                                     if(valor_ejercicio.equals("1")){
                                         repeticion_actual++;
                                         //*INCREMENTAR EL TIEMPO*/
+                                        segundos_control =segundos_control+10;
+                                        if (!np.isPlaying()) {
+                                            np.start();
+                                        }
+
+
 
                                         if(repeticion_actual==repeticiones_totales){
 
@@ -82,6 +144,7 @@ public class EjercicioCierreActivity extends BluetoothActivity {
                                             Date date = new Date();
                                             final String fecha = dateFormat.format(date);
                                             /*SUENA LA CANCION COMPLETA*/
+
                                             /*
                                             AlertDialog.Builder dialogo1 = new AlertDialog.Builder(EjercicioCierreActivity.this);
                                             dialogo1.setTitle("Mensaje De Confirmación");
@@ -125,7 +188,7 @@ public class EjercicioCierreActivity extends BluetoothActivity {
                                 }
                             }
                             else {
-                                Toast.makeText(EjercicioCierreActivity.this.getApplicationContext(),"No valida!"+dataInPrint+"!",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(EjercicioCierreActivity.this.getApplicationContext(),"No valida!"+dataInPrint+"!"+"tiempo reproduccion"+segundos_control,Toast.LENGTH_SHORT).show();
                             }
                        }catch (Exception e){
                             Toast.makeText(EjercicioCierreActivity.this.getApplicationContext(),"Excepcion no controlada",Toast.LENGTH_SHORT).show();
@@ -187,5 +250,101 @@ public class EjercicioCierreActivity extends BluetoothActivity {
             }
         });
     }
+
+    private  void hiloReproduccion(){
+
+
+
+        actualizarsb=new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                int duracion=np.getDuration();
+                sb.setMax(duracion);
+                int posicionActual=0;
+                int ejecution=0;
+
+                boolean ban=false;
+
+                while(posicionActual< duracion){
+                    try{
+                        sleep(500);
+                        posicionActual=np.getCurrentPosition();
+                        sb.setProgress(posicionActual);
+                        ejecution=sb.getProgress();
+                        aux=reproductor.getMRM(ejecution);
+                        txtfin.setText(aux.toString().trim());
+                        int seconds=(int) (ejecution/1000)%60;
+                        if(repeticion_actual<repeticiones_totales){
+                        if (seconds==segundos_control) {
+
+                            np.pause();
+                        }
+                        }
+                    }catch (Exception e){
+                        //txtfin.setText(aux);
+                    }
+
+                }
+            }
+        };
+    }
+
+
+    private void inciar(){
+        try {
+            Intent i = getIntent();
+            Bundle b = i.getExtras();
+            canciones = (ArrayList) b.getParcelableArrayList("canciones");
+            posicion = (int) b.getInt("pos", 0);
+            u = Uri.parse(canciones.get(posicion).toString());
+
+            np = MediaPlayer.create(getApplication(), u);
+            actualizarsb.start();
+            np.start();
+            txtinicio.setText(reproductor.getMRM(np.getDuration()));
+            np.start();
+        } catch (Exception e) {
+
+
+        }
+    }
+    @Override
+    public void onClick(View v) {
+        int id=v.getId();
+        switch (id){
+            case R.id.btnplay:
+                if(np!=null){
+                    if(np.isPlaying()){
+                        btnplay.setImageResource(R.drawable.play);
+                        np.pause();
+                    }else{
+                        btnplay.setImageResource(R.drawable.pausa);
+                        np.start();
+                    }
+                }else {
+
+                    inciar();
+                }
+                break;
+            case R.id.btndetener:
+                if(np!=null) {
+                    np.stop();
+                    btnplay.setImageResource(R.drawable.play);
+                    np=null;
+                    inciar();
+                }
+                break;
+
+
+
+
+
+        }
+
+
+    }
+
+
 
 }
