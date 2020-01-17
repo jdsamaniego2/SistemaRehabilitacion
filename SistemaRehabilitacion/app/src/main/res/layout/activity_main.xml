@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/mibackgroundgradiente"
     tools:context=".Vistas.GestionPacientes.Pacientes.MainActivity">
 
 
@@ -17,6 +17,7 @@
         android:elevation="5dp"
         android:src="@android:drawable/ic_menu_upload"
 
+        app:backgroundTint="#EEF77435"
         app:layout_anchor="@+id/lv_pacientes_main"
         app:layout_anchorGravity="end|top"
         app:maxImageSize="40dp" />
@@ -28,7 +29,7 @@
         android:layout_margin="15dp"
         android:clickable="true"
         android:src="@android:drawable/ic_menu_add"
-        app:backgroundTint="#3C8A59"
+        app:backgroundTint="#31E094"
         app:layout_anchor="@+id/lv_pacientes_main"
         app:layout_anchorGravity="end|bottom"
         app:maxImageSize="75dp" />

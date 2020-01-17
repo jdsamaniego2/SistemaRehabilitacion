@@ -12,10 +12,11 @@ import android.widget.TextView;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Sesiones.ReportesActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
+import com.example.sistemarehabilitacion.Vistas.Musica.ListaReproduccion;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Button btn_malla;
+    //Button btn_malla;
     Button btn_cierre;
     Button btn_laberinto;
     Button btn_timon;
@@ -33,7 +34,7 @@ public class MenuActivity extends AppCompatActivity {
         inicializarEventos();
     }
     private void  inicializarComponentes(){
-        btn_malla = findViewById(R.id.btn_malla_menu);
+        //btn_malla = findViewById(R.id.btn_malla_menu);
         btn_cierre = findViewById(R.id.btn_cierre_menu);
         btn_laberinto = findViewById(R.id.btn_laberinto_menu);
         btn_timon = findViewById(R.id.btn_timon_menu);
@@ -127,17 +128,17 @@ public class MenuActivity extends AppCompatActivity {
         btn_laberinto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenuActivity.this, ConfiguracionPopup.class).putExtra("modulo","Laberinto");
+                Intent intent = new Intent(MenuActivity.this, ListaReproduccion.class).putExtra("modulo","Laberinto");
                 startActivity(intent);
             }
         });
-        btn_malla.setOnClickListener(new View.OnClickListener() {
+        /*btn_malla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuActivity.this, ConfigMalla.class).putExtra("modulo","Malla");
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 }

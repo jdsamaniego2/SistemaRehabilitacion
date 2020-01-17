@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mibackgroundgradiente"
     tools:context=".Vistas.Ejercicios.EjercicioRecorridoActivity">
 
     <TextView
@@ -14,6 +15,7 @@
         android:text="0"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textColor="#ffffff"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,11 +25,11 @@
         android:id="@+id/tv_tt"
         android:layout_width="347dp"
         android:layout_height="82dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:text="RECORRIDO"
         android:textAlignment="center"
-        android:textColor="#CB6B6B6B"
-        android:textSize="60sp"
+        android:textColor="#ffffff"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,9 +37,11 @@
 
     <Button
         android:id="@+id/btn_finalizar_sesion_recorrido"
-        android:layout_width="154dp"
-        android:layout_height="59dp"
-        android:text="FINALIZAR"
+        android:layout_width="229dp"
+        android:layout_height="60dp"
+        android:background="@drawable/boton_naranja"
+        android:text="Finalizar"
+        android:textColor="#ffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -48,7 +52,7 @@
         android:id="@+id/imageView4"
         android:layout_width="321dp"
         android:layout_height="235dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tt"
@@ -59,9 +63,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="310dp"
         android:layout_height="42dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_contador_sesion_recorrido" />
 

@@ -7,5 +7,8 @@
         android:id="@+id/itemcancion"
         android:layout_width="match_parent"
         android:layout_height="59dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="15dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
 </LinearLayout>

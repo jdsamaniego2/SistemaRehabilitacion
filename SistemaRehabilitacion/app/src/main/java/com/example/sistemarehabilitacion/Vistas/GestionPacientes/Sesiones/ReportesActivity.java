@@ -32,7 +32,8 @@ public class ReportesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);//QUITA LA BARRA DE TITULO SUPERIOR DE LA VISTA
+        //supportRequestWindowFeature(Window.FEATURE_NO_TITLE);//QUITA LA BARRA DE TITULO SUPERIOR DE LA VISTA
+        setTitle("Sesiones Realizadas");
         setContentView(R.layout.activity_reportes);
         inicializarComponentes();
         inicializarEventos();

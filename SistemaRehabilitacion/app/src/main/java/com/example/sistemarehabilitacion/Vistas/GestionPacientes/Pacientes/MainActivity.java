@@ -12,6 +12,7 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -64,12 +65,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //QUITA LA BARRA DE TITULO SUPERIOR DE LA VISTA
         setContentView(R.layout.activity_main);
+        setTitle("Mis Pacientes");
         inicializarComponentes();
         inicializarEventos();
-
-
-
-
     }
 
     @Override

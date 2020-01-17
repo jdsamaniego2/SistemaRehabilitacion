@@ -3,6 +3,7 @@
     android:id="@+id/linearly_horiz_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="horizontal">
 
     <ImageView
@@ -31,18 +32,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#ffff"/>
 
         <TextView
             android:id="@+id/lbl_apellido_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:textColor="#ffff"/>
 
         <TextView
             android:id="@+id/lbl_nombre_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:textColor="#ffff"/>
     </LinearLayout>
 </LinearLayout>

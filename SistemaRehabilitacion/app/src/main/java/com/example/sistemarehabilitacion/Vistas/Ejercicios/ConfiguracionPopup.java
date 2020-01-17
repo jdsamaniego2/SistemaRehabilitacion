@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.Musica.ListaReproduccion;
@@ -44,10 +45,20 @@ public class ConfiguracionPopup extends AppCompatActivity {
         btncomenzar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try{
+                    if(Integer.parseInt(repeticiones.getText().toString())>0){
+                        Intent intent = null;
+                        intent = new Intent(ConfiguracionPopup.this, ListaReproduccion.class).putExtra("repeticion",repeticiones.getText().toString()).putExtra("modulo",modulo);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(ConfiguracionPopup.this.getApplicationContext(),"Cantidad no válida",Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(ConfiguracionPopup.this.getApplicationContext(),"Incique una cantidad de repeticiones",Toast.LENGTH_SHORT).show();
+                }
 
-                Intent intent = null;
-                intent = new Intent(ConfiguracionPopup.this, ListaReproduccion.class).putExtra("repeticion",repeticiones.getText().toString()).putExtra("modulo",modulo);
-                startActivity(intent);
+
             }
         });
 

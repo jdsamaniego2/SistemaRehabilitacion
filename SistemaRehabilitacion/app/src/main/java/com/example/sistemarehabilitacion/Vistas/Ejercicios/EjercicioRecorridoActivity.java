@@ -57,7 +57,7 @@ public class EjercicioRecorridoActivity extends BluetoothActivity {
                             String [] partes = dataInPrint.split(":");
                             String tipo_ejercicio = partes[0];
                             String valor_ejercicio = partes[1];
-                            if(tipo_ejercicio.equals("CAMINO")){//solo se detecta si es tipo CAMINO (SOLO MODIFICAR LO DE ESTE IF EN LAS OTRAS VISTAS)
+                            if(tipo_ejercicio.equals("RECORRIDO")){//solo se detecta si es tipo CAMINO (SOLO MODIFICAR LO DE ESTE IF EN LAS OTRAS VISTAS)
                                 if(Integer.parseInt(valor_ejercicio) == punto_actual+1){
 
                                     /*INCREMENTAR TIEMPO DE CANCION*/
@@ -66,9 +66,6 @@ public class EjercicioRecorridoActivity extends BluetoothActivity {
                                     pb_estado_recorrido.setProgress(punto_actual);
                                     punto_actual = Integer.parseInt(valor_ejercicio);
                                     lbl_contador.setText( punto_actual+"/"+total_puntos_recorrido);
-
-
-
                                     if(punto_actual==total_puntos_recorrido){
                                         /*reproducir toda la cancion*/
 

@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mibackgroundgradiente"
     tools:context=".Vistas.Ejercicios.EjercicioCierreActivity">
 
     <Button
         android:id="@+id/btn_finalizar_sesion_cierre"
-        android:layout_width="191dp"
-        android:layout_height="63dp"
+        android:layout_width="232dp"
+        android:layout_height="62dp"
         android:layout_marginBottom="80dp"
+        android:background="@drawable/boton_naranja"
         android:text="Finalizar"
+        android:textColor="#ffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -24,6 +27,7 @@
         android:text="0"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textColor="#ffffff"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btn_finalizar_sesion_cierre"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +42,8 @@
         android:layout_marginTop="36dp"
         android:text="CIERRE"
         android:textAlignment="center"
-        android:textColor="#CB6B6B6B"
-        android:textSize="60sp"
+        android:textColor="#ffffff"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -48,8 +52,8 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="265dp"
-        android:layout_height="240dp"
+        android:layout_width="277dp"
+        android:layout_height="248dp"
         android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

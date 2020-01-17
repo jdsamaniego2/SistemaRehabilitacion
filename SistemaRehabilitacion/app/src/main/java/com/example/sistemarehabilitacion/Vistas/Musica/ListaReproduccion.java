@@ -23,6 +23,7 @@ public class ListaReproduccion extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Seleccione Una Canción");
         setContentView(R.layout.activity_lista_reproduccion);
 
         lv=(ListView) findViewById(R.id.lstCancion);
