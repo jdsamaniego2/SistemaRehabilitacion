@@ -3,6 +3,7 @@ package com.example.sistemarehabilitacion.Vistas.Musica;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.EjercicioCierreActivity;
+import com.example.sistemarehabilitacion.Vistas.Ejercicios.EjercicioManijaActivity;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.EjercicioRecorridoActivity;
 
 public class ListaReproduccion extends AppCompatActivity {
@@ -23,6 +25,7 @@ public class ListaReproduccion extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setTitle("Seleccione Una Canción");
         setContentView(R.layout.activity_lista_reproduccion);
 
@@ -30,7 +33,7 @@ public class ListaReproduccion extends AppCompatActivity {
 
         Intent i = getIntent();
         Bundle b = i.getExtras();
-        repeticion=b.getString("repeticion");
+        repeticion=b.getString("repeticion","0");
         modulo=b.getString("modulo");
         dificultad=b.getString("dificultad");
 
@@ -45,8 +48,8 @@ public class ListaReproduccion extends AppCompatActivity {
          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                if(modulo.equals("Cierre")){
                    startActivity(new Intent(getApplicationContext(), EjercicioCierreActivity.class).putExtra("pos",position).putExtra("canciones",cn.EncontrarCanciones(Environment.getExternalStorageDirectory())).putExtra("repeticion",repeticion).putExtra("modulo",modulo).putExtra("dificultad",dificultad));
-               }else if(modulo.equals("Timon")){
-                   //pendiente
+               }else if(modulo.equals("Manijas")){
+                   startActivity(new Intent(getApplicationContext(), EjercicioManijaActivity.class).putExtra("pos",position).putExtra("canciones",cn.EncontrarCanciones(Environment.getExternalStorageDirectory())).putExtra("repeticion",repeticion).putExtra("modulo",modulo).putExtra("dificultad",dificultad));
                }else if(modulo.equals("Laberinto")){
                    startActivity(new Intent(getApplicationContext(), EjercicioRecorridoActivity.class).putExtra("pos",position).putExtra("canciones",cn.EncontrarCanciones(Environment.getExternalStorageDirectory())).putExtra("repeticion",repeticion).putExtra("modulo",modulo).putExtra("dificultad",dificultad));
 

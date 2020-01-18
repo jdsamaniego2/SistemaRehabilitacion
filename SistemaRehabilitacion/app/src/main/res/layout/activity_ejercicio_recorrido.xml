@@ -7,17 +7,74 @@
     android:background="@drawable/mibackgroundgradiente"
     tools:context=".Vistas.Ejercicios.EjercicioRecorridoActivity">
 
+
+    <SeekBar
+        android:id="@+id/sbp"
+        android:layout_width="349dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/btnplay"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtini"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtfin"
+        tools:ignore="UnknownId" />
+
+    <ImageButton
+        android:id="@+id/btnplay"
+        android:layout_width="138dp"
+        android:layout_height="127dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/pausa"
+        tools:layout_editor_absoluteX="283dp"
+        tools:layout_editor_absoluteY="7dp" />
+
+    <ImageButton
+        android:id="@+id/btndetener"
+        android:layout_width="139dp"
+        android:layout_height="139dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/reestar"
+        tools:layout_editor_absoluteX="282dp"
+        tools:layout_editor_absoluteY="-15dp" />
+
+    <TextView
+        android:id="@+id/txtini"
+        android:layout_width="110dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btn_finalizar_sesion_recorrido"
+        app:layout_constraintTop_toBottomOf="@+id/sbp"
+        tools:layout_editor_absoluteX="143dp" />
+
+    <TextView
+        android:id="@+id/txtfin"
+        android:layout_width="95dp"
+        android:layout_height="32dp"
+        android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/sbp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_contador_sesion_recorrido"
+        tools:layout_editor_absoluteX="158dp" />
+
     <TextView
         android:id="@+id/txt_contador_sesion_recorrido"
-        android:layout_width="283dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="282dp"
+        android:layout_height="59dp"
         android:text="0"
         android:textAlignment="center"
-        android:textSize="30sp"
         android:textColor="#ffffff"
+        android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtfin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -25,7 +82,9 @@
         android:id="@+id/tv_tt"
         android:layout_width="347dp"
         android:layout_height="82dp"
+
         android:layout_marginTop="28dp"
+
         android:text="RECORRIDO"
         android:textAlignment="center"
         android:textColor="#ffffff"
@@ -37,36 +96,31 @@
 
     <Button
         android:id="@+id/btn_finalizar_sesion_recorrido"
+
         android:layout_width="229dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/boton_naranja"
         android:text="Finalizar"
+
         android:textColor="#ffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pb_sesion_recorrido" />
+        app:layout_constraintTop_toBottomOf="@+id/txtini" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="321dp"
-        android:layout_height="235dp"
+        android:layout_width="291dp"
+        android:layout_height="213dp"
+
         android:layout_marginTop="28dp"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tt"
         app:srcCompat="@drawable/logo_recorrido" />
-
-    <ProgressBar
-        android:id="@+id/pb_sesion_recorrido"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="310dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.554"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_contador_sesion_recorrido" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

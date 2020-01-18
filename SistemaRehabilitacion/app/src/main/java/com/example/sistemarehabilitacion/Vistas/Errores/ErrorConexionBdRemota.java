@@ -3,6 +3,7 @@ package com.example.sistemarehabilitacion.Vistas.Errores;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -19,13 +20,15 @@ public class ErrorConexionBdRemota extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_error_conexion_bd_remota);
 
         inicializarComponentes();
         inicializarEventos();
     }
-
+    @Override
+    public void onBackPressed(){ }
     private void inicializarComponentes(){
         btn_aceptar = findViewById(R.id.btn_aceptar_err_sinc);
     }

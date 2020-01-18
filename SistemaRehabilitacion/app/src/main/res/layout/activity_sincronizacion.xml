@@ -16,10 +16,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_sincronizado" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/txt_sincronizado"
         android:layout_width="251dp"
         android:layout_height="61dp"
         android:layout_marginTop="72dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/txt_espere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Por Favor Espere..."
@@ -44,4 +44,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pbar_sincronizar"
         app:layout_constraintVertical_bias="0.394" />
+
+    <ImageView
+        android:id="@+id/img_satisfactorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/txt_espere"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_sincronizado"
+        app:layout_constraintVertical_bias="0.268"
+        app:srcCompat="@drawable/img_satisfactorio" />
+
+    <Button
+        android:id="@+id/btn_aceptar_sincronizar"
+        android:layout_width="182dp"
+        android:layout_height="43dp"
+        android:background="@drawable/boton_verde"
+        android:text="Aceptar"
+        android:textColor="#ffffff"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pbar_sincronizar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

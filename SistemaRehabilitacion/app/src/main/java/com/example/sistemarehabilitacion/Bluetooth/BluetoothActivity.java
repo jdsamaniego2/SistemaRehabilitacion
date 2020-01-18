@@ -20,12 +20,18 @@ public class BluetoothActivity extends AppCompatActivity {
     protected BluetoothSocket btSocket = null;
     protected StringBuilder DataStringIN = new StringBuilder();
     protected ConnectedThread conexionBt;
+
     // Identificador unico de servicio - SPP UUID
+
     protected static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+
     // String para la direccion MAC
-    //protected static String address = "98:D3:A1:FD:56:5D";//mi modulo
-    protected static String address = "98:D3:33:80:59:0F";//caja 1
-   // protected static String address = "20:13:10:16:09:80";//caja 2
+
+    protected static String address = "98:D3:A1:FD:56:5D";//mi modulo
+
+    //protected static String address = "98:D3:33:80:59:0F";//caja 1
+    // protected static String address = "20:13:10:16:09:80";//caja 2
+    //public static String address = "40:4D:7F:C3:32:E1";//cIPHONE
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

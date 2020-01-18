@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mibackgroundgradiente"
+    tools:context=".Vistas.Ejercicios.EjercicioCierreActivity">
+
+    <SeekBar
+        android:id="@+id/sbp_man"
+        android:layout_width="349dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/btnplay_man"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtfin_man"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_contador_sesion_manija_man"
+        tools:ignore="UnknownId" />
+
+    <ImageButton
+        android:id="@+id/btnplay_man"
+        android:layout_width="138dp"
+        android:layout_height="127dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/pausa"
+        tools:layout_editor_absoluteX="295dp"
+        tools:layout_editor_absoluteY="-5dp" />
+
+    <ImageButton
+        android:id="@+id/btndetener_man"
+        android:layout_width="139dp"
+        android:layout_height="139dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/reestar"
+        tools:layout_editor_absoluteX="295dp"
+        tools:layout_editor_absoluteY="-4dp" />
+
+    <TextView
+        android:id="@+id/txtini_man"
+        android:layout_width="109dp"
+        android:layout_height="18dp"
+        android:text="TextView_man"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="302dp"
+        tools:layout_editor_absoluteY="7dp" />
+
+    <TextView
+        android:id="@+id/txtfin_man"
+        android:layout_width="91dp"
+        android:layout_height="33dp"
+        android:text="TextView_man"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btn_finalizar_sesion_manija_man"
+        app:layout_constraintTop_toBottomOf="@+id/sbp_man"
+        tools:layout_editor_absoluteX="151dp" />
+
+    <Button
+        android:id="@+id/btn_finalizar_sesion_manija_man"
+        android:layout_width="232dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/boton_naranja"
+
+        android:text="Finalizar"
+        android:textColor="#ffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtfin_man"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txt_contador_sesion_manija_man"
+        android:layout_width="283dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="16dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sbp_man"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6_man" />
+
+    <TextView
+        android:id="@+id/textView10_man"
+        android:layout_width="234dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="16dp"
+        android:text="MANIJA"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView6_man"
+        android:layout_width="277dp"
+        android:layout_height="248dp"
+        android:layout_marginTop="32dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/txt_contador_sesion_manija_man"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnplay_man"
+        app:srcCompat="@drawable/logo_timon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
