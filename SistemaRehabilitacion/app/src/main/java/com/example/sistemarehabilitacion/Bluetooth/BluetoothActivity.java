@@ -27,7 +27,7 @@ public class BluetoothActivity extends AppCompatActivity {
 
     // String para la direccion MAC
 
-    protected static String address = "98:D3:A1:FD:56:5D";//mi modulo
+    public static String address = "98:D3:A1:FD:56:5D";//mi modulo
 
     //protected static String address = "98:D3:33:80:59:0F";//caja 1
     // protected static String address = "20:13:10:16:09:80";//caja 2
@@ -108,16 +108,6 @@ public class BluetoothActivity extends AppCompatActivity {
         return device.createRfcommSocketToServiceRecord(BTMODULEUUID);
     }
 
-    public boolean hayConexion(){
-        try{
-            conexionBt.write("");
-            return true;
-        }catch(Exception e){
-            return false;
-        }
-
-
-    }
 
     public class ConnectedThread extends Thread
     {

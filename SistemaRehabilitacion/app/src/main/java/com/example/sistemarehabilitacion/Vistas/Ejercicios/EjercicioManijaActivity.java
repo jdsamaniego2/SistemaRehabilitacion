@@ -139,10 +139,32 @@ public class EjercicioManijaActivity extends BluetoothActivity implements View.O
                             String valor_ejercicio = partes[1];
                             if(tipo_ejercicio.equals("MANIJA")){//solo se detecta si es tipo cierre (SOLO MODIFICAR LO DE ESTE IF EN LAS OTRAS VISTAS)
 
+
+                                if(repeticion_actual<repeticiones_totales){
+                                    repeticion_actual++;
+                                    //*INCREMENTAR EL TIEMPO*/
+                                    segundos_control =segundos_control+10;
+                                    if (!np.isPlaying()) {
+                                        np.start();
+                                    }
+
+                                }
+
+                                if(repeticion_actual==repeticiones_totales) {
+                                    tiempo_fin = new Date();
+                                    tiempo_sesion = tiempo_fin.getTime() - tiempo_inicio.getTime();
+                                    tiempo_sesion /= 1000;
+
+
+                                }
+
+                                EjercicioManijaActivity.this.lbl_contador.setText(repeticion_actual + "/" + repeticiones_totales);
+
+                                /*
                                 if(valor_anterior == 0){//si el valor anterior fue 0
                                     if(valor_ejercicio.equals("1")&&(repeticion_actual<repeticiones_totales)){
                                         repeticion_actual++;
-                                        //*INCREMENTAR EL TIEMPO*/
+                                        //*INCREMENTAR EL TIEMPO
                                         segundos_control =segundos_control+10;
                                         if (!np.isPlaying()) {
                                             np.start();
@@ -154,6 +176,8 @@ public class EjercicioManijaActivity extends BluetoothActivity implements View.O
                                             tiempo_fin = new Date();
                                             tiempo_sesion =tiempo_fin.getTime() - tiempo_inicio.getTime();
                                             tiempo_sesion/=1000;
+                                            EjercicioManijaActivity.this.lbl_contador.setText( repeticion_actual+"/"+repeticiones_totales);
+
                                             /*
                                             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
                                             Date date = new Date();
@@ -185,7 +209,7 @@ public class EjercicioManijaActivity extends BluetoothActivity implements View.O
                                                 }
                                             });
                                             dialogo1.show();
-                                            */
+
 
 
                                         }
@@ -200,7 +224,7 @@ public class EjercicioManijaActivity extends BluetoothActivity implements View.O
                                         valor_anterior = 0;
                                     }
 
-                                }
+                                }*/
                             }
                             else {
                                 Toast.makeText(EjercicioManijaActivity.this.getApplicationContext(),"No valida!"+dataInPrint+"!"+"tiempo reproduccion"+segundos_control,Toast.LENGTH_SHORT).show();
@@ -243,20 +267,20 @@ public class EjercicioManijaActivity extends BluetoothActivity implements View.O
                         else{
                             tiempo =(tiempo_sesion/60)+" minutos";
                         }
-                        dialogo2.setMessage("¿ Desea Guardad Esta Sesión ?\nTipo: Cierre"+"\nTiempo:"+tiempo+"\nRepeticiones:"+repeticiones_realizadas+"/"+repeticiones_totales+"\nFecha: "+fecha);
+                        dialogo2.setMessage("¿ Desea Guardar Esta Sesión ?\nTipo: Manijas"+"\nTiempo:"+tiempo+"\nRepeticiones:"+repeticiones_realizadas+"/"+repeticiones_totales+"\nFecha: "+fecha);
                         dialogo2.setCancelable(false);
-                        dialogo2.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                        dialogo2.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogo1, int id) {
                                 np.stop();
                                 np = null;
                                 ServicioBD sercicio = new ServicioBD(EjercicioManijaActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                                sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),(int)tiempo_sesion,repeticiones_realizadas,"CIERRE",fecha,"Normal");
+                                sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),(int)tiempo_sesion,repeticiones_realizadas,"MANIJAS",fecha,"Normal");
                                 Toast.makeText(EjercicioManijaActivity.this.getApplicationContext(),"Sesión Guardada Satisfactoriamente",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(EjercicioManijaActivity.this, MenuActivity.class);
                                 startActivity(intent);
                             }
                         });
-                        dialogo2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        dialogo2.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogo1, int id) {
                                 np.stop();
                                 np = null;

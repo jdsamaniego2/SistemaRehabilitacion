@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Vistas.Ejercicios.EjercicioManijaActivity"></activity>
+        <activity android:name=".Vistas.Configuracion.ConfiguracionActivity"></activity>
+        <activity android:name=".Vistas.Ejercicios.EjercicioManijaActivity" />
         <activity android:name=".Vistas.Ejercicios.EjercicioRecorridoActivity" />
         <activity android:name=".Vistas.Ejercicios.EjercicioCierreActivity" />
         <activity

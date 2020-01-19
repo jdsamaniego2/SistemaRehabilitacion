@@ -111,7 +111,7 @@ public class EjercicioRecorridoActivity extends BluetoothActivity implements Vie
                             String [] partes = dataInPrint.split(":");
                             String tipo_ejercicio = partes[0];
                             String valor_ejercicio = partes[1];
-                            if(tipo_ejercicio.equals("CAMINO")){//solo se detecta si es tipo CAMINO (SOLO MODIFICAR LO DE ESTE IF EN LAS OTRAS VISTAS)
+                            if(tipo_ejercicio.equals("RECORRIDO")){//solo se detecta si es tipo CAMINO (SOLO MODIFICAR LO DE ESTE IF EN LAS OTRAS VISTAS)
                                 if((Integer.parseInt(valor_ejercicio) == punto_actual+1)){
 
                                     /*INCREMENTAR TIEMPO DE CANCION*/
@@ -160,6 +160,8 @@ public class EjercicioRecorridoActivity extends BluetoothActivity implements Vie
                                         dialogo1.show();*/
 
                                     }
+                                    lbl_contador.setText( punto_actual+"/"+total_puntos_recorrido);
+
                                 }
                             }
                             else {
@@ -231,9 +233,9 @@ public class EjercicioRecorridoActivity extends BluetoothActivity implements Vie
                         else{
                             tiempo =(tiempo_sesion/60)+" minutos";
                         }
-                        dialogo2.setMessage("¿ Desea Guardad Esta Sesión ?\nTipo: Recorrido"+"\nTiempo:"+tiempo+"\nRepeticiones:"+repeticiones_realizadas+"/"+total_puntos_recorrido+"\nFecha: "+fecha);
+                        dialogo2.setMessage("¿ Desea Guardar Esta Sesión ?\nTipo: Recorrido"+"\nTiempo:"+tiempo+"\nRepeticiones:"+repeticiones_realizadas+"/"+total_puntos_recorrido+"\nFecha: "+fecha);
                         dialogo2.setCancelable(false);
-                        dialogo2.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                        dialogo2.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogo1, int id) {
                                 np.stop();
                                 np = null;
@@ -244,7 +246,7 @@ public class EjercicioRecorridoActivity extends BluetoothActivity implements Vie
                                 startActivity(intent);
                             }
                         });
-                        dialogo2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        dialogo2.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogo1, int id) {
                                 np.stop();
                                 np = null;

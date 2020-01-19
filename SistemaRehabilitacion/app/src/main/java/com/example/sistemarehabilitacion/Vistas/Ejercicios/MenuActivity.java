@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.sistemarehabilitacion.R;
+import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes.MainActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Sesiones.ReportesActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
 import com.example.sistemarehabilitacion.Vistas.Musica.ListaReproduccion;
@@ -35,6 +36,14 @@ public class MenuActivity extends AppCompatActivity {
         inicializarComponentes();
         inicializarEventos();
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
     private void  inicializarComponentes(){
         //btn_malla = findViewById(R.id.btn_malla_menu);
         btn_cierre = findViewById(R.id.btn_cierre_menu);

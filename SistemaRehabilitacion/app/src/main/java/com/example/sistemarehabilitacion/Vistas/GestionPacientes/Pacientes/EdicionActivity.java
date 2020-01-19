@@ -15,6 +15,8 @@ import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Paciente;
 import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.R;
+import com.example.sistemarehabilitacion.Vistas.Ejercicios.ConfiguracionPopup;
+import com.example.sistemarehabilitacion.Vistas.Ejercicios.MenuActivity;
 
 import java.util.Calendar;
 
@@ -52,6 +54,13 @@ public class EdicionActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(EdicionActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
     private void inicializarComponentes(){
         txt_cedula = findViewById(R.id.txt_cedula_edicion);
         txt_nombre = findViewById(R.id.txt_nombre_edicion);

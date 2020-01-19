@@ -4,6 +4,7 @@ package com.example.sistemarehabilitacion.Vistas.GestionPacientes.Sesiones;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
@@ -18,6 +19,8 @@ import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Sesion;
 import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.R;
+import com.example.sistemarehabilitacion.Vistas.Ejercicios.ConfiguracionPopup;
+import com.example.sistemarehabilitacion.Vistas.Ejercicios.MenuActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores.AdaptadorItemSesion;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
 
@@ -47,6 +50,12 @@ public class ReportesActivity extends AppCompatActivity {
         inicializarComponentes();
         inicializarEventos();
 
+    }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(ReportesActivity.this, MenuActivity.class);
+        startActivity(intent);
     }
 
     private void inicializarComponentes(){

@@ -35,6 +35,18 @@
         app:maxImageSize="75dp" />
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_configuaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:elevation="10dp"
+        app:fabSize="auto"
+        app:layout_anchor="@+id/lv_pacientes_main"
+        app:layout_anchorGravity="center|start"
+        app:maxImageSize="50dp"
+        app:srcCompat="@drawable/img_configuracion" />
+
     <ListView
         android:id="@+id/lv_pacientes_main"
         android:layout_width="1093dp"

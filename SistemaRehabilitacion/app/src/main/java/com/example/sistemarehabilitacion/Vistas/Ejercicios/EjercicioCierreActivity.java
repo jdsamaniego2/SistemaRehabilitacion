@@ -15,15 +15,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.Bluetooth.BluetoothActivity;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
-import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes.MainActivity;
-import com.example.sistemarehabilitacion.Vistas.Musica.ListaReproduccion;
 import com.example.sistemarehabilitacion.Vistas.Musica.ReproductoMusica;
 
 import java.io.File;
@@ -56,6 +52,9 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
     private Date tiempo_inicio;
     private Date tiempo_fin;
     private long tiempo_sesion;
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -151,6 +150,7 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                                             tiempo_fin = new Date();
                                             tiempo_sesion =tiempo_fin.getTime() - tiempo_inicio.getTime();
                                             tiempo_sesion/=1000;
+                                            EjercicioCierreActivity.this.lbl_contador.setText( repeticion_actual+"/"+repeticiones_totales);
                                             /*
                                             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
                                             Date date = new Date();
@@ -244,9 +244,9 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                         else{
                             tiempo =(tiempo_sesion/60)+" minutos";
                         }
-                        dialogo2.setMessage("¿ Desea Guardad Esta Sesión ?\nTipo: Cierre"+"\nTiempo:"+tiempo+"\nRepeticiones:"+repeticiones_realizadas+"/"+repeticiones_totales+"\nFecha: "+fecha);
+                        dialogo2.setMessage("¿ Desea Guardar Esta Sesión ?\nTipo: Cierre"+"\nTiempo:"+tiempo+"\nRepeticiones:"+repeticiones_realizadas+"/"+repeticiones_totales+"\nFecha: "+fecha);
                         dialogo2.setCancelable(false);
-                        dialogo2.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                        dialogo2.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogo1, int id) {
                                 np.stop();
                                 np = null;
@@ -257,7 +257,7 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                                 startActivity(intent);
                             }
                         });
-                        dialogo2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        dialogo2.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogo1, int id) {
                                 np.stop();
                                 np = null;

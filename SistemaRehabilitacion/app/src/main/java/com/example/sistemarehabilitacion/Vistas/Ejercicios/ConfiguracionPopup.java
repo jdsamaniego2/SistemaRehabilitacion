@@ -66,6 +66,12 @@ public class ConfiguracionPopup extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(ConfiguracionPopup.this, MenuActivity.class);
+        startActivity(intent);
+    }
 
 
 }
