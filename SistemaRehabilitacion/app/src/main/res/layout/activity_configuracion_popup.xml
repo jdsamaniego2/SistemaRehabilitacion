@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#00BCD4"
+    android:background="#FF5165"
     tools:context=".Vistas.Ejercicios.ConfiguracionPopup">
 
     <ImageView
@@ -23,26 +23,28 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="329dp"
-        android:layout_height="53dp"
-        android:text="NUMERO DE REPETICIONES:"
+        android:layout_width="284dp"
+        android:layout_height="30dp"
+        android:text="Número De Repeticiones"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.707"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.088" />
 
     <EditText
         android:id="@+id/txtrepeticiones"
-        android:layout_width="232dp"
-        android:layout_height="69dp"
+        android:layout_width="197dp"
+        android:layout_height="43dp"
+        android:background="@drawable/miplaintext2"
         android:ems="10"
         android:inputType="number"
-        android:text="0"
         android:textAlignment="center"
+        android:textColor="#B0000000"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,15 +55,18 @@
 
     <Button
         android:id="@+id/btniniciar"
-        android:layout_width="139dp"
-        android:layout_height="67dp"
-        android:text="COMENZAR"
+        android:layout_width="262dp"
+        android:layout_height="59dp"
+        android:background="@drawable/boton_azul"
+        android:text="Siguiente"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtrepeticiones"
-        app:layout_constraintVertical_bias="0.158" />
+        app:layout_constraintVertical_bias="0.382" />
 
     <TextView
         android:id="@+id/txtmodulo"
@@ -69,7 +74,9 @@
         android:layout_height="46dp"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textColor="#ffffff"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

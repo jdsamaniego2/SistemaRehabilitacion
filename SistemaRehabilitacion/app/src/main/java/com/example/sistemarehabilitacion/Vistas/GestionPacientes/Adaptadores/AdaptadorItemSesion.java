@@ -47,12 +47,19 @@ public class AdaptadorItemSesion extends BaseAdapter {
         TextView txt_tiempo = (TextView) view.findViewById(R.id.lbl_tiempo_item_sesion);
         TextView txt_dificultad = (TextView) view.findViewById(R.id.lbl_dificultad_item_sesion);
 
-        txt_fecha.setText(sesion.getFecha());
-        txt_tipo.setText(sesion.getTipo());
-        txt_repeticiones.setText(sesion.getRepeticiones()+"");
-        txt_tiempo.setText(""+(sesion.getTiempo()/60));
+        txt_fecha.setText("Fecha: "+sesion.getFecha());
+        txt_tipo.setText("Tipo: "+sesion.getTipo());
+        txt_repeticiones.setText("Repeticiones: "+sesion.getRepeticiones()+"");
+
+        if(sesion.getTiempo()%60!=0){
+            txt_tiempo.setText("Tiempo: "+(sesion.getTiempo()/60)+" minutos y "+(sesion.getTiempo()-(sesion.getTiempo()/60)*60)+" segundos");
+        }
+        else{
+            txt_tiempo.setText("Tiempo: "+(sesion.getTiempo()/60)+" minutos");
+        }
+
         if(sesion.getTipo()=="Malla") {
-            txt_dificultad.setText(sesion.getDificultado());
+            txt_dificultad.setText("Dificultad: "+sesion.getDificultado());
         }
         return view;
     }

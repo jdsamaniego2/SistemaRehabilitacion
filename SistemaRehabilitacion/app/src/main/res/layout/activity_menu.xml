@@ -4,15 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mibackgroundgradiente"
     tools:context=".Vistas.Ejercicios.MenuActivity">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="195dp"
+        android:layout_height="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_laberinto_menu"
+        tools:layout_editor_absoluteX="105dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="420dp"
         android:layout_height="109dp"
-        android:background="#009688"
-        android:backgroundTint="#009688"
+        android:background="#E6434A"
         android:backgroundTintMode="multiply"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,93 +32,101 @@
             android:layout_height="71dp"
             android:layout_margin="15dp"
 
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="44dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.578"
             app:srcCompat="@drawable/img_usuario" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="97dp"
-            android:layout_height="28dp"
+            android:layout_width="137dp"
+            android:layout_height="30dp"
             android:layout_marginTop="4dp"
             android:text="Paciente"
-            android:textColor="#9F000000"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.38"
+            app:layout_constraintHorizontal_bias="0.432"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_nombre_menu"
-            android:layout_width="186dp"
-            android:layout_height="45dp"
+            android:layout_width="258dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="8dp"
             android:inputType="textMultiLine"
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/txt_cedula_menu"
+            android:layout_width="180dp"
+            android:layout_height="22dp"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.631"
-            app:layout_constraintStart_toEndOf="@+id/txt_cedula_menu"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.406" />
-
-        <TextView
-            android:id="@+id/txt_cedula_menu"
-            android:layout_width="91dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="12dp"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.382"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.224" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_nombre_menu"
+            app:layout_constraintVertical_bias="0.272" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/btn_cierre_menu"
-        android:layout_width="147dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="48dp"
-        android:text="Cierre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-    <Button
-        android:id="@+id/btn_malla_menu"
-        android:layout_width="147dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="32dp"
-        android:text="Malla"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_laberinto_menu" />
-
-    <Button
         android:id="@+id/btn_timon_menu"
-        android:layout_width="147dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="20dp"
-        android:text="Timon"
+        android:layout_width="193dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/boton_azul"
+        android:text="Manijas"
+        android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_cierre_menu" />
 
     <Button
-        android:id="@+id/btn_laberinto_menu"
-        android:layout_width="147dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="28dp"
-        android:text="Laberinto"
+        android:id="@+id/btn_cierre_menu"
+        android:layout_width="198dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/boton_azul"
+        android:text="Cierre"
+        android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <Button
+        android:id="@+id/btn_laberinto_menu"
+        android:layout_width="193dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/boton_azul"
+        android:text="Recorrido"
+        android:textColor="#ffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_timon_menu" />
 
@@ -118,13 +134,14 @@
         android:id="@+id/btn_reportes_menu"
         android:layout_width="323dp"
         android:layout_height="71dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/boton_naranja"
         android:text="Reporte De Sesiones"
+        android:textColor="#ffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_malla_menu"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.26" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

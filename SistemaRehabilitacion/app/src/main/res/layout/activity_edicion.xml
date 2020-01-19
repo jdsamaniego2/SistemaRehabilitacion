@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mibackgroundgradiente"
+
     tools:context=".Vistas.GestionPacientes.Pacientes.EdicionActivity">
 
     <ImageView
@@ -11,10 +13,9 @@
         android:layout_width="260dp"
         android:layout_height="116dp"
         android:layout_margin="50dp"
-        android:layout_marginTop="44dp"
         android:src="@drawable/img_usuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -28,70 +29,97 @@
         android:enabled="false"
         android:hint="Cédula"
         android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/txt_nombre_edicion"
-        android:layout_width="285dp"
-        android:layout_height="46dp"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="287dp"
+        android:layout_height="34dp"
         android:layout_marginTop="12dp"
+        android:background="@drawable/miplaintext"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="textPersonName"
+        android:textColor="#9F000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_cedula_edicion" />
 
     <EditText
         android:id="@+id/txt_apellido_edicion"
-        android:layout_width="285dp"
-        android:layout_height="47dp"
+        android:layout_width="283dp"
+        android:layout_height="34dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/miplaintext"
         android:ems="10"
         android:hint="Apellido"
         android:inputType="textPersonName"
+        android:textColor="#9F000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_nombre_edicion" />
 
     <EditText
         android:id="@+id/txt_tecnico_edicion"
-        android:layout_width="281dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="282dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/miplaintext"
         android:ems="10"
         android:hint="Encargado"
         android:inputType="textPersonName"
+        android:textColor="#9F000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_apellido_edicion" />
 
     <EditText
         android:id="@+id/txt_ano_edicion"
-        android:layout_width="78dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="81dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/miplaintext"
         android:ems="10"
         android:hint="Año"
         android:inputType="number"
         android:maxLength="4"
+        android:textColor="#9F000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.208"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/txt_mes_edicion"
-        android:layout_width="66dp"
-        android:layout_height="43dp"
+        android:layout_width="65dp"
+        android:layout_height="34dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/miplaintext"
         android:ems="10"
         android:hint="Mes"
         android:inputType="number"
         android:maxLength="2"
+        android:textColor="#9F000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -103,19 +131,26 @@
         android:layout_marginTop="12dp"
         android:text="/"
         android:textSize="30sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+
         app:layout_constraintStart_toEndOf="@+id/txt_dia_edicion"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/txt_dia_edicion"
-        android:layout_width="66dp"
-        android:layout_height="43dp"
+        android:layout_width="65dp"
+        android:layout_height="35dp"
         android:layout_marginStart="72dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/miplaintext"
         android:ems="10"
         android:hint="Día"
         android:inputType="number"
         android:maxLength="2"
+        android:textColor="#9F000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -124,13 +159,16 @@
         android:layout_width="184dp"
         android:layout_height="54dp"
         android:layout_marginBottom="28dp"
+        android:background="@drawable/boton_verde"
         android:text="Editar"
+        android:textColor="#ffff"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_mes_edicion"
-        app:layout_constraintVertical_bias="0.421" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.402" />
 
     <TextView
         android:id="@+id/textView2"
@@ -140,6 +178,7 @@
         android:layout_marginTop="16dp"
         android:text="/"
         android:textSize="30sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/txt_mes_edicion"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -148,11 +187,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="Fecha De Nacimiento"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.336"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_tecnico_edicion" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="397dp"
+        android:layout_height="18dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/txt_mes_edicion"
+        tools:layout_editor_absoluteX="22dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

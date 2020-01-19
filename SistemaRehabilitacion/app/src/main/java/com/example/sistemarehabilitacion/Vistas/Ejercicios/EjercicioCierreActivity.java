@@ -2,12 +2,11 @@ package com.example.sistemarehabilitacion.Vistas.Ejercicios;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextPaint;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -16,15 +15,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.Bluetooth.BluetoothActivity;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
-import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes.MainActivity;
-import com.example.sistemarehabilitacion.Vistas.Musica.ListaReproduccion;
 import com.example.sistemarehabilitacion.Vistas.Musica.ReproductoMusica;
 
 import java.io.File;
@@ -50,17 +45,21 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
     int posicion;
     Uri u;
 
-
-
     private int repeticiones_totales=0,segundos_control=10;
     private int repeticion_actual=0;
-
     private int valor_anterior=0;
+
+    private Date tiempo_inicio;
+    private Date tiempo_fin;
+    private long tiempo_sesion;
+
+
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ejercicio_cierre);
         inicializarComponentes();
@@ -90,8 +89,17 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
             }
         });
     }
-
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        np.stop();
+        np = null;
+        Intent intent = new Intent(EjercicioCierreActivity.this, MenuActivity.class);
+        startActivity(intent);
+    }
     private void inicializarComponentes(){
+        tiempo_inicio = new Date();
+        tiempo_sesion = 0;
         lbl_contador = findViewById(R.id.txt_contador_sesion_cierre);
         btn_finalizar = findViewById(R.id.btn_finalizar_sesion_cierre);
 
@@ -128,10 +136,16 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                             if(tipo_ejercicio.equals("CIERRE")){//solo se detecta si es tipo cierre (SOLO MODIFICAR LO DE ESTE IF EN LAS OTRAS VISTAS)
 
                                 if(valor_anterior == 0){//si el valor anterior fue 0
-                                    if(valor_ejercicio.equals("1")){
+                                    if(valor_ejercicio.equals("1")&&(repeticion_actual<repeticiones_totales)){
                                         repeticion_actual++;
                                         //*INCREMENTAR EL TIEMPO*/
-                                        segundos_control =segundos_control+10;
+                                        if(segundos_control==50){
+                                            segundos_control=0;
+
+                                        }else{
+
+                                            segundos_control =segundos_control+10;
+                                        }
                                         if (!np.isPlaying()) {
                                             np.start();
                                         }
@@ -139,10 +153,14 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
 
 
                                         if(repeticion_actual==repeticiones_totales){
-
+                                            tiempo_fin = new Date();
+                                            tiempo_sesion =tiempo_fin.getTime() - tiempo_inicio.getTime();
+                                            tiempo_sesion/=1000;
+                                            EjercicioCierreActivity.this.lbl_contador.setText( repeticion_actual+"/"+repeticiones_totales);
+                                            /*
                                             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss", Locale.getDefault());
                                             Date date = new Date();
-                                            final String fecha = dateFormat.format(date);
+                                            final String fecha = dateFormat.format(date);*/
                                             /*SUENA LA CANCION COMPLETA*/
 
                                             /*
@@ -175,7 +193,9 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
 
                                         }
                                         else{
-                                            EjercicioCierreActivity.this.lbl_contador.setText( repeticion_actual+"/"+repeticiones_totales);
+
+                                                EjercicioCierreActivity.this.lbl_contador.setText( repeticion_actual+"/"+repeticiones_totales);
+
                                         }
                                         valor_anterior = 1;
                                     }
@@ -201,10 +221,17 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
     }
 
     private void inicializarEventos(){
+
+
+
         btn_finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(( repeticion_actual<repeticiones_totales )){
+                    tiempo_fin = new Date();
+                    tiempo_sesion =tiempo_fin.getTime() - tiempo_inicio.getTime();
+                    tiempo_sesion/=1000;
+                }
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder(EjercicioCierreActivity.this);
                 dialogo1.setTitle("Mensaje De Confirmación");
                 dialogo1.setMessage("¿Desea Finalizar Esta Sesión?");
@@ -216,21 +243,30 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                         final String fecha = dateFormat.format(date);
                         final int repeticiones_realizadas = repeticion_actual;
                         AlertDialog.Builder dialogo2 = new AlertDialog.Builder(EjercicioCierreActivity.this);
-                        dialogo2.setTitle("Mensaje De Confirmación");
-                        dialogo2.setMessage("¿ Desea Guardad Esta Sesión ?\nTipo: Cierre"+"\nTiempo:"+180+"\nRepeticiones:"+repeticiones_realizadas+"/"+repeticiones_totales+"\nFecha: "+fecha);
+                        dialogo2.setTitle("Mensaje De Confirmación");String tiempo = "";
+                        if(tiempo_sesion%60!=0){
+                            tiempo = (tiempo_sesion/60)+" minutos y "+(tiempo_sesion-(tiempo_sesion/60)*60)+" segundos";
+                        }
+                        else{
+                            tiempo =(tiempo_sesion/60)+" minutos";
+                        }
+                        dialogo2.setMessage("¿ Desea Guardar Esta Sesión ?\nTipo: Cierre"+"\nTiempo:"+tiempo+"\nRepeticiones:"+repeticiones_realizadas+"/"+repeticiones_totales+"\nFecha: "+fecha);
                         dialogo2.setCancelable(false);
-                        dialogo2.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                        dialogo2.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogo1, int id) {
-
+                                np.stop();
+                                np = null;
                                 ServicioBD sercicio = new ServicioBD(EjercicioCierreActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                                sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,repeticiones_realizadas,"CIERRE",fecha,"Normal");
+                                sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),(int)tiempo_sesion,repeticiones_realizadas,"CIERRE",fecha,"Normal");
                                 Toast.makeText(EjercicioCierreActivity.this.getApplicationContext(),"Sesión Guardada Satisfactoriamente",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(EjercicioCierreActivity.this, MenuActivity.class);
                                 startActivity(intent);
                             }
                         });
-                        dialogo2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        dialogo2.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogo1, int id) {
+                                np.stop();
+                                np = null;
                                 Toast.makeText(EjercicioCierreActivity.this.getApplicationContext(),"La Sesión No Fué Guardada ",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(EjercicioCierreActivity.this, MenuActivity.class);
                                 startActivity(intent);
@@ -241,7 +277,8 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                     }
                 });
                 dialogo1.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogo1, int id) { }
+                    public void onClick(DialogInterface dialogo1, int id) {
+                    }
                 });
                 dialogo1.show();
 
@@ -252,9 +289,6 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
     }
 
     private  void hiloReproduccion(){
-
-
-
         actualizarsb=new Thread(){
             @Override
             public void run() {
@@ -276,14 +310,14 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                         txtfin.setText(aux.toString().trim());
                         int seconds=(int) (ejecution/1000)%60;
                         if(repeticion_actual<repeticiones_totales){
-                        if (seconds==segundos_control) {
-
-                            np.pause();
-                        }
+                            if (seconds==segundos_control) {
+                                np.pause();
+                            }
                         }
                     }catch (Exception e){
                         //txtfin.setText(aux);
                     }
+
 
                 }
             }

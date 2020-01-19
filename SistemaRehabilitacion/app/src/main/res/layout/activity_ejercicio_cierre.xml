@@ -4,7 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mibackgroundgradiente"
     tools:context=".Vistas.Ejercicios.EjercicioCierreActivity">
+
+    <ImageButton
+        android:id="@+id/btnplay"
+        android:layout_width="42dp"
+        android:layout_height="32dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/pausa"
+        tools:layout_editor_absoluteX="365dp"
+        tools:layout_editor_absoluteY="64dp" />
+
+    <ImageButton
+        android:id="@+id/btndetener"
+        android:layout_width="55dp"
+        android:layout_height="36dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/reestar"
+        tools:layout_editor_absoluteX="352dp"
+        tools:layout_editor_absoluteY="28dp" />
+
+    <TextView
+        android:id="@+id/txtini"
+        android:layout_width="109dp"
+        android:layout_height="18dp"
+        android:text="TextView"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="298dp"
+        tools:layout_editor_absoluteY="-2dp" />
+
+    <TextView
+        android:id="@+id/txtfin"
+        android:layout_width="83dp"
+        android:layout_height="21dp"
+        android:text="TextView"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="324dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/btn_finalizar_sesion_cierre"
+        android:layout_width="232dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="24dp"
+
+        android:background="@drawable/boton_naranja"
+        android:text="Finalizar"
+        android:textColor="#ffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sbp"
+        app:layout_constraintVertical_bias="0.578" />
 
     <SeekBar
         android:id="@+id/sbp"
@@ -12,93 +67,29 @@
         android:layout_height="15dp"
         android:layout_above="@+id/btnplay"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_finalizar_sesion_cierre"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_contador_sesion_cierre"
-        app:layout_constraintVertical_bias="0.252"
         tools:ignore="UnknownId" />
-
-    <ImageButton
-        android:id="@+id/btnplay"
-        android:layout_width="138dp"
-        android:layout_height="127dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btndetener"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sbp"
-        app:layout_constraintVertical_bias="0.177"
-        app:srcCompat="@drawable/pausa" />
-
-    <ImageButton
-        android:id="@+id/btndetener"
-        android:layout_width="139dp"
-        android:layout_height="139dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="44dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
-        app:layout_constraintStart_toEndOf="@+id/btnplay"
-        app:layout_constraintTop_toBottomOf="@+id/sbp"
-        app:layout_constraintVertical_bias="0.116"
-        app:srcCompat="@drawable/reestar" />
-
-    <TextView
-        android:id="@+id/txtini"
-        android:layout_width="109dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/sbp"
-        app:layout_constraintEnd_toStartOf="@+id/txtfin"
-        app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_contador_sesion_cierre"
-        app:layout_constraintVertical_bias="0.985" />
-
-    <TextView
-        android:id="@+id/txtfin"
-        android:layout_width="83dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/sbp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/txtini"
-        app:layout_constraintTop_toBottomOf="@+id/txt_contador_sesion_cierre"
-        app:layout_constraintVertical_bias="0.985" />
-
-    <Button
-        android:id="@+id/btn_finalizar_sesion_cierre"
-        android:layout_width="191dp"
-        android:layout_height="63dp"
-        android:text="Finalizar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txt_contador_sesion_cierre"
-        android:layout_width="283dp"
-        android:layout_height="69dp"
+        android:layout_width="280dp"
+        android:layout_height="52dp"
         android:text="0"
         android:textAlignment="center"
+        android:textColor="#ffffff"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_finalizar_sesion_cierre"
+        app:layout_constraintBottom_toTopOf="@+id/sbp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.041" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <TextView
         android:id="@+id/textView10"
@@ -107,8 +98,8 @@
         android:layout_marginTop="16dp"
         android:text="CIERRE"
         android:textAlignment="center"
-        android:textColor="#CB6B6B6B"
-        android:textSize="60sp"
+        android:textColor="#ffffff"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -117,12 +108,23 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="265dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="277dp"
+        android:layout_height="248dp"
+        android:layout_marginTop="48dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/txt_contador_sesion_cierre"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:srcCompat="@drawable/logo_cierre" />
+
+    <TextView
+        android:id="@+id/txt_tiempo"
+        android:layout_width="71dp"
+        android:layout_height="29dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

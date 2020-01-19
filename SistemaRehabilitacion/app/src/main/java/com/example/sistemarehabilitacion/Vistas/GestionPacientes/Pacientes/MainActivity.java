@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -24,11 +28,15 @@ import com.example.sistemarehabilitacion.BaseDatos.Modelos.Request;
 import com.example.sistemarehabilitacion.BaseDatos.Modelos.Sesion;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.ClienteApi.AdaptadorApi;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.ClienteApi.IServiciosApi;
+import com.example.sistemarehabilitacion.BaseDatos.Remotos.IdentificadoresApi;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.SincronizadorLocalRemoto;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.SincronizadorPaciente;
 import com.example.sistemarehabilitacion.BaseDatos.Remotos.SincronizadorSesion;
+import com.example.sistemarehabilitacion.Bluetooth.BluetoothActivity;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.BaseDeDatos.SincronizacionActivity;
+import com.example.sistemarehabilitacion.Vistas.Configuracion.ConfiguracionActivity;
+import com.example.sistemarehabilitacion.Vistas.Ejercicios.ConfiguracionPopup;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.MenuActivity;
 import com.example.sistemarehabilitacion.Vistas.Errores.ErrorConexionBdRemota;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores.AdaptadorItemPaciente;
@@ -56,20 +64,23 @@ public class MainActivity extends AppCompatActivity {
     ListView lv_pacientes;
     FloatingActionButton btn_registrar;
     FloatingActionButton btn_sincronizar;
+    FloatingActionButton btn_configuraciones;
 
     Paciente paciente_seleccionado = null;//para mostrar el menu flotante
+    SharedPreferences prefs ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //QUITA LA BARRA DE TITULO SUPERIOR DE LA VISTA
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
+        setTitle("Mis Pacientes");
         inicializarComponentes();
         inicializarEventos();
-
-
-
-
+        Toast.makeText(MainActivity.this,BluetoothActivity.address,Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -123,17 +134,49 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+    @Override
+    public void onBackPressed(){
+        //super.onBackPressed();
+
+    }
 
     private void inicializarComponentes(){
+        prefs = this.getSharedPreferences("config", Context.MODE_PRIVATE);
         lv_pacientes = findViewById(R.id.lv_pacientes_main);
         btn_registrar = findViewById(R.id.btnft_registrar_main);
         btn_sincronizar = findViewById(R.id.btnft_sincronizar_main);
+        btn_configuraciones = findViewById(R.id.btn_configuaciones);
+
 
         ServicioBD sercicio = new ServicioBD(MainActivity.this.getApplicationContext(),IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
         pacientes = sercicio.ConsultarPacientes();
         items_pacientes = new AdaptadorItemPaciente(pacientes,this.getApplicationContext());
         lv_pacientes.setAdapter(items_pacientes);
         registerForContextMenu(lv_pacientes);
+
+
+
+        String ip = prefs.getString("ip", "sin_valor");
+
+        if(ip.equals("sin_valor")){
+            prefs.edit().putString("ip", "192.168.1.177").apply();
+            ip = "192.168.1.177";
+            IdentificadoresApi.direcccion = ip;
+        }
+        else{
+            IdentificadoresApi.direcccion = ip;
+        }
+
+        String mac = prefs.getString("mac", "sin_valor");
+        if(mac.equals("sin_valor")){
+            prefs.edit().putString("mac", "98:D3:33:80:59:0F").apply();
+            mac = "98:D3:33:80:59:0F";
+            BluetoothActivity.address = mac;
+        }
+        else{
+            BluetoothActivity.address = mac;
+        }
+
     }
     private void inicializarEventos(){
         btn_registrar.setOnClickListener(new View.OnClickListener() {
@@ -322,6 +365,13 @@ public class MainActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 paciente_seleccionado = pacientes.get(i);
                 return false;
+            }
+        });
+        btn_configuraciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ConfiguracionActivity.class);
+                startActivity(intent);
             }
         });
     }
