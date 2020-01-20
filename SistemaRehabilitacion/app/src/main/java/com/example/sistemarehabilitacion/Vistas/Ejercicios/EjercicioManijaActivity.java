@@ -143,7 +143,14 @@ public class EjercicioManijaActivity extends BluetoothActivity implements View.O
                                 if(repeticion_actual<repeticiones_totales){
                                     repeticion_actual++;
                                     //*INCREMENTAR EL TIEMPO*/
-                                    segundos_control =segundos_control+10;
+
+                                    if(segundos_control==50){
+                                        segundos_control=0;
+
+                                    }else{
+
+                                        segundos_control =segundos_control+10;
+                                    }
                                     if (!np.isPlaying()) {
                                         np.start();
                                     }

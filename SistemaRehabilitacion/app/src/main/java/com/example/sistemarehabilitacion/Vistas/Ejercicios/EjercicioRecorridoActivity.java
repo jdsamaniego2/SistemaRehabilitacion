@@ -115,7 +115,13 @@ public class EjercicioRecorridoActivity extends BluetoothActivity implements Vie
                                 if((Integer.parseInt(valor_ejercicio) == punto_actual+1)){
 
                                     /*INCREMENTAR TIEMPO DE CANCION*/
-                                    segundos_control =segundos_control+10;
+                                    if(segundos_control==50){
+                                        segundos_control=0;
+
+                                    }else{
+
+                                        segundos_control =segundos_control+10;
+                                    }
                                     if (!np.isPlaying()) {
                                         np.start();
                                     }

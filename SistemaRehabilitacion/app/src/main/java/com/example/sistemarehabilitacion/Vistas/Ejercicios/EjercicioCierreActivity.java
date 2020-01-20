@@ -139,7 +139,13 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                                     if(valor_ejercicio.equals("1")&&(repeticion_actual<repeticiones_totales)){
                                         repeticion_actual++;
                                         //*INCREMENTAR EL TIEMPO*/
-                                        segundos_control =segundos_control+10;
+                                        if(segundos_control==50){
+                                            segundos_control=0;
+
+                                        }else{
+
+                                            segundos_control =segundos_control+10;
+                                        }
                                         if (!np.isPlaying()) {
                                             np.start();
                                         }
@@ -311,6 +317,7 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                     }catch (Exception e){
                         //txtfin.setText(aux);
                     }
+
 
                 }
             }
