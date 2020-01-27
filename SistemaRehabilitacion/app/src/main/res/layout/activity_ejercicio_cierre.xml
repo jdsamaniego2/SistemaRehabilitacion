@@ -119,12 +119,4 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:srcCompat="@drawable/logo_cierre" />
 
-    <TextView
-        android:id="@+id/txt_tiempo"
-        android:layout_width="71dp"
-        android:layout_height="29dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
