@@ -12,6 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Vistas.Configuracion.ConfiguracionActivity"></activity>
         <activity android:name=".Vistas.Ejercicios.EjercicioManijaActivity" />
@@ -23,7 +24,7 @@
         <activity
             android:name=".Vistas.Ejercicios.ConfiguracionPopup"
             android:theme="@style/AppTheme.TemaPopup" />
-        <activity android:name=".Vistas.Musica.ListaReproduccion" />
+        <activity  android:name=".Vistas.Musica.ListaReproduccion" />
         <activity android:name=".Vistas.Musica.ReproductoMusica" />
         <activity android:name=".Vistas.BaseDeDatos.SincronizacionActivity" />
         <activity android:name=".Vistas.Errores.ErrorConexionBdRemota" />
@@ -41,7 +42,9 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            android:resource="@array/preloaded_fonts"
+
+            />
     </application>
 
 </manifest>

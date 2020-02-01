@@ -53,7 +53,7 @@ public class SincronizadorSesion {
                 if(response.isSuccessful()){
                     try{//si devuelve un paciente
                         SincronizadorSesion.this.id_paciente = response.body().get(0).getId();
-                        Toast.makeText(SincronizadorSesion.this.contexto,"Busqueda de paciente exitosa pacientes id: "+ SincronizadorSesion.this.id_paciente,Toast.LENGTH_LONG).show();
+                       // Toast.makeText(SincronizadorSesion.this.contexto,"Busqueda de paciente exitosa pacientes id: "+ SincronizadorSesion.this.id_paciente,Toast.LENGTH_LONG).show();
 
 
                         IServiciosApi api = AdaptadorApi.getApiservice();
@@ -64,11 +64,11 @@ public class SincronizadorSesion {
                                 if(response.isSuccessful()){
                                     try{
                                         SincronizadorSesion.this.id_sesion = response.body().get(0).getId();
-                                        Toast.makeText(SincronizadorSesion.this.contexto,"SESION ENCONTRADA",Toast.LENGTH_LONG).show();
+                                        //Toast.makeText(SincronizadorSesion.this.contexto,"SESION ENCONTRADA",Toast.LENGTH_LONG).show();
                                         //la sesion si existe (no hacer nada)
 
                                     }catch (Exception e){
-                                        Toast.makeText(SincronizadorSesion.this.contexto,"NO EXISTE LA SESION",Toast.LENGTH_LONG).show();
+                                        //Toast.makeText(SincronizadorSesion.this.contexto,"NO EXISTE LA SESION",Toast.LENGTH_LONG).show();
                                         //no existe la sesion (la guardo)
                                         IServiciosApi api_guardar_sesion = AdaptadorApi.getApiservice();
                                         SincronizadorSesion.this.sesion.setId_paciente((int)SincronizadorSesion.this.id_paciente);
@@ -79,10 +79,10 @@ public class SincronizadorSesion {
                                             public void onResponse(Call<Request> call_guardar_seion, Response<Request> response) {
                                                 if(response.isSuccessful()){
                                                     if(response.body().getCode()==200){
-                                                        Toast.makeText(SincronizadorSesion.this.contexto,"SESION GUARDADA",Toast.LENGTH_LONG).show();
+                                                        //Toast.makeText(SincronizadorSesion.this.contexto,"SESION GUARDADA",Toast.LENGTH_LONG).show();
                                                     }
                                                     else{
-                                                        Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL GUARDAR SESION",Toast.LENGTH_LONG).show();
+                                                        //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL GUARDAR SESION",Toast.LENGTH_LONG).show();
 
                                                         //vista de error
                                                         if(!SincronizadorLocalRemoto.error_mostrado){
@@ -96,7 +96,7 @@ public class SincronizadorSesion {
 
                                                 }
                                                 else{
-                                                    Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL GUARDAR SESION",Toast.LENGTH_LONG).show();
+                                                    //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL GUARDAR SESION",Toast.LENGTH_LONG).show();
                                                     //vista de error
                                                     if(!SincronizadorLocalRemoto.error_mostrado){
                                                         Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
@@ -109,7 +109,7 @@ public class SincronizadorSesion {
 
                                             @Override
                                             public void onFailure(Call<Request> call_guardar_seion, Throwable t) {
-                                                Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN---------",Toast.LENGTH_LONG).show();
+                                                //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN---------",Toast.LENGTH_LONG).show();
                                                 //vista de error
                                                 if(!SincronizadorLocalRemoto.error_mostrado){
                                                     Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
@@ -123,7 +123,7 @@ public class SincronizadorSesion {
 
                                 }
                                 else{
-                                    Toast.makeText(SincronizadorSesion.this.contexto,"ERROR LA RESPUESTA",Toast.LENGTH_LONG).show();
+                                    //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR LA RESPUESTA",Toast.LENGTH_LONG).show();
                                     //vista de error
                                     if(!SincronizadorLocalRemoto.error_mostrado){
                                         Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
@@ -135,7 +135,7 @@ public class SincronizadorSesion {
                             }
                             @Override
                             public void onFailure(Call<List<Sesion>> call_buscar_sesion, Throwable t) {
-                                Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
+                                //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
                                 //vista de error
                                 if(!SincronizadorLocalRemoto.error_mostrado){
                                     Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
@@ -149,7 +149,7 @@ public class SincronizadorSesion {
 
                     }
                     catch (Exception e){//no se encontró el paciente (devuelve null)
-                        Toast.makeText(SincronizadorSesion.this.contexto,"PACIENTE NO ENCONTRADO",Toast.LENGTH_LONG).show();//esto no debería ocurrir
+                       // Toast.makeText(SincronizadorSesion.this.contexto,"PACIENTE NO ENCONTRADO",Toast.LENGTH_LONG).show();//esto no debería ocurrir
                         //vista de error
                         if(!SincronizadorLocalRemoto.error_mostrado){
                             Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
@@ -160,7 +160,7 @@ public class SincronizadorSesion {
                     }
                 }
                 else{
-                    Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL BUSCAR PACIENTE",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL BUSCAR PACIENTE",Toast.LENGTH_LONG).show();
                     //vista de error
                     if(!SincronizadorLocalRemoto.error_mostrado){
                         Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
@@ -173,7 +173,7 @@ public class SincronizadorSesion {
 
             @Override
             public void onFailure(Call<List<Paciente>> call_buscar_paciente, Throwable t) {
-                Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN--",Toast.LENGTH_LONG).show();
+                //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN--",Toast.LENGTH_LONG).show();
                 //vista de error
                 if(!SincronizadorLocalRemoto.error_mostrado){
                     Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
@@ -205,7 +205,7 @@ public class SincronizadorSesion {
             @Override
             public void onResponse(Call<List<Sesion>> call, Response<List<Sesion>> response) {
                if(response.isSuccessful()){
-                    Toast.makeText(SincronizadorSesion.this.contexto,"LOCAL",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(SincronizadorSesion.this.contexto,"LOCAL",Toast.LENGTH_LONG).show();
                     for (Sesion s : response.body()){
                         if(!(SincronizadorSesion.this.existeSesionEnLocal(s,SincronizadorSesion.this.paciente))){
                             ServicioBD sercicio = new ServicioBD(SincronizadorSesion.this.contexto, IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
@@ -214,7 +214,7 @@ public class SincronizadorSesion {
                     }
                 }
                 else {
-                    Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL BUSCAR LA SESION",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL BUSCAR LA SESION",Toast.LENGTH_LONG).show();
                     //vista de error
                    if(!SincronizadorLocalRemoto.error_mostrado){
                        Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
@@ -227,7 +227,7 @@ public class SincronizadorSesion {
 
             @Override
             public void onFailure(Call<List<Sesion>> call, Throwable t) {
-                Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
+                //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
                 //vista de error
                 if(!SincronizadorLocalRemoto.error_mostrado){
                     Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);

@@ -156,8 +156,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        String ip = prefs.getString("ip", "sin_valor");
-
+        //String ip = prefs.getString("ip", "sin_valor");
+/*
         if(ip.equals("sin_valor")){
             prefs.edit().putString("ip", "192.168.1.177").apply();
             ip = "192.168.1.177";
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             IdentificadoresApi.direcccion = ip;
         }
-
+*/
         String mac = prefs.getString("mac", "sin_valor");
         if(mac.equals("sin_valor")){
             prefs.edit().putString("mac", "98:D3:33:80:59:0F").apply();

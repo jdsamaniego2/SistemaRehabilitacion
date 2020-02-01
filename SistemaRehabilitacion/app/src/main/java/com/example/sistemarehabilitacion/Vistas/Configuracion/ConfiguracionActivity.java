@@ -26,7 +26,7 @@ import org.w3c.dom.Text;
 
 public class ConfiguracionActivity extends AppCompatActivity {
 
-    EditText txt_ip;
+    //EditText txt_ip;
     RadioGroup btn_group_modelo;
     RadioButton btn_modelo1;
     RadioButton btn_modelo2;
@@ -52,11 +52,11 @@ public class ConfiguracionActivity extends AppCompatActivity {
         btn_modelo1 = findViewById(R.id.rbtn_modelo1);
         btn_modelo2 = findViewById(R.id.rbtn_modelo2);
         btn_guardar = findViewById(R.id.btn_guardar_configuracion);
-        txt_ip = findViewById(R.id.txt_ip_configuracion);
+       // txt_ip = findViewById(R.id.txt_ip_configuracion);
         btn_group_modelo = findViewById(R.id.rbtn_group_modelo);
 
-        String ip = prefs.getString("ip", "sin_valor");
-        txt_ip.setText(ip);
+       // String ip = prefs.getString("ip", "sin_valor");
+      //  txt_ip.setText(ip);
 
         String mac = prefs.getString("mac", "sin_valor");
 
@@ -72,12 +72,12 @@ public class ConfiguracionActivity extends AppCompatActivity {
         btn_guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(txt_ip.getText().toString().isEmpty()||(!btn_modelo1.isChecked()&&!btn_modelo2.isChecked())){
+                if((!btn_modelo1.isChecked()&&!btn_modelo2.isChecked())){
                     Toast.makeText(ConfiguracionActivity.this.getApplicationContext(),"Complete todos los campos",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    prefs.edit().putString("ip", txt_ip.getText().toString()).apply();
-                    IdentificadoresApi.direcccion = txt_ip.getText().toString();
+                   // prefs.edit().putString("ip", txt_ip.getText().toString()).apply();
+                   // IdentificadoresApi.direcccion = txt_ip.getText().toString();
 
 
                     if(btn_modelo1.isChecked()){

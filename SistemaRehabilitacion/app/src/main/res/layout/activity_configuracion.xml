@@ -15,34 +15,24 @@
         android:text="Guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rbtn_group_modelo"
-        app:layout_constraintVertical_bias="0.22" />
-
-    <EditText
-        android:id="@+id/txt_ip_configuracion"
-        android:layout_width="214dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/miplaintext"
-        android:ems="10"
-        android:hint="ip del servidor remoto"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintVertical_bias="0.633" />
 
     <RadioGroup
         android:id="@+id/rbtn_group_modelo"
         android:layout_width="213dp"
         android:layout_height="143dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_guardar_configuracion"
+        android:layout_marginTop="204dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
 
         <RadioButton
             android:id="@+id/rbtn_modelo1"
@@ -50,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="Modelo 1"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <RadioButton
@@ -59,7 +49,7 @@
             android:layout_height="wrap_content"
             android:text="Modelo 2"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
     </RadioGroup>
 
@@ -67,27 +57,13 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="56dp"
         android:text="Dispositivo De Rehabilitación"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_ip_configuracion" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="203dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="52dp"
-        android:text="Dirección IP del Servidor"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.319"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
