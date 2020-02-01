@@ -3,6 +3,7 @@ package com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -10,6 +11,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -49,13 +52,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
-
+    private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 111 ;
 
     AdaptadorItemPaciente items_pacientes;
     List<Paciente> pacientes;
@@ -81,7 +85,26 @@ public class MainActivity extends AppCompatActivity {
         inicializarComponentes();
         inicializarEventos();
         Toast.makeText(MainActivity.this,BluetoothActivity.address,Toast.LENGTH_LONG).show();
+
+        solicitarPermisos();
     }
+
+
+    private void solicitarPermisos() {
+
+        int permissionCheck = ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+               requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+            }
+        }
+
+    }
+
+
+
+
+
 
     @Override
     protected void onResume() {
