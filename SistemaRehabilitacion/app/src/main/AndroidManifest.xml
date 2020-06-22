@@ -12,9 +12,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Vistas.Configuracion.ConfiguracionActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Vistas.Configuracion.EncargadoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Vistas.Configuracion.ConfiguracionActivity" />
         <activity android:name=".Vistas.Ejercicios.EjercicioManijaActivity" />
         <activity android:name=".Vistas.Ejercicios.EjercicioRecorridoActivity" />
         <activity android:name=".Vistas.Ejercicios.EjercicioCierreActivity" />
@@ -24,7 +31,7 @@
         <activity
             android:name=".Vistas.Ejercicios.ConfiguracionPopup"
             android:theme="@style/AppTheme.TemaPopup" />
-        <activity  android:name=".Vistas.Musica.ListaReproduccion" />
+        <activity android:name=".Vistas.Musica.ListaReproduccion" />
         <activity android:name=".Vistas.Musica.ReproductoMusica" />
         <activity android:name=".Vistas.BaseDeDatos.SincronizacionActivity" />
         <activity android:name=".Vistas.Errores.ErrorConexionBdRemota" />
@@ -32,19 +39,11 @@
         <activity android:name=".Vistas.GestionPacientes.Sesiones.ReportesActivity" />
         <activity android:name=".Vistas.GestionPacientes.Pacientes.EdicionActivity" />
         <activity android:name=".Vistas.GestionPacientes.Pacientes.RegistroActivity" />
-        <activity android:name=".Vistas.GestionPacientes.Pacientes.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Vistas.GestionPacientes.Pacientes.MainActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts"
-
-            />
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
