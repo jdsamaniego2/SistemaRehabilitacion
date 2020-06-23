@@ -78,7 +78,7 @@ public class MenuActivity extends AppCompatActivity {
                 String fecha = dateFormat.format(date);
 
                 ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Malla",fecha,"Normal");
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Malla",fecha,EncargadoActivity.encargado_actual);
                 Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
             }
         });
@@ -91,7 +91,7 @@ public class MenuActivity extends AppCompatActivity {
                 String fecha = dateFormat.format(date);
 
                 ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Cierre",fecha,"Normal");
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Cierre",fecha,EncargadoActivity.encargado_actual);
                 Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
             }
         });
@@ -104,7 +104,7 @@ public class MenuActivity extends AppCompatActivity {
                 String fecha = dateFormat.format(date);
 
                 ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Laberinto",fecha,"Normal");
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Laberinto",fecha,EncargadoActivity.encargado_actual);
                 Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
             }
         });
@@ -116,7 +116,7 @@ public class MenuActivity extends AppCompatActivity {
 
                 String fecha = dateFormat.format(date);
                 ServicioBD sercicio = new ServicioBD(MenuActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Timon",fecha,"Normal");
+                long id = sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,5,"Timon",fecha,EncargadoActivity.encargado_actual);
                 Toast.makeText(MenuActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
             }
         });*/

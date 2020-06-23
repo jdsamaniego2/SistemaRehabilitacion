@@ -31,18 +31,18 @@ public class Sesion implements Serializable {
     @Expose
     private String fecha;
 
-    @SerializedName("DIFICULTAD_SES")
+    @SerializedName("SUPERVISOR_SES")
     @Expose
-    private  String dificultado;
+    private  String supervisor;
 
-    public Sesion(int id, int id_paciente, int tiempo, int repeticiones, String tipo, String fecha, String dificultado) {
+    public Sesion(int id, int id_paciente, int tiempo, int repeticiones, String tipo, String fecha, String supervisor) {
         this.id = id;
         this.id_paciente = id_paciente;
         this.tiempo = tiempo;
         this.repeticiones = repeticiones;
         this.tipo = tipo;
         this.fecha = fecha;
-        this.dificultado = dificultado;
+        this.supervisor = supervisor;
     }
 
     public Sesion() {
@@ -96,11 +96,11 @@ public class Sesion implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getDificultado() {
-        return dificultado;
+    public String getSupervisor() {
+        return supervisor;
     }
 
-    public void setDificultado(String dificultado) {
-        this.dificultado = dificultado;
+    public void setSupervisor(String supervisor) {
+        this.supervisor = supervisor;
     }
 }

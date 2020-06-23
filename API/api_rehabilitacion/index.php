@@ -137,8 +137,8 @@ $app->post('/sesiones/', function () use($db, $app) {
 			if(!isset($data['FECHA_SES'])){
 				$data['FECHA_SES']=null;
 			}
-			if(!isset($data['DIFICULTAD_SES'])){
-				$data['DIFICULTAD_SES']=null;
+			if(!isset($data['SUPERVISOR_SES'])){
+				$data['SUPERVISOR_SES']=null;
 			}
 
  
@@ -148,7 +148,7 @@ $app->post('/sesiones/', function () use($db, $app) {
 			 "'{$data['REPETICIONES_SES']}',".
  			 "'{$data['TIPO_SES']}',".
  			 "'{$data['FECHA_SES']}',".
-			 "'{$data['DIFICULTAD_SES']}'".
+			 "'{$data['SUPERVISOR_SES']}'".
 			 ");";
 			$insert = $db->query($query);
 
@@ -180,8 +180,8 @@ $app->put('/sesiones/:id', function ($id) use($db, $app) {
 			if(!isset($data['FECHA_SES'])){
 				$data['FECHA_SES']=null;
 			}
-			if(!isset($data['DIFICULTAD_SES'])){
-				$data['DIFICULTAD_SES']=null;
+			if(!isset($data['SUPERVISOR_SES'])){
+				$data['SUPERVISOR_SES']=null;
 			}
 
  
@@ -192,7 +192,7 @@ $app->put('/sesiones/:id', function ($id) use($db, $app) {
                                     REPETICIONES_SES = '{$data['REPETICIONES_SES']}',
                                     TIPO_SES = '{$data['TIPO_SES']}',
                                     FECHA_SES = '{$data['FECHA_SES']}',
-                                    DIFICULTAD_SES = '{$data['DIFICULTAD_SES']}'
+                                    SUPERVISOR_SES = '{$data['SUPERVISOR_SES']}'
                                  WHERE ID_SES=$id";
  
             $update = $db->query($sql);

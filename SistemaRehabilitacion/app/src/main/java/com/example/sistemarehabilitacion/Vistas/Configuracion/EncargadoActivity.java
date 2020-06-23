@@ -16,7 +16,7 @@ import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes.Edici
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes.MainActivity;
 
 public class EncargadoActivity extends AppCompatActivity {
-    static  String encargado_actual = null;
+    public static  String encargado_actual = null;
     Button btn_iniciar_encargado;
     TextView txt_iniciar_encargado;
 

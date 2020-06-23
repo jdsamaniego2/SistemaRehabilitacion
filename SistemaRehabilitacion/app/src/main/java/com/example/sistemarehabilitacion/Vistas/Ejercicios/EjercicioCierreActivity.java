@@ -19,6 +19,7 @@ import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.Bluetooth.BluetoothActivity;
 import com.example.sistemarehabilitacion.R;
+import com.example.sistemarehabilitacion.Vistas.Configuracion.EncargadoActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
 import com.example.sistemarehabilitacion.Vistas.Musica.ReproductoMusica;
 
@@ -172,7 +173,7 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                                                 public void onClick(DialogInterface dialogo1, int id) {
 
                                                     ServicioBD sercicio = new ServicioBD(EjercicioCierreActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                                                    sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,repeticion_actual,"CIERRE",fecha,"Normal");
+                                                    sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,repeticion_actual,"CIERRE",fecha,EncargadoActivity.encargado_actual);
                                                     Toast.makeText(EjercicioCierreActivity.this.getApplicationContext(),"Sesión Guardada Satisfactoriamente",Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(EjercicioCierreActivity.this, MenuActivity.class);
                                                     startActivity(intent);
@@ -257,7 +258,7 @@ public class EjercicioCierreActivity extends BluetoothActivity implements View.O
                                 np.stop();
                                 np = null;
                                 ServicioBD sercicio = new ServicioBD(EjercicioCierreActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                                sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),(int)tiempo_sesion,repeticiones_realizadas,"CIERRE",fecha,"Normal");
+                                sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),(int)tiempo_sesion,repeticiones_realizadas,"CIERRE",fecha, EncargadoActivity.encargado_actual);
                                 Toast.makeText(EjercicioCierreActivity.this.getApplicationContext(),"Sesión Guardada Satisfactoriamente",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(EjercicioCierreActivity.this, MenuActivity.class);
                                 startActivity(intent);

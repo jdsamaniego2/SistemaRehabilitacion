@@ -209,7 +209,7 @@ public class SincronizadorSesion {
                     for (Sesion s : response.body()){
                         if(!(SincronizadorSesion.this.existeSesionEnLocal(s,SincronizadorSesion.this.paciente))){
                             ServicioBD sercicio = new ServicioBD(SincronizadorSesion.this.contexto, IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                            sercicio.RegistrarSesion(SincronizadorSesion.this.paciente.getId(), s.getTiempo(),s.getRepeticiones(), s.getTipo(), s.getFecha(), s.getDificultado());
+                            sercicio.RegistrarSesion(SincronizadorSesion.this.paciente.getId(), s.getTiempo(),s.getRepeticiones(), s.getTipo(), s.getFecha(), s.getSupervisor());
                         }
                     }
                 }

@@ -4,7 +4,7 @@ public class IdentificadoresBD {
 
 
     public static final String nombre_bd= "bd_rehabilitacion";
-    public static final int version_bd= 4;
+    public static final int version_bd= 5;
 
 
     //TABLAS
@@ -28,7 +28,7 @@ public class IdentificadoresBD {
     public static final String campo_sesion_repeticiones = "REPETICIONES_SES";
     public static final String campo_sesion_tipo = "TIPO_SES";
     public static final String campo_sesion_fecha = "FECHA_SES";
-    public static final String campo_sesion_dificultad = "DIFICULTAD_SES";
+    public static final String campo_sesion_supervisor = "SUPERVISOR_SES";
 
 
 
@@ -51,7 +51,7 @@ public class IdentificadoresBD {
             "   REPETICIONES_SES     TEXT          ,\n" +
             "   TIPO_SES             TEXT          ,\n" +
             "   FECHA_SES            TEXT          ,\n" +
-            "   DIFICULTAD_SES       TEXT          ,\n" +
+            "   SUPERVISOR_SES       TEXT          ,\n" +
             "   FOREIGN KEY(ID_PAC) REFERENCES PACIENTE(ID_PAC)\n" +
             ")";
     //CONSTANTES DE ELIMINACION TABLAS

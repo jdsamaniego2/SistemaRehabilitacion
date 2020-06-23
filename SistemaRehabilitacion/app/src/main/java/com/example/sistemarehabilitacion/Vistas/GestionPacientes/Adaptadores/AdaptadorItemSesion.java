@@ -57,10 +57,7 @@ public class AdaptadorItemSesion extends BaseAdapter {
         else{
             txt_tiempo.setText("Tiempo: "+(sesion.getTiempo()/60)+" minutos");
         }
-
-        if(sesion.getTipo()=="Malla") {
-            txt_dificultad.setText("Dificultad: "+sesion.getDificultado());
-        }
+        txt_dificultad.setText("Supervisado Por: "+sesion.getSupervisor());
         return view;
     }
 

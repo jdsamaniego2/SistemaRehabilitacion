@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                 //INTENT A VISTA PARA SINCRONIZAR
 
                 //ServicioBD sercicio = new ServicioBD(MainActivity.this.getApplicationContext(),IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                //long id = sercicio.RegistrarSesion(13,180,5,"Timon","15/08/2019","Normal");
+                //long id = sercicio.RegistrarSesion(13,180,5,"Timon","15/08/2019",EncargadoActivity.encargado_actual);
                 //Toast.makeText(MainActivity.this.getApplicationContext(),"SESION REGISTRADA: "+id,Toast.LENGTH_LONG).show();
 
                 /*OBTENER TODOS LOS PACIENTES

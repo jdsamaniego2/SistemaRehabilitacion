@@ -23,6 +23,7 @@ import com.example.sistemarehabilitacion.BaseDatos.Locales.IdentificadoresBD;
 import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.Bluetooth.BluetoothActivity;
 import com.example.sistemarehabilitacion.R;
+import com.example.sistemarehabilitacion.Vistas.Configuracion.EncargadoActivity;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
 import com.example.sistemarehabilitacion.Vistas.Musica.ReproductoMusica;
 
@@ -150,7 +151,7 @@ public class EjercicioRecorridoActivity extends BluetoothActivity implements Vie
                                             public void onClick(DialogInterface dialogo1, int id) {
 
                                                 ServicioBD sercicio = new ServicioBD(EjercicioRecorridoActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                                                sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,punto_actual,"RECORRIDO",fecha,"Normal");
+                                                sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),180,punto_actual,"RECORRIDO",fecha,EncargadoActivity.encargado_actual);
                                                 Toast.makeText(EjercicioRecorridoActivity.this.getApplicationContext(),"Sesión Guardada Satisfactoriamente",Toast.LENGTH_SHORT).show();
                                                 Intent intent = new Intent(EjercicioRecorridoActivity.this, MenuActivity.class);
                                                 startActivity(intent);
@@ -246,7 +247,7 @@ public class EjercicioRecorridoActivity extends BluetoothActivity implements Vie
                                 np.stop();
                                 np = null;
                                 ServicioBD sercicio = new ServicioBD(EjercicioRecorridoActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                                sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),(int)tiempo_sesion,repeticiones_realizadas,"RECORRIDO",fecha,"Normal");
+                                sercicio.RegistrarSesion(PacienteActivo.ObtenerPasienteSesion().getId(),(int)tiempo_sesion,repeticiones_realizadas,"RECORRIDO",fecha, EncargadoActivity.encargado_actual);
                                 Toast.makeText(EjercicioRecorridoActivity.this.getApplicationContext(),"Sesión Guardada Satisfactoriamente",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(EjercicioRecorridoActivity.this, MenuActivity.class);
                                 startActivity(intent);

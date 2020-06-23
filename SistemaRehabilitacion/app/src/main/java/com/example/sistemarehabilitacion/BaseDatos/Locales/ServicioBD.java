@@ -272,7 +272,7 @@ public class ServicioBD {
         }
     }
 
-    public long RegistrarSesion(int id_paciente, int tiempo, int repeticiones, String tipo, String fecha, String dificultad){
+    public long RegistrarSesion(int id_paciente, int tiempo, int repeticiones, String tipo, String fecha, String supervisor){
         try {
             ConectorBD conn = new ConectorBD(contexto, bd, null, version);
             SQLiteDatabase db = conn.getWritableDatabase();
@@ -283,7 +283,7 @@ public class ServicioBD {
             values.put(IdentificadoresBD.campo_sesion_repeticiones, repeticiones);
             values.put(IdentificadoresBD.campo_sesion_tipo, tipo);
             values.put(IdentificadoresBD.campo_sesion_fecha, fecha);
-            values.put(IdentificadoresBD.campo_sesion_dificultad, dificultad);
+            values.put(IdentificadoresBD.campo_sesion_supervisor, supervisor);
 
             Long idResultante = db.insert(IdentificadoresBD.tabla_sesion, IdentificadoresBD.campo_sesion_id, values);
             db.close();
@@ -297,7 +297,7 @@ public class ServicioBD {
         ConectorBD conn = new ConectorBD(contexto,bd,null,version);
         SQLiteDatabase db = conn.getReadableDatabase();
         String [] parametrosConsulta = {id+""};
-        String [] camposConsulta = {IdentificadoresBD.campo_sesion_id,IdentificadoresBD.campo_sesion_idpaciente,IdentificadoresBD.campo_sesion_tiempo,IdentificadoresBD.campo_sesion_repeticiones,IdentificadoresBD.campo_sesion_tipo,IdentificadoresBD.campo_sesion_fecha,IdentificadoresBD.campo_sesion_dificultad};
+        String [] camposConsulta = {IdentificadoresBD.campo_sesion_id,IdentificadoresBD.campo_sesion_idpaciente,IdentificadoresBD.campo_sesion_tiempo,IdentificadoresBD.campo_sesion_repeticiones,IdentificadoresBD.campo_sesion_tipo,IdentificadoresBD.campo_sesion_fecha,IdentificadoresBD.campo_sesion_supervisor};
         Sesion sesion = null;
         try{
             Cursor cursor = db.query(IdentificadoresBD.tabla_sesion,camposConsulta,IdentificadoresBD.campo_sesion_id+"=?",parametrosConsulta,null,null,null);
@@ -309,7 +309,7 @@ public class ServicioBD {
             sesion.setRepeticiones(Integer.parseInt(cursor.getString(3)));
             sesion.setTipo(cursor.getString(4));
             sesion.setFecha(cursor.getString(5));
-            sesion.setDificultado(cursor.getString(6));
+            sesion.setSupervisor(cursor.getString(6));
             db.close();
         }catch(Exception e){
             db.close();
@@ -324,7 +324,7 @@ public class ServicioBD {
         ConectorBD conn = new ConectorBD(contexto,bd,null,version);
         SQLiteDatabase db = conn.getReadableDatabase();
         String [] parametrosConsulta = {id_paciente+""};
-        String [] camposConsulta = {IdentificadoresBD.campo_sesion_id,IdentificadoresBD.campo_sesion_idpaciente,IdentificadoresBD.campo_sesion_tiempo,IdentificadoresBD.campo_sesion_repeticiones,IdentificadoresBD.campo_sesion_tipo,IdentificadoresBD.campo_sesion_fecha,IdentificadoresBD.campo_sesion_dificultad};
+        String [] camposConsulta = {IdentificadoresBD.campo_sesion_id,IdentificadoresBD.campo_sesion_idpaciente,IdentificadoresBD.campo_sesion_tiempo,IdentificadoresBD.campo_sesion_repeticiones,IdentificadoresBD.campo_sesion_tipo,IdentificadoresBD.campo_sesion_fecha,IdentificadoresBD.campo_sesion_supervisor};
         try{
 
             Cursor cursor =  db.query(IdentificadoresBD.tabla_sesion,camposConsulta,IdentificadoresBD.campo_paciente_id+"=?",parametrosConsulta,null,null,null);
@@ -337,7 +337,7 @@ public class ServicioBD {
                     sesion.setRepeticiones(Integer.parseInt(cursor.getString(3)));
                     sesion.setTipo(cursor.getString(4));
                     sesion.setFecha(cursor.getString(5));
-                    sesion.setDificultado(cursor.getString(6));
+                    sesion.setSupervisor(cursor.getString(6));
 
                     lista.add(sesion);
                 } while(cursor.moveToNext());
@@ -353,7 +353,7 @@ public class ServicioBD {
         List<Sesion> lista = new ArrayList<>();
         ConectorBD conn = new ConectorBD(contexto,bd,null,version);
         SQLiteDatabase db = conn.getReadableDatabase();
-        String [] camposConsulta = {IdentificadoresBD.campo_sesion_id,IdentificadoresBD.campo_sesion_idpaciente,IdentificadoresBD.campo_sesion_tiempo,IdentificadoresBD.campo_sesion_repeticiones,IdentificadoresBD.campo_sesion_tipo,IdentificadoresBD.campo_sesion_fecha,IdentificadoresBD.campo_sesion_dificultad};
+        String [] camposConsulta = {IdentificadoresBD.campo_sesion_id,IdentificadoresBD.campo_sesion_idpaciente,IdentificadoresBD.campo_sesion_tiempo,IdentificadoresBD.campo_sesion_repeticiones,IdentificadoresBD.campo_sesion_tipo,IdentificadoresBD.campo_sesion_fecha,IdentificadoresBD.campo_sesion_supervisor};
         try{
             Cursor cursor = db.query(IdentificadoresBD.tabla_sesion, camposConsulta, null, null, null, null, null);
             if (cursor.moveToFirst()) {
@@ -365,7 +365,7 @@ public class ServicioBD {
                     sesion.setRepeticiones(Integer.parseInt(cursor.getString(3)));
                     sesion.setTipo(cursor.getString(4));
                     sesion.setFecha(cursor.getString(5));
-                    sesion.setDificultado(cursor.getString(6));
+                    sesion.setSupervisor(cursor.getString(6));
 
                     lista.add(sesion);
                 } while(cursor.moveToNext());
