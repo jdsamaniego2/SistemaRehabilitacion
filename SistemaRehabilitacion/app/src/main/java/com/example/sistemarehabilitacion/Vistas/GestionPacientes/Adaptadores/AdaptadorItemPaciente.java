@@ -12,6 +12,9 @@ import com.example.sistemarehabilitacion.BaseDatos.Modelos.Paciente;
 import com.example.sistemarehabilitacion.R;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class AdaptadorItemPaciente extends BaseAdapter {
@@ -45,12 +48,44 @@ public class AdaptadorItemPaciente extends BaseAdapter {
         TextView txt_cedula = (TextView) view.findViewById(R.id.lbl_cedula_item);
         TextView txt_apellido = (TextView) view.findViewById(R.id.lbl_apellido_item);
         TextView txt_nombre = (TextView) view.findViewById(R.id.lbl_nombre_item);
+        TextView txt_edad = (TextView) view.findViewById(R.id.lbl_edad_item);
         txt_cedula.setText(paciente.getCedula());
-        txt_apellido.setText(paciente.getApellido());
-        txt_nombre.setText(paciente.getNombre());
+        txt_apellido.setText("Apellidos:"+paciente.getApellido());
+        txt_nombre.setText("Nombres"+paciente.getNombre());
+        txt_edad.setText("Edad:"+calcularEdad(paciente.getNacimiento()));
 
         return view;
     }
+
+    public int calcularEdad(String fecnacimiento){
+        Date fechaNac=null;
+        int año= 0;
+        try {
+            /**Se puede cambiar la mascara por el formato de la fecha
+             que se quiera recibir, por ejemplo año mes día "yyyy-MM-dd"
+             en este caso es día mes año*/
+            fechaNac = new SimpleDateFormat("dd/MM/yyyy").parse(fecnacimiento);
+            Calendar fechaNacimiento = Calendar.getInstance();
+            //Se crea un objeto con la fecha actual
+            Calendar fechaActual = Calendar.getInstance();
+            //Se asigna la fecha recibida a la fecha de nacimiento.
+            fechaNacimiento.setTime(fechaNac);
+            //Se restan la fecha actual y la fecha de nacimiento
+            año = fechaActual.get(Calendar.YEAR)- fechaNacimiento.get(Calendar.YEAR);
+            int mes =fechaActual.get(Calendar.MONTH)- fechaNacimiento.get(Calendar.MONTH);
+            int dia = fechaActual.get(Calendar.DATE)- fechaNacimiento.get(Calendar.DATE);
+            //Se ajusta el año dependiendo el mes y el día
+            if(mes<0 || (mes==0 && dia<0)){
+                año--;
+            }
+
+        } catch (Exception ex) {
+            System.out.println("Error:"+ex);
+        }
+        return año;
+
+    }
+
 
 
 }

@@ -48,5 +48,13 @@
             android:layout_height="wrap_content"
             android:textSize="16dp"
             android:textColor="#ffff"/>
+
+
+        <TextView
+            android:id="@+id/lbl_edad_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="#ffff"/>
     </LinearLayout>
 </LinearLayout>
