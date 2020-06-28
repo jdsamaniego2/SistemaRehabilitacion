@@ -146,6 +146,46 @@ public class ServicioBD {
 
     }
 
+    public List<Paciente> ConsultarPacientesPorEnfermedad(String enfermedad){
+        List<Paciente> lista = new ArrayList<>();
+        ConectorBD conn = new ConectorBD(contexto,bd,null,version);
+        SQLiteDatabase db = conn.getReadableDatabase();
+        String [] camposConsulta = {IdentificadoresBD.campo_paciente_id,IdentificadoresBD.campo_paciente_nombre,IdentificadoresBD.campo_paciente_apellido,IdentificadoresBD.campo_paciente_cedula,IdentificadoresBD.campo_paciente_nacimiento,IdentificadoresBD.campo_paciente_enfermedad ,IdentificadoresBD.campo_paciente_ultima_modificacion};
+        try{
+            Cursor cursor = db.query(IdentificadoresBD.tabla_paciente, camposConsulta, null, null, null, null, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    Paciente paciente = new Paciente();
+                    paciente.setId(Integer.parseInt(cursor.getString(0)));
+                    paciente.setNombre(cursor.getString(1));
+                    paciente.setApellido(cursor.getString(2));
+                    paciente.setCedula(cursor.getString(3));
+                    paciente.setNacimiento(cursor.getString(4));
+                    paciente.setEnfermedad(cursor.getString(5));
+                    paciente.setUltima_modificacion(cursor.getString(6));
+
+                    String enfermedades = paciente.getEnfermedad();
+                    String[] enfermedades_separadas = enfermedades.split(" ");
+                    for(String aux_enfermedad : enfermedades_separadas){
+                        if(aux_enfermedad.equals(enfermedad)){
+                            lista.add(paciente);
+                            break;
+                        }
+                    }
+                } while(cursor.moveToNext());
+            }
+            db.close();
+            return lista;
+        }catch(Exception e){
+            db.close();
+            return null;
+        }
+
+
+    }
+
+
+
     public long EditarPaciente(long id, String nombre, String apellido, String cedula, String nacimiento, String enfermedad){
         if(ConsultarPaciente(id)==null){
             return -1;//SI EL PACIENTE NO EXISTE RETORNA -1
