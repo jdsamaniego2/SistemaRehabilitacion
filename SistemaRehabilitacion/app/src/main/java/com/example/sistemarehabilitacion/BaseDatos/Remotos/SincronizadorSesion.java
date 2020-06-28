@@ -214,7 +214,8 @@ public class SincronizadorSesion {
                     }
                 }
                 else {
-                    //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL BUSCAR LA SESION",Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(SincronizadorSesion.this.contexto,"ERROR AL BUSCAR LA SESION EN EL SERVIDOR "+response.message(),Toast.LENGTH_LONG).show();
                     //vista de error
                    if(!SincronizadorLocalRemoto.error_mostrado){
                        Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);
@@ -227,7 +228,7 @@ public class SincronizadorSesion {
 
             @Override
             public void onFailure(Call<List<Sesion>> call, Throwable t) {
-                //Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
+                Toast.makeText(SincronizadorSesion.this.contexto,"ERROR EN LA PETICIÓN",Toast.LENGTH_LONG).show();
                 //vista de error
                 if(!SincronizadorLocalRemoto.error_mostrado){
                     Intent intent = new Intent(SincronizadorSesion.this.contexto, ErrorConexionBdRemota.class);

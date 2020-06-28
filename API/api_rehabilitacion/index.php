@@ -67,8 +67,15 @@ $app->get('/sesiones/:cedula', function ($cedula) use($db, $app) {
             $pacientes=array();
             while($fila=$select->fetch_assoc()){
                 $pacientes[]=$fila;
-            }
- 			$paciente = json_encode($pacientes[0]);
+			}
+			if(empty($pacientes)) {
+				echo json_encode(array());; 
+				return;
+			}
+    		
+			$paciente = json_encode($pacientes[0]);
+
+ 			
  		 
 
  			$data = json_decode($paciente, true);
@@ -97,9 +104,8 @@ $app->get('/sesiones/:cedula/:fecha', function ($cedula,$fecha) use($db, $app) {
             $pacientes=array();
             while($fila=$select->fetch_assoc()){
                 $pacientes[]=$fila;
-            }
- 			$paciente = json_encode($pacientes[0]);
- 		 
+			}
+			$paciente = json_encode($pacientes[0]);
 
  			$data = json_decode($paciente, true);
 
@@ -278,8 +284,8 @@ $app->post('/pacientes/', function () use($app, $db) {
 				$data['NACIMIENTO_PAC']=null;
 			}
 	 
-			if(!isset($data['TECNICO_PAC'])){
-				$data['TECNICO_PAC']=null;
+			if(!isset($data['ENFERMEDADES_PAC'])){
+				$data['ENFERMEDADES_PAC']=null;
 			}
 			if(!isset($data['ULTIMAMODIFICACION_PAC'])){
 				$data['ULTIMAMODIFICACION_PAC']=null;
@@ -291,7 +297,7 @@ $app->post('/pacientes/', function () use($app, $db) {
 			 "'{$data['CEDULA_PAC']}',".
  			 "'{$data['NACIMIENTO_PAC']}',".
  			 "'{$data['ULTIMAMODIFICACION_PAC']}',".
-			 "'{$data['TECNICO_PAC']}'".
+			 "'{$data['ENFERMEDADES_PAC']}'".
 			 ");";
 
 			$insert = $db->query($query);
@@ -335,8 +341,8 @@ $app->put('/pacientes/:id', function ($id) use($db, $app) {
 			if(!isset($data['ULTIMAMODIFICACION_PAC'])){
 				$data['ULTIMAMODIFICACION_PAC']=null;
 			}
-			if(!isset($data['TECNICO_PAC'])){
-				$data['TECNICO_PAC']=null;
+			if(!isset($data['ENFERMEDADES_PAC'])){
+				$data['ENFERMEDADES_PAC']=null;
 			}
  			$query = "UPDATE PACIENTE SET 
  									NOMBRE_PAC = '{$data['NOMBRE_PAC']}',
@@ -344,7 +350,7 @@ $app->put('/pacientes/:id', function ($id) use($db, $app) {
                                     CEDULA_PAC = '{$data['CEDULA_PAC']}',
                                     NACIMIENTO_PAC = '{$data['NACIMIENTO_PAC']}',
                                     ULTIMAMODIFICACION_PAC = '{$data['ULTIMAMODIFICACION_PAC']}',
-                                    TECNICO_PAC = '{$data['TECNICO_PAC']}'
+                                    ENFERMEDADES_PAC = '{$data['ENFERMEDADES_PAC']}'
                                  WHERE ID_PAC=$id";
 
 	 

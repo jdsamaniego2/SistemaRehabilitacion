@@ -31,21 +31,21 @@ public class Paciente implements Serializable {
     private  String ultima_modificacion;
 
 
-    @SerializedName("TECNICO_PAC")
+    @SerializedName("ENFERMEDADES_PAC")
     @Expose
-    private  String tecnico;
+    private  String enfermedad;
 
     public Paciente() {
     }
 
-    public Paciente(String nombre, String apellido, String cedula, String nacimiento, String ultima_modificacion, String tecnico) {
+    public Paciente(String nombre, String apellido, String cedula, String nacimiento, String ultima_modificacion, String enfermedad) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.nacimiento = nacimiento;
         this.ultima_modificacion = ultima_modificacion;
-        this.tecnico = tecnico;
+        this.enfermedad = enfermedad;
     }
 
     public String getUltima_modificacion() {
@@ -96,11 +96,11 @@ public class Paciente implements Serializable {
         this.nacimiento = nacimiento;
     }
 
-    public String getTecnico() {
-        return tecnico;
+    public String getEnfermedad() {
+        return enfermedad;
     }
 
-    public void setTecnico(String tecnico) {
-        this.tecnico = tecnico;
+    public void setEnfermedad(String enfermedad) {
+        this.enfermedad = enfermedad;
     }
 }

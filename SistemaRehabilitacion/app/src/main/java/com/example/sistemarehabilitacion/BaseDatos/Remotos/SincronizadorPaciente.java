@@ -205,7 +205,7 @@ public class SincronizadorPaciente {
                                 //actualizar el local
                                 //Toast.makeText(SincronizadorPaciente.this.contexto,"ES NECESARIO ACTUALIZAR LA BD LOCAL" ,Toast.LENGTH_LONG).show();
                                 ServicioBD sercicio = new ServicioBD(SincronizadorPaciente.this.contexto, IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                                sercicio.EditarPacienteConFechaEspecifica(response.body().get(0).getNombre(), response.body().get(0).getApellido(), response.body().get(0).getCedula(), response.body().get(0).getNacimiento(), response.body().get(0).getTecnico(),response.body().get(0).getUltima_modificacion());
+                                sercicio.EditarPacienteConFechaEspecifica(response.body().get(0).getNombre(), response.body().get(0).getApellido(), response.body().get(0).getCedula(), response.body().get(0).getNacimiento(), response.body().get(0).getEnfermedad(),response.body().get(0).getUltima_modificacion());
                             }
                         }
 

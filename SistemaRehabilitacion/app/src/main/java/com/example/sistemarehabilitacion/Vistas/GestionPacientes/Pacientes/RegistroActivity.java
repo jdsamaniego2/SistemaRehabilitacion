@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,10 @@ public class RegistroActivity extends AppCompatActivity {
     TextView txt_nacimiento_dia;
     TextView txt_nacimiento_mes;
     TextView txt_nacimiento_anio;
-    TextView txt_tecnico;
+
+    CheckBox chk_tendinitis;
+    CheckBox chk_artrosis;
+    CheckBox chk_artritis;
 
     Button btn_registrar;
     //Button btn_calendario;
@@ -57,11 +61,14 @@ public class RegistroActivity extends AppCompatActivity {
         txt_cedula = findViewById(R.id.txt_cedula_registro);
         txt_nombre = findViewById(R.id.txt_nombre_registro);
         txt_apellido = findViewById(R.id.txt_apellido_registro);
-        txt_tecnico  = findViewById(R.id.txt_tecnico_registro);
         btn_registrar  = findViewById(R.id.btn_registrar_registro);
         txt_nacimiento_dia = findViewById(R.id.txt_dia_registro);
         txt_nacimiento_mes = findViewById(R.id.txt_mes_registro);
         txt_nacimiento_anio = findViewById(R.id.txt_ano_registro);
+
+        chk_tendinitis = findViewById(R.id.chk_tendinitis_registro);
+        chk_artritis = findViewById(R.id.chk_artritis_registro);
+        chk_artrosis = findViewById(R.id.chk_artrosis_registro);
 
     }
     private void inicializarEventos(){
@@ -69,7 +76,7 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //si está vacio algun campo
-               if(txt_cedula.getText().toString().isEmpty()||txt_nombre.getText().toString().isEmpty()||txt_apellido.getText().toString().isEmpty()||txt_tecnico.getText().toString().isEmpty()||txt_nacimiento_dia.getText().toString().isEmpty()||txt_nacimiento_anio.getText().toString().isEmpty()||txt_nacimiento_mes.getText().toString().isEmpty()){
+               if(txt_cedula.getText().toString().isEmpty()||txt_nombre.getText().toString().isEmpty()||txt_apellido.getText().toString().isEmpty()||txt_nacimiento_dia.getText().toString().isEmpty()||txt_nacimiento_anio.getText().toString().isEmpty()||txt_nacimiento_mes.getText().toString().isEmpty()){
                    Toast.makeText(getApplicationContext(),"Complete todos los campos",Toast.LENGTH_SHORT).show();
                    return;
                }
@@ -91,11 +98,22 @@ public class RegistroActivity extends AppCompatActivity {
                     return;
                 }
 
+                String enfermedades = "";
+                if(chk_tendinitis.isChecked()){
+                    enfermedades+="Tendinitis ";
+                }
+                if(chk_artritis.isChecked()){
+                    enfermedades+="Artritis ";
+                }
+                if(chk_artrosis.isChecked()){
+                    enfermedades+="Artrosis ";
+                }
+
                 ServicioBD servicio = new ServicioBD(RegistroActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
                 servicio.RegistrarPaciente(txt_nombre.getText().toString(),txt_apellido.getText().toString(),txt_cedula.getText().toString(),
                         (txt_nacimiento_dia.getText().toString().length()==1?"0"+txt_nacimiento_dia.getText().toString():txt_nacimiento_dia.getText().toString())+"/"+(txt_nacimiento_mes.getText().toString().length()==1?"0"+txt_nacimiento_mes.getText().toString():txt_nacimiento_mes.getText().toString())+"/"+
                                 (txt_nacimiento_anio.getText().toString().length()==1?"000"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString().length()==2?"00"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString().length()==3?"0"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString())
-                        ,txt_tecnico.getText().toString());
+                        ,enfermedades);
 
                 Intent intent = new Intent(RegistroActivity.this, MainActivity.class);
                 startActivity(intent);

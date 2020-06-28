@@ -4,7 +4,7 @@ public class IdentificadoresBD {
 
 
     public static final String nombre_bd= "bd_rehabilitacion";
-    public static final int version_bd= 5;
+    public static final int version_bd= 8;
 
 
     //TABLAS
@@ -19,7 +19,7 @@ public class IdentificadoresBD {
     public static final String campo_paciente_cedula = "CEDULA_PAC";
     public static final String campo_paciente_nacimiento = "NACIMIENTO_PAC";
     public static final String campo_paciente_ultima_modificacion = "ULTIMAMODIFICACION_PAC";
-    public static final String campo_paciente_tecnico = "TECNICO_PAC";
+    public static final String campo_paciente_enfermedad = "ENFERMEDADES_PAC";
 
     //CAMPOS SESION
     public static final String campo_sesion_id = "ID_SES";
@@ -40,7 +40,7 @@ public class IdentificadoresBD {
             "   APELLIDO_PAC         TEXT          ,\n" +
             "   CEDULA_PAC           TEXT          ,\n" +
             "   NACIMIENTO_PAC       TEXT          ,\n" +
-            "   TECNICO_PAC          TEXT          ,\n" +
+            "   ENFERMEDADES_PAC          TEXT          ,\n" +
             "   ULTIMAMODIFICACION_PAC TEXT        \n" +
             ")";
     public static final String senencia_creacion_sesion =  ""+

@@ -72,23 +72,6 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_nombre_edicion" />
 
     <EditText
-        android:id="@+id/txt_tecnico_edicion"
-        android:layout_width="282dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/miplaintext"
-        android:ems="10"
-        android:hint="Encargado"
-        android:inputType="textPersonName"
-        android:textColor="#9F000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_apellido_edicion" />
-
-    <EditText
         android:id="@+id/txt_ano_edicion"
         android:layout_width="81dp"
         android:layout_height="35dp"
@@ -194,7 +177,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.336"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_tecnico_edicion" />
+        app:layout_constraintTop_toBottomOf="@+id/chk_artrosis_edicion" />
 
     <TextView
         android:id="@+id/textView9"
@@ -204,4 +187,41 @@
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/txt_mes_edicion"
         tools:layout_editor_absoluteX="22dp" />
+
+    <CheckBox
+        android:id="@+id/chk_artritis_edicion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Artritis"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/chk_artrosis_edicion"
+        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_apellido_edicion" />
+
+    <CheckBox
+        android:id="@+id/chk_artrosis_edicion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:text="Artrosis"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/chk_tendinitis_edicion"
+        app:layout_constraintTop_toBottomOf="@+id/txt_apellido_edicion" />
+
+    <CheckBox
+        android:id="@+id/chk_tendinitis_edicion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:text="Tendinitis"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_apellido_edicion" />
 </androidx.constraintlayout.widget.ConstraintLayout>

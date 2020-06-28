@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,12 @@ public class EdicionActivity extends AppCompatActivity {
     TextView txt_nacimiento_dia;
     TextView txt_nacimiento_mes;
     TextView txt_nacimiento_anio;
-    TextView txt_tecnico;
+
+
+    CheckBox chk_tendinitis;
+    CheckBox chk_artrosis;
+    CheckBox chk_artritis;
+
 
     Button btn_editar;
 
@@ -46,11 +52,24 @@ public class EdicionActivity extends AppCompatActivity {
         txt_cedula.setText(paciente.getCedula());
         txt_nombre.setText(paciente.getNombre());
         txt_apellido.setText(paciente.getApellido());
-        txt_tecnico.setText(paciente.getTecnico());
+
+        String enfermedades = paciente.getEnfermedad();
+        String[] enfermedades_separadas = enfermedades.split(" ");
+       for(String enfermedad : enfermedades_separadas){
+            if(enfermedad.equals("Artrosis")){
+                chk_artrosis.setChecked(true);
+            }
+            else if(enfermedad.equals("Artritis")){
+                chk_artritis.setChecked(true);
+            }
+            else if(enfermedad.equals("Tendinitis")){
+                chk_tendinitis.setChecked(true);
+            }
+        }
+
         txt_nacimiento_dia.setText(paciente.getNacimiento().charAt(0)+""+paciente.getNacimiento().charAt(1));
         txt_nacimiento_mes.setText(paciente.getNacimiento().charAt(3)+""+paciente.getNacimiento().charAt(4));
         txt_nacimiento_anio.setText(paciente.getNacimiento().charAt(6)+""+paciente.getNacimiento().charAt(7)+""+paciente.getNacimiento().charAt(8)+""+paciente.getNacimiento().charAt(9));
-
 
 
     }
@@ -65,18 +84,21 @@ public class EdicionActivity extends AppCompatActivity {
         txt_cedula = findViewById(R.id.txt_cedula_edicion);
         txt_nombre = findViewById(R.id.txt_nombre_edicion);
         txt_apellido = findViewById(R.id.txt_apellido_edicion);
-        txt_tecnico  = findViewById(R.id.txt_tecnico_edicion);
         btn_editar  = findViewById(R.id.btn_editar_edicion);
         txt_nacimiento_dia = findViewById(R.id.txt_dia_edicion);
         txt_nacimiento_mes = findViewById(R.id.txt_mes_edicion);
         txt_nacimiento_anio = findViewById(R.id.txt_ano_edicion);
+
+        chk_tendinitis = findViewById(R.id.chk_tendinitis_edicion);
+        chk_artritis = findViewById(R.id.chk_artritis_edicion);
+        chk_artrosis = findViewById(R.id.chk_artrosis_edicion);
     }
     private void inicializarEventos(){
         btn_editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //si está vacio algun campo
-                if(txt_cedula.getText().toString().isEmpty()||txt_nombre.getText().toString().isEmpty()||txt_apellido.getText().toString().isEmpty()||txt_tecnico.getText().toString().isEmpty()||txt_nacimiento_dia.getText().toString().isEmpty()||txt_nacimiento_anio.getText().toString().isEmpty()||txt_nacimiento_mes.getText().toString().isEmpty()){
+                if(txt_cedula.getText().toString().isEmpty()||txt_nombre.getText().toString().isEmpty()||txt_apellido.getText().toString().isEmpty()||txt_nacimiento_dia.getText().toString().isEmpty()||txt_nacimiento_anio.getText().toString().isEmpty()||txt_nacimiento_mes.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(),"Complete todos los campos",Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -98,14 +120,25 @@ public class EdicionActivity extends AppCompatActivity {
                     return;
                 }
 
+                String enfermedades = "";
+                if(chk_tendinitis.isChecked()){
+                    enfermedades+="Tendinitis ";
+                }
+                if(chk_artritis.isChecked()){
+                    enfermedades+="Artritis ";
+                }
+                if(chk_artrosis.isChecked()){
+                    enfermedades+="Artrosis ";
+                }
+
                 paciente.setNombre(txt_nombre.getText().toString());
                 paciente.setApellido(txt_apellido.getText().toString());
-                paciente.setTecnico(txt_tecnico.getText().toString());
+                paciente.setEnfermedad(enfermedades);
                 paciente.setNacimiento((txt_nacimiento_dia.getText().toString().length()==1?"0"+txt_nacimiento_dia.getText().toString():txt_nacimiento_dia.getText().toString())+"/"+(txt_nacimiento_mes.getText().toString().length()==1?"0"+txt_nacimiento_mes.getText().toString():txt_nacimiento_mes.getText().toString())+"/"+
                         (txt_nacimiento_anio.getText().toString().length()==1?"000"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString().length()==2?"00"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString().length()==3?"0"+txt_nacimiento_anio.getText().toString():txt_nacimiento_anio.getText().toString())
                 );
                 ServicioBD servicio = new ServicioBD(EdicionActivity.this.getApplicationContext(), IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
-                servicio.EditarPaciente(paciente.getNombre(),paciente.getApellido(),paciente.getCedula(),paciente.getNacimiento(),paciente.getTecnico());
+                servicio.EditarPaciente(paciente.getNombre(),paciente.getApellido(),paciente.getCedula(),paciente.getNacimiento(),paciente.getEnfermedad());
 
                 Intent intent = new Intent(EdicionActivity.this, MainActivity.class);
                 startActivity(intent);

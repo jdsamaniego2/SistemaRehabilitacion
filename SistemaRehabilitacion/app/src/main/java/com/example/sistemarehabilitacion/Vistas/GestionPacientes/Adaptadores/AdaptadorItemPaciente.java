@@ -51,7 +51,7 @@ public class AdaptadorItemPaciente extends BaseAdapter {
         TextView txt_edad = (TextView) view.findViewById(R.id.lbl_edad_item);
         txt_cedula.setText(paciente.getCedula());
         txt_apellido.setText("Apellidos:"+paciente.getApellido());
-        txt_nombre.setText("Nombres"+paciente.getNombre());
+        txt_nombre.setText("Nombres:"+paciente.getNombre());
         txt_edad.setText("Edad:"+calcularEdad(paciente.getNacimiento()));
 
         return view;

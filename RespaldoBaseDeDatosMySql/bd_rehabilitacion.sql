@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 23-06-2020 a las 02:07:49
+-- Tiempo de generación: 28-06-2020 a las 20:02:37
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -36,20 +36,20 @@ CREATE TABLE IF NOT EXISTS `paciente` (
   `CEDULA_PAC` varchar(60) DEFAULT NULL,
   `NACIMIENTO_PAC` varchar(60) DEFAULT NULL,
   `ULTIMAMODIFICACION_PAC` varchar(250) DEFAULT NULL,
-  `TECNICO_PAC` varchar(250) DEFAULT NULL,
+  `ENFERMEDADES_PAC` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`ID_PAC`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`ID_PAC`, `NOMBRE_PAC`, `APELLIDO_PAC`, `CEDULA_PAC`, `NACIMIENTO_PAC`, `ULTIMAMODIFICACION_PAC`, `TECNICO_PAC`) VALUES
-(49, 'Jairo Daniel', 'Samaniego Villacres', '0604178541', '07/04/1998', '2020-06-23  01:10:51', 'Danny Samaniego'),
-(50, 'Luis Carlos', 'Samaniego Parra', '0602960031', '02/07/1980', '2019-12-21  03:38:30', 'Danny Samaniego'),
-(51, 'Marco Antonio', 'Haro Espinoza', '0600710362', '05/04/1960', '2019-12-21  03:38:54', 'Danny Samaniego'),
-(52, 'Juan Carlos', 'Velasco Murillo', '0604168845', '08/04/1990', '2019-12-21  03:27:08', 'Daniel Samaniego'),
-(53, 'Eduardo Alejandro', 'Santillan Vaca', '0504178541', '05/06/2000', '2019-12-21  04:33:08', 'Daniel Samaniego');
+INSERT INTO `paciente` (`ID_PAC`, `NOMBRE_PAC`, `APELLIDO_PAC`, `CEDULA_PAC`, `NACIMIENTO_PAC`, `ULTIMAMODIFICACION_PAC`, `ENFERMEDADES_PAC`) VALUES
+(49, 'Jairo Daniel', 'Samaniego Villacres', '0604178541', '07/04/1998', '2020-06-28  07:15:52', 'Artitis'),
+(50, 'Luis Carlos', 'Samaniego Parra', '0602960031', '02/07/1980', '2019-12-21  03:38:30', 'Artrosis'),
+(51, 'Marco Antonio', 'Haro Espinoza', '0600710362', '05/04/1960', '2019-12-21  03:38:54', 'Artritis'),
+(52, 'Juan Carlos', 'Velasco Murillo', '0604168845', '08/04/1990', '2019-12-21  03:27:08', 'Tendinitis'),
+(53, 'Eduardo Alejandro', 'Santillan Vaca', '0504178541', '05/06/2000', '2019-12-21  04:33:08', 'Artrosis');
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,6 @@ INSERT INTO `sesion` (`ID_SES`, `ID_PAC`, `TIEMPO_SES`, `REPETICIONES_SES`, `TIP
 (77, 51, '180', '5', 'Cierre', '2019-12-19  06:11:07', 'Jairo Daniel Samaniego Villacres'),
 (190, 49, '180', '5', 'Cierre', '2019-12-19  06:11:07', 'Jairo Daniel Samaniego Villacres'),
 (191, 50, '180', '5', 'Malla', '2019-12-19  07:00:35', 'Jairo Daniel Samaniego Villacres'),
-(194, 49, '180', '5', 'Cierre', '2019-12-19  03:34:05', 'Jairo Daniel Samaniego Villacres'),
 (195, 53, '180', '5', 'Cierre', '2019-12-19  06:11:07', 'Jairo Daniel Samaniego Villacres'),
 (206, 49, '170', '5', 'Manijas', '2019-12-14  03:34:06', 'Jairo Daniel Samaniego Villacres'),
 (207, 49, '9', '0', 'CIERRE', '2020-06-22  09:01:20', 'Jairo Daniel Samaniego Villacres');
