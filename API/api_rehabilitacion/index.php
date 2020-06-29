@@ -6,7 +6,7 @@ require_once 'vendor/autoload.php';
 $app = new \Slim\Slim();
  
 //Creamos la conexión a la base de datos con MySQLi
-$db = new mysqli('localhost', 'root', '', 'bd_rehabilitacion');
+$db = new mysqli('localhost', 'root', 'erick123', 'bd_rehabilitacion');
  
 /*
  * Ruta/Controlador Get, le decimos que use las variables $db, $app

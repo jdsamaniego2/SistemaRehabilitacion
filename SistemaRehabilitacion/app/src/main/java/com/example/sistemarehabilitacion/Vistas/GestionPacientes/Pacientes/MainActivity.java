@@ -15,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,7 @@ import com.example.sistemarehabilitacion.Bluetooth.BluetoothActivity;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.BaseDeDatos.SincronizacionActivity;
 import com.example.sistemarehabilitacion.Vistas.Configuracion.ConfiguracionActivity;
+import com.example.sistemarehabilitacion.Vistas.Configuracion.EncargadoActivity;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.ConfiguracionPopup;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.MenuActivity;
 import com.example.sistemarehabilitacion.Vistas.Errores.ErrorConexionBdRemota;
@@ -123,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.op_eliminar_menu){
@@ -161,6 +164,45 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed(){
         //super.onBackPressed();
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater= getMenuInflater();
+        inflater.inflate(R.menu.menu_filtro, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        ServicioBD sercicio = new ServicioBD(MainActivity.this.getApplicationContext(),IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
+        switch (item.getItemId()){
+            case R.id.filtro1:
+
+                pacientes = sercicio.ConsultarPacientesPorEnfermedad("Artritis");
+                items_pacientes = new AdaptadorItemPaciente(pacientes,this.getApplicationContext());
+                lv_pacientes.setAdapter(items_pacientes);
+                registerForContextMenu(lv_pacientes);
+            return true;
+            case R.id.filtro2:
+                pacientes = sercicio.ConsultarPacientesPorEnfermedad("Tendinitis");
+                items_pacientes = new AdaptadorItemPaciente(pacientes,this.getApplicationContext());
+                lv_pacientes.setAdapter(items_pacientes);
+                registerForContextMenu(lv_pacientes);
+                return true;
+            case R.id.filtro3:
+                pacientes = sercicio.ConsultarPacientesPorEnfermedad("Artrosis");
+                items_pacientes = new AdaptadorItemPaciente(pacientes,this.getApplicationContext());
+                lv_pacientes.setAdapter(items_pacientes);
+                registerForContextMenu(lv_pacientes);
+                return true;
+            case R.id.filtro4:
+                pacientes = sercicio.ConsultarPacientes();
+                items_pacientes = new AdaptadorItemPaciente(pacientes,this.getApplicationContext());
+                lv_pacientes.setAdapter(items_pacientes);
+                registerForContextMenu(lv_pacientes);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void inicializarComponentes(){
