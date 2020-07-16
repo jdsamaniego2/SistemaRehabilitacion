@@ -1,6 +1,7 @@
 package com.example.sistemarehabilitacion.Vistas.GestionPacientes.Sesiones;
 
  
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -8,6 +9,9 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -21,8 +25,10 @@ import com.example.sistemarehabilitacion.BaseDatos.Locales.ServicioBD;
 import com.example.sistemarehabilitacion.R;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.ConfiguracionPopup;
 import com.example.sistemarehabilitacion.Vistas.Ejercicios.MenuActivity;
+import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores.AdaptadorItemPaciente;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores.AdaptadorItemSesion;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
+import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Pacientes.MainActivity;
 
 
 import java.util.List;
@@ -74,5 +80,26 @@ public class ReportesActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater= getMenuInflater();
+        inflater.inflate(R.menu.menu_pdf, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.pdf:
+
+                return true;
+
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

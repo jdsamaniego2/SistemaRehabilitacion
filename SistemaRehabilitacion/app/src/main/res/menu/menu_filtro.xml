@@ -23,4 +23,9 @@
         app:showAsAction="never"
 
         />
+    <item android:id="@+id/pdf"
+        android:title="Generar PDF"
+        app:showAsAction="never"
+
+        />
 </menu>

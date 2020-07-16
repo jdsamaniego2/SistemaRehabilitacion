@@ -200,6 +200,11 @@ public class MainActivity extends AppCompatActivity {
                 items_pacientes = new AdaptadorItemPaciente(pacientes,this.getApplicationContext());
                 lv_pacientes.setAdapter(items_pacientes);
                 registerForContextMenu(lv_pacientes);
+                return true;
+            case R.id.pdf:
+
+                return true;
+
 
         }
         return super.onOptionsItemSelected(item);
