@@ -14,6 +14,8 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -47,8 +49,23 @@ import com.example.sistemarehabilitacion.Vistas.Errores.ErrorConexionBdRemota;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.Adaptadores.AdaptadorItemPaciente;
 import com.example.sistemarehabilitacion.Vistas.GestionPacientes.PacienteActivo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -97,16 +114,11 @@ public class MainActivity extends AppCompatActivity {
         int permissionCheck = ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-               requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+               requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
             }
         }
 
     }
-
-
-
-
-
 
     @Override
     protected void onResume() {
@@ -173,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)  {
         ServicioBD sercicio = new ServicioBD(MainActivity.this.getApplicationContext(),IdentificadoresBD.nombre_bd,IdentificadoresBD.version_bd);
         switch (item.getItemId()){
             case R.id.filtro1:
@@ -202,6 +214,67 @@ public class MainActivity extends AppCompatActivity {
                 registerForContextMenu(lv_pacientes);
                 return true;
             case R.id.pdf:
+                File directorio = new File(Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOWNLOADS), "ReportesRehabilitacion");
+                if (!directorio.exists()) {
+                    directorio.mkdir();
+                }
+                Date fecha_documento = new Date() ;
+                String fecha_documento_str = new SimpleDateFormat("yyyyMMdd_HHmmss").format(fecha_documento);
+                File archivo = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),"Reporte_Local_Pacientes"+ fecha_documento_str + ".pdf");
+                try {
+                    archivo.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                OutputStream outputstrem = null;
+                try {
+                    outputstrem = new FileOutputStream(archivo);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                Rectangle pagesize = new Rectangle(1440f, 720f);
+
+                Document documento = new Document(pagesize, 36f, 72f, 108f, 180f);
+                try {
+                    PdfWriter.getInstance(documento, outputstrem);
+                } catch (DocumentException e) {
+                    e.printStackTrace();
+                }
+
+                documento.open();
+                Paragraph titulo = new Paragraph("                                  Listado de pacientes almacenados localmente \n\n",
+                        FontFactory.getFont("arial",22,Font.BOLD, BaseColor.BLUE)
+                );
+                try {
+                    documento.add(titulo);
+                } catch (DocumentException e) {
+                    e.printStackTrace();
+                }
+
+                PdfPTable tabla = new PdfPTable(6);
+                tabla.addCell("#");
+                tabla.addCell("CÉDULA");
+                tabla.addCell("NOMBRE");
+                tabla.addCell("APELLIDO");
+                tabla.addCell("FECHA DE NACIMIENTO");
+                tabla.addCell("ENFERMEDADES");
+
+                for(int i = 0 ; i < pacientes.size() ; i++) {
+                    tabla.addCell("" + i);
+                    tabla.addCell(pacientes.get(i).getCedula());
+                    tabla.addCell(pacientes.get(i).getNombre());
+                    tabla.addCell(pacientes.get(i).getApellido());
+                    tabla.addCell(pacientes.get(i).getNacimiento());
+                    tabla.addCell(pacientes.get(i).getEnfermedad());
+                }
+                try {
+                    documento.add(tabla);
+                } catch (DocumentException e) {
+                    e.printStackTrace();
+                }
+                documento.close();
 
                 return true;
 
