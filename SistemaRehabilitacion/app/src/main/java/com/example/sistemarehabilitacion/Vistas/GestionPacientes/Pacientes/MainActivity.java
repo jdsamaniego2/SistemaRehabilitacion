@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
                 File directorio = new File(Environment.getExternalStoragePublicDirectory(
                         Environment.DIRECTORY_DOCUMENTS), "ReportesRehabilitacion");
                 if (!directorio.exists()) {
-                    directorio.mkdir();
+                    directorio.mkdirs();
                 }
                 Date fecha_documento = new Date() ;
                 String fecha_documento_str = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(fecha_documento);
