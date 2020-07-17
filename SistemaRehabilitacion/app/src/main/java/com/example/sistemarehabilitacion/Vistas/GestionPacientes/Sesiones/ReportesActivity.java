@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -47,6 +48,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -118,7 +120,7 @@ public class ReportesActivity extends AppCompatActivity {
                     directorio.mkdir();
                 }
                 Date fecha_documento = new Date() ;
-                String fecha_documento_str = new SimpleDateFormat("yyyyMMdd_HHmmss").format(fecha_documento);
+                String fecha_documento_str = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(fecha_documento);
                 File archivo = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),"Reporte_Local_Sesiones"+ fecha_documento_str + ".pdf");
                 try {
                     archivo.createNewFile();
@@ -145,8 +147,13 @@ public class ReportesActivity extends AppCompatActivity {
                 Paragraph titulo = new Paragraph("Listado de sesiones del paciente "+PacienteActivo.ObtenerPasienteSesion().getNombre()+" "+PacienteActivo.ObtenerPasienteSesion().getApellido()+" con cédula "+PacienteActivo.ObtenerPasienteSesion().getCedula()+" almacenados localmente \n\n",
                         FontFactory.getFont("arial",22, Font.BOLD, BaseColor.BLUE)
                 );
+                String fecha_formateada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(fecha_documento);
+                Paragraph fecha = new Paragraph("Fecha y hora de generación del reporte: "+ fecha_formateada+"\n\n",
+                        FontFactory.getFont("arial",15,Font.BOLD, BaseColor.BLUE)
+                );
                 try {
                     documento.add(titulo);
+                    documento.add(fecha);
                 } catch (DocumentException e) {
                     e.printStackTrace();
                 }
@@ -173,7 +180,12 @@ public class ReportesActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 documento.close();
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("PDF GENERADO");
+                builder.setMessage("El archivo fue generado y se encuentra en la carpeta Documentos/ReportesRehabilitacion con el nombre "+"Reporte_Local_Sesiones"+ fecha_documento_str + ".pdf");
+                builder.setPositiveButton("Aceptar", null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
 
                 return true;
 

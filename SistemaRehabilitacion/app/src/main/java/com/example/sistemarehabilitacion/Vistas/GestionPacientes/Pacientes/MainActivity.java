@@ -215,13 +215,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.pdf:
                 File directorio = new File(Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS), "ReportesRehabilitacion");
+                        Environment.DIRECTORY_DOCUMENTS), "ReportesRehabilitacion");
                 if (!directorio.exists()) {
                     directorio.mkdir();
                 }
                 Date fecha_documento = new Date() ;
-                String fecha_documento_str = new SimpleDateFormat("yyyyMMdd_HHmmss").format(fecha_documento);
-                File archivo = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),"Reporte_Local_Pacientes"+ fecha_documento_str + ".pdf");
+                String fecha_documento_str = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(fecha_documento);
+                File archivo = new File(directorio,"Reporte_Local_Pacientes"+ fecha_documento_str + ".pdf");
                 try {
                     archivo.createNewFile();
                 } catch (IOException e) {
@@ -247,8 +247,13 @@ public class MainActivity extends AppCompatActivity {
                 Paragraph titulo = new Paragraph("                                  Listado de pacientes almacenados localmente \n\n",
                         FontFactory.getFont("arial",22,Font.BOLD, BaseColor.BLUE)
                 );
+                String fecha_formateada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(fecha_documento);
+                Paragraph fecha = new Paragraph("Fecha y hora de generación del reporte: "+fecha_formateada+"\n\n",
+                        FontFactory.getFont("arial",15,Font.BOLD, BaseColor.BLUE)
+                );
                 try {
                     documento.add(titulo);
+                    documento.add(fecha);
                 } catch (DocumentException e) {
                     e.printStackTrace();
                 }
@@ -275,6 +280,12 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 documento.close();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("PDF GENERADO");
+                builder.setMessage("El archivo fue generado y se encuentra en la carpeta Documentos/ReportesRehabilitacion con el nombre "+"Reporte_Local_Pacientes"+ fecha_documento_str + ".pdf");
+                builder.setPositiveButton("Aceptar", null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
 
                 return true;
 
