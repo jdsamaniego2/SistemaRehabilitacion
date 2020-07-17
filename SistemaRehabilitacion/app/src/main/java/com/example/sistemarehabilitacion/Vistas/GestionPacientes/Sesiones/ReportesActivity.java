@@ -115,13 +115,13 @@ public class ReportesActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.pdf:
                 File directorio = new File(Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS), "ReportesRehabilitacion");
+                        Environment.DIRECTORY_DOCUMENTS), "ReportesRehabilitacion");
                 if (!directorio.exists()) {
                     directorio.mkdirs();
                 }
                 Date fecha_documento = new Date() ;
                 String fecha_documento_str = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(fecha_documento);
-                File archivo = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),"Reporte_Local_Sesiones"+ fecha_documento_str + ".pdf");
+                File archivo = new File(directorio,"Reporte_Local_Sesiones"+ fecha_documento_str + ".pdf");
                 try {
                     archivo.createNewFile();
                 } catch (IOException e) {
