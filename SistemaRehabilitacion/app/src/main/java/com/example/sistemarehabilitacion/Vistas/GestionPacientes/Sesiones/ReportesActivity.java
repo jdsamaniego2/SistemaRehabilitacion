@@ -145,11 +145,11 @@ public class ReportesActivity extends AppCompatActivity {
 
                 documento.open();
                 Paragraph titulo = new Paragraph("Listado de sesiones del paciente "+PacienteActivo.ObtenerPasienteSesion().getNombre()+" "+PacienteActivo.ObtenerPasienteSesion().getApellido()+" con cédula "+PacienteActivo.ObtenerPasienteSesion().getCedula()+" almacenados localmente \n\n",
-                        FontFactory.getFont("arial",22, Font.BOLD, BaseColor.BLUE)
+                        FontFactory.getFont("arial",22, Font.BOLD, BaseColor.BLACK)
                 );
                 String fecha_formateada = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(fecha_documento);
                 Paragraph fecha = new Paragraph("Fecha y hora de generación del reporte: "+ fecha_formateada+"\n\n",
-                        FontFactory.getFont("arial",15,Font.BOLD, BaseColor.BLUE)
+                        FontFactory.getFont("arial",15,Font.BOLD, BaseColor.BLACK)
                 );
                 try {
                     documento.add(titulo);
